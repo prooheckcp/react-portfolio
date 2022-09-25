@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.scss';
+import './Work.scss';
 
 const About : React.FC = () => {
   return (
