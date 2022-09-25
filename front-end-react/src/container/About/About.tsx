@@ -14,11 +14,11 @@ const About : React.FC = () => {
   return (
     <>
       <h2 className="head-text">
-        I know that
-        <span>Good Design</span>
+        A passionate
+        <span className="red_text"> Portu</span><span className="green_text">guese</span>
         <br/>
-        means
-        <span>Good Business</span>
+        
+        <span>Game Developer</span>
       </h2>
 
       <div className="app__profiles">

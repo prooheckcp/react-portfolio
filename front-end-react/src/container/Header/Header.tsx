@@ -40,7 +40,7 @@ const Header : React.FC = () => {
     }
 
     for(let i = 0; i < AMOUNT_OF_BAR_LOOPS; i++){
-      setText(currentTitle+(i%2 == 0 ? "|" : ""));
+      setText(currentTitle+(i%2 === 0 ? "|" : ""));
       await delay(BAR_DELAY)
     }
   }
@@ -82,7 +82,7 @@ const Header : React.FC = () => {
                       <span>👋</span>
                       <div style={{marginLeft: 20}}>
                         <p className="p-text">Hi there, I am</p>
-                        <h1 className="head-text">Vasco</h1>
+                        <h1 className="head-text"><span>Vasco</span></h1>
                       </div>
                     </div>
 

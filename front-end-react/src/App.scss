@@ -55,11 +55,11 @@ p {
 font-size: 2.75rem;
 font-weight: 800;
 text-align: center;
-color: var(--span-color);
+color: var(--white-color);
 text-transform: capitalize;
 
 span {
-    color: var(--secondary-color);
+    color: var(--span-color);
 }
 
 @media screen and (min-width: 2000px) {
