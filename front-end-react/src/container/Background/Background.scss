@@ -1,0 +1,21 @@
+#background{
+    background: linear-gradient(var(--primary-color), var(--black-color));
+    height: 100vh;
+    width: 100%;
+    margin: 0px 0px;
+    position: fixed;
+    overflow: hidden;
+    z-index: -2;
+    #tsparticles{
+        opacity: 1;
+    }
+
+    .test{
+        width: 50% !important;
+    }
+}
+
+.test{
+    width: 50%;
+    height: 50%;
+}

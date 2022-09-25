@@ -23,7 +23,7 @@ import about02 from '../assets/about02.png';
 import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
 
-import profile from '../assets/VascoPng.png';
+import profile from '../assets/DarkerVasco.png';
 import circle from '../assets/circle.png';
 import logo from '../assets/prooheckcp.png';
 

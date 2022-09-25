@@ -11,3 +11,5 @@ export {default as Skills} from './Skills/Skills.tsx';
 export {default as Testimonial} from './Testimonial/Testimonial.tsx';
 // @ts-ignore
 export {default as Work} from './Work/Work.tsx';
+// @ts-ignore
+export {default as Background} from './Background/Background.tsx';

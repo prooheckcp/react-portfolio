@@ -1,13 +1,9 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {motion} from 'framer-motion';
 // @ts-ignore
 import FadeIn from '../../components/FadeIn.tsx';
 import {images} from '../../constants';
 import './Header.scss';
-
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import particlesData from '../../constants/particlesData';
 
 const techStack = [images.roblox, images.unity, images.ue4];
 
@@ -23,24 +19,8 @@ const scaleVariants = {
 }
 
 const Header : React.FC = () => {
-
-  const particlesInit = useCallback(async (engine) => {
-        await loadFull(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container) => {
-      await console.log(container);
-  }, []);
-
   return (
     <>
-      <Particles 
-        id="tsparticles"
-            init={particlesInit}
-            loaded={particlesLoaded}
-            options = {particlesData}
-      />
-
       <div id="home" className="app__header app__flex">
             <FadeIn 
             className={"app__header-info"}

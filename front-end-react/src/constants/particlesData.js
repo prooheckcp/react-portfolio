@@ -1,4 +1,5 @@
 export default {
+    fullscreen:true,
     background: {
         color: {
             value: "transparent",
