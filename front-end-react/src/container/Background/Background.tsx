@@ -12,7 +12,11 @@ const Background = () => {
   return (
     <>
         <div id="background">
-
+            <Particles 
+                    id="tsparticles"
+                    init={particlesInit}
+                    options = {particlesData}
+            />
         </div>
     </>
   )
