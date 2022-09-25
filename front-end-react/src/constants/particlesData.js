@@ -9,7 +9,7 @@ export default {
     interactivity: {
         events: {
             onClick: {
-                enable: true,
+                enable: false,
                 mode: "push",
             },
             onHover: {
@@ -30,13 +30,13 @@ export default {
     },
     particles: {
         color: {
-            value: "#ffffff",
+            value: "rgba(255, 255, 255, 0.5)",
         },
         links: {
-            color: "#ffffff",
+            color: "rgba(255, 255, 255, 1)",
             distance: 150,
             enable: true,
-            opacity: 1,
+            opacity: 0.5,
             width: 1,
         },
         collisions: {
@@ -60,7 +60,7 @@ export default {
             value: 80,
         },
         opacity: {
-            value: 0.5,
+            value: 0,
         },
         shape: {
             type: "circle",

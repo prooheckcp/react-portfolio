@@ -15,7 +15,7 @@ const About : React.FC = () => {
     <>
       <h2 className="head-text">
         A passionate
-        <span className="red_text"> Portu</span><span className="green_text">guese </span><img className="emoji" src={images.portuguese} alt="" />
+        <span className="green_text"> Portu</span><span className="red_text">guese </span><img className="emoji" src={images.portuguese} alt="PortugueseEmoji"/>
         <br/>
         
         <span>Game Developer</span>
