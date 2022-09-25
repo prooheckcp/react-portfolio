@@ -18,7 +18,7 @@ const scaleVariants = {
 
 const Header : React.FC = () => {
   return (
-    <div className="app__header app__flex">
+    <div id="home" className="app__header app__flex">
       <FadeIn 
       className={"app__header-info"}
       content={
