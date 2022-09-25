@@ -39,7 +39,10 @@ import unity from '../assets/WhiteUnityLogo.png';
 import ue4 from '../assets/UE4LogoWhite.png';
 import roblox from '../assets/RobloxIcon.png';
 
+import portuguese from '../assets/PortugueseFlag.png';
+
 export default {
+  portuguese,
   email,
   mobile,
   api,
