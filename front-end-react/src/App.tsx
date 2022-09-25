@@ -4,6 +4,7 @@ import React from 'react';
 import {About, Footer, Header, Skills, Testimonial, Work} from './container/index.ts';
 // @ts-ignore
 import {Navbar} from './components/index.ts';
+import './App.scss'
 
 const App = () => {
   return (
