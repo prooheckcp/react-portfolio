@@ -1,10 +1,10 @@
 export default {
     background: {
         color: {
-            value: "#0d47a1",
+            value: "transparent",
         },
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     interactivity: {
         events: {
             onClick: {
@@ -22,7 +22,7 @@ export default {
                 quantity: 4,
             },
             repulse: {
-                distance: 200,
+                distance: 100,
                 duration: 0.4,
             },
         },
@@ -48,7 +48,7 @@ export default {
                 default: "bounce",
             },
             random: false,
-            speed: 6,
+            speed: 2,
             straight: false,
         },
         number: {
