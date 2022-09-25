@@ -16,7 +16,7 @@ const scaleVariants = {
   }
 }
 
-const techStack = [images.flutter, images.redux, images.sass];
+const techStack = [images.roblox, images.unity, images.ue4];
 
 const Header : React.FC = () => {
   return (

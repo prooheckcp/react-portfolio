@@ -23,9 +23,9 @@ import about02 from '../assets/about02.png';
 import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
 
-import profile from '../assets/profile.png';
+import profile from '../assets/VascoPng.png';
 import circle from '../assets/circle.svg';
-import logo from '../assets/logo.png';
+import logo from '../assets/prooheckcp.png';
 
 import adidas from '../assets/adidas.png';
 import amazon from '../assets/amazon.png';
@@ -34,6 +34,10 @@ import bolt from '../assets/bolt.png';
 import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
+
+import unity from '../assets/WhiteUnityLogo.png';
+import ue4 from '../assets/UE4LogoWhite.png';
+import roblox from '../assets/RobloxIcon.png';
 
 export default {
   email,
@@ -69,4 +73,7 @@ export default {
   nb,
   skype,
   spotify,
+  unity,
+  ue4,
+  roblox,
 };
