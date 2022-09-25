@@ -16,6 +16,8 @@ const scaleVariants = {
   }
 }
 
+const techStack = [images.flutter, images.redux, images.sass];
+
 const Header : React.FC = () => {
   return (
     <div id="home" className="app__header app__flex">
@@ -65,11 +67,14 @@ const Header : React.FC = () => {
       className="app__header-circles"
       content={
         <>
-          {[images.flutter, images.redux, images.sass].map((circle, index) => {
+        <div>
+          {techStack.map((circle, index) => 
             <div className="circle-cmp app__flex" key={`circle-${index}`}>
               <img src={circle} alt="circle" />
-            </div>
-          })}
+            </div>   
+          )}          
+        </div>
+
         </>
       }
       >
