@@ -1,9 +1,13 @@
-import React from 'react';
-import {motion, MotionConfig} from 'framer-motion';
+import React, {useCallback} from 'react';
+import {motion} from 'framer-motion';
 // @ts-ignore
 import FadeIn from '../../components/FadeIn.tsx';
 import {images} from '../../constants';
 import './Header.scss';
+
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import particlesData from '../../constants/particlesData';
 
 const scaleVariants = {
   whileInView:{
@@ -19,8 +23,27 @@ const scaleVariants = {
 const techStack = [images.roblox, images.unity, images.ue4];
 
 const Header : React.FC = () => {
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(engine);
+}, []);
+
+const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+}, []);
+
   return (
     <div id="home" className="app__header app__flex">
+      <Particles 
+        id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options = {particlesData}
+        />
+
       <FadeIn 
       className={"app__header-info"}
       content={
