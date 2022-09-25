@@ -1,5 +1,5 @@
 .app {
-    background-color: var(--primary-color);
+    background: linear-gradient(var(--primary-color), var(--black-color));
     font-family: var(--font-base);
   }
   
@@ -55,7 +55,7 @@ p {
 font-size: 2.75rem;
 font-weight: 800;
 text-align: center;
-color: var(--black-color);
+color: var(--span-color);
 text-transform: capitalize;
 
 span {
@@ -74,7 +74,7 @@ span {
 .p-text {
 font-size: 0.8rem;
 text-align: left;
-color: var(--gray-color);
+color: #e8e6e3;
 line-height: 1.5;
 
 @media screen and (min-width: 2000px) {

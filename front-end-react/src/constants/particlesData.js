@@ -35,7 +35,7 @@ export default {
             color: "#ffffff",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 1,
             width: 1,
         },
         collisions: {
@@ -48,7 +48,7 @@ export default {
                 default: "bounce",
             },
             random: false,
-            speed: 2,
+            speed: 1.2,
             straight: false,
         },
         number: {

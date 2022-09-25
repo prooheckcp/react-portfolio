@@ -6,7 +6,7 @@
     align-items: center;
 
     padding: 1rem 2rem;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--secondary-color);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -17,6 +17,7 @@
     display: flex;
     justify-content: flex;
     align-items: center;
+    position:absolute;
 
     img{
         width: 150px;
@@ -34,7 +35,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     list-style: none;
 
     li{
@@ -53,7 +53,8 @@
         }
 
         a{
-            color: var(--gray-color);
+            font-size: 1.25rem;
+            color: var(--white-color);
             text-decoration: none;
             flex-direction: column;
 
@@ -62,13 +63,13 @@
             transition: all 0.3s ease-in-out;
 
             &:hover{
-                color: var(--secondary-color);
+                color: var(--span-color);
             }
         }
 
         &:hover{
             div{
-                background: var(--secondary-color)
+                background: var(--span-color)
             }
         }
     }
