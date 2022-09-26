@@ -34,7 +34,10 @@ const Skills : React.FC = () => {
               className="app__skills-item app__flex"
               key={skill.name}
             >
-
+              <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
+                <img src={urlFor(skill.icon)} alt={skill.name} />
+              </div>
+              <p className="p-text">{skill.name}</p>
             </motion.div>
           ))}
         </motion.div>
