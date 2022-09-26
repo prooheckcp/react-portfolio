@@ -5,6 +5,7 @@ import {motion} from 'framer-motion';
 import './Work.scss';
 import { client, urlFor } from '../../client';
 
+const SECTIONS : Array<string> = ['UI/UX', 'Web App', 'amogus', 'Mobile App', 'React JS', 'All'];
 
 const Work : React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -43,7 +44,7 @@ const Work : React.FC = () => {
       </h2>
 
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'amogus', 'Mobile App', 'React JS', 'All'].map((item ,index) =>
+        {SECTIONS.map((item ,index) =>
           <div
             key={index}
             onClick={()=> handleWorkFilter(item)}
