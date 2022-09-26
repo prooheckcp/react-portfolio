@@ -19,7 +19,6 @@ const Work : React.FC = () => {
       setWorks(data);
       setFilterWork(data);
     });
-
   }, [])
 
   const handleWorkFilter = (item) =>{

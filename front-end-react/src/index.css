@@ -3,6 +3,9 @@
 :root {
   --font-base: "DM Sans", sans-serif;
 
+  --background-primary: #101316;
+  --background-secondary: #060606;
+
   --primary-color: #222831;
   --secondary-color: #3D0000;
   --black-color: #131516;
