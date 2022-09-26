@@ -17,8 +17,8 @@
     .app__work-filter-item{
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
-        background-color: #fff;
-        color: #000;
+        background-color: var(--primary-color);
+        color: var(--lightGray-color);
         font-weight: 800;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -26,7 +26,7 @@
 
         &:hover{
             background-color: var(--secondary-color);
-            color: #fff;
+            color: var(--lightGray-color);
         }
 
         @media screen and (min-width: 2000px) {
@@ -36,7 +36,7 @@
     }
 
     .item-active{
-        background-color: var(--secondary-color);
+        background-color: var(--span-color);
         color: #fff;
     }
 }
@@ -48,13 +48,13 @@
     align-items: center;
 
     .app__work-item{
-        width: 270px;
+        width: 420px;
         flex-direction: column;
 
         margin: 2rem;
         padding: 1rem;
         border-radius: 0.5rem;
-        background-color: #fff;
+        background-color: var(--secondary-color);
         color: #000;
 
         cursor: pointer;
@@ -65,9 +65,13 @@
         }
 
         @media screen and (min-width: 2000px){
-            width: 470px;
+            width: 570px;
             padding: 1.25rem;
             border-radius: 0.75rem;
+        }
+
+        @media screen and(max-width: 600px){
+            width: 250px;
         }
 
         @media screen and (min-width: 300px){
@@ -87,6 +91,7 @@
         height: 100%;
         border-radius: 0.5rem;
         object-fit: cover;
+        background-color: var(--primary-color);
     }
 
     @media screen and (min-width: 2000px){
@@ -135,7 +140,8 @@
     flex-direction: column;
 
     h4{
-        margin-top: 1rem;
+        color: var(--span-color);
+        margin-top: 0.5rem;
         line-height: 1.5;
     }
 
@@ -144,7 +150,11 @@
 
         padding: 0.5rem 1rem;
         border-radius: 10px;
-        background-color: #fff;
+        background-color: var(--secondary-color);
         top: -25px;
+
+        p{
+            color: var(--lightGray-color);
+        }
     }
 }
