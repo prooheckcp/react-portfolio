@@ -10,10 +10,12 @@ const App = () => {
   return (
     <div className='app'>
       <Background />
-
+      {/*
       <Navbar />
       <Header />
-      <About />
+      <About />      
+      */}
+
       <Work />
       <Skills />
       <Testimonial />

@@ -72,7 +72,7 @@ const Header : React.FC = () => {
 
   return (
     <>
-      <div id="home" className="app__header app__flex">
+      <div className="app__header app__flex">
             <FadeIn 
             className={"app__header-info"}
             content={
