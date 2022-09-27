@@ -1,20 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {motion} from 'framer-motion';
-// @ts-ignore
-import FadeIn from '../../components/FadeIn.tsx';
-import {images} from '../../constants';
+
 import './Header.scss';
-// @ts-ignore
+
+/*@ts-ignore*/
+import FadeIn from '../../components/FadeIn.tsx';
+/*@ts-ignore*/
 import {AppWrap} from '../../wrapper/index.ts'
 
-const GAME_DEVELOPER_TITLE : string = "Game Developer";
-const GAMEPLAY_TITLE : string = "Gameplay Programmer";
+import {images} from '../../constants';
+import Wait from '../../functions/Wait';
+
 const DELAY_BETWEEN_TITLE : number = 1.2;
 const BAR_DELAY : number = 0.8;
 const TYPING_DELAY : number = 0.1;
 const AMOUNT_OF_BAR_LOOPS : number = 11;
 
-const techStack = [images.roblox, images.unity, images.ue4];
+const TITLE_LIST = ["Game Developer", "Gameplay Programmer", "UI Programmer"]
+const TECH_STACK = [images.roblox, images.unity, images.ue4];
 
 const scaleVariants = {
   whileInView:{
@@ -27,10 +30,8 @@ const scaleVariants = {
   }
 }
 
-function delay(seconds) {return new Promise(resolve => setTimeout(resolve, seconds * 1000));}
-
 const Header : React.FC = () => {
-  const [text, setText] = useState<string>(GAME_DEVELOPER_TITLE)
+  const [text, setText] = useState<string>(TITLE_LIST[0])
 
   const changeText = async (title : string) =>{
     let currentTitle : string = "";
@@ -38,12 +39,12 @@ const Header : React.FC = () => {
     for (let i = 0; i < title.length; i++) {
       currentTitle += title[i];
       setText(currentTitle+"|");
-      await delay(TYPING_DELAY)
+      await Wait(TYPING_DELAY)
     }
 
     for(let i = 0; i < AMOUNT_OF_BAR_LOOPS; i++){
       setText(currentTitle+(i%2 === 0 ? "|" : ""));
-      await delay(BAR_DELAY)
+      await Wait(BAR_DELAY)
     }
   }
 
@@ -52,19 +53,21 @@ const Header : React.FC = () => {
     for (let i = title.length; i >= 0; i--) {
       currentTitle = currentTitle.slice(0, i);
       setText(currentTitle+"|");
-      await delay(TYPING_DELAY)
+      await Wait(TYPING_DELAY)
     }
   }
 
   const textLoop = async ()=>{
     await clearText(text);
-    await delay(DELAY_BETWEEN_TITLE/2);
-    await changeText(GAMEPLAY_TITLE);
-    await delay(DELAY_BETWEEN_TITLE);
-    await clearText(text);
-    await delay(DELAY_BETWEEN_TITLE/2);
-    await changeText(GAME_DEVELOPER_TITLE);
-    await delay(DELAY_BETWEEN_TITLE);
+    await Wait(DELAY_BETWEEN_TITLE/2);
+    for(let i = 0; i < TITLE_LIST.length; i++){
+      let title : string = TITLE_LIST[i];
+
+      await changeText(title);
+      await Wait(DELAY_BETWEEN_TITLE);
+      await clearText(text);
+      await Wait(DELAY_BETWEEN_TITLE/2);      
+    }
     textLoop();
   }
 
@@ -120,7 +123,7 @@ const Header : React.FC = () => {
             className="app__header-circles"
             content={
               <>
-                {techStack.map((circle, index) =>
+                {TECH_STACK.map((circle, index) =>
                   <motion.div 
                   className="circle-cmp app__flex" 
                   key={`circle-${index}`}
