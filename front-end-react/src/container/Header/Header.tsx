@@ -144,7 +144,6 @@ const Header : React.FC = () => {
               </>
             }
             >
-
             </FadeIn>
           </div>        
     </>
@@ -152,4 +151,4 @@ const Header : React.FC = () => {
   )
 }
 
-export default Header
+export default AppWrap(Header, "home")
