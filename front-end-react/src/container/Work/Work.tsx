@@ -7,6 +7,9 @@ import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 import './Work.scss';
 import { client, urlFor } from '../../client';
 
+// @ts-ignore
+import FetchSanityData from '../../functions/FetchSanityData.ts';
+
 const SECTIONS : Array<string> = ['UI/UX', 'Web App', 'amogus', 'Mobile App', 'React JS', 'All'];
 
 const Work : React.FC = () => {
@@ -16,11 +19,7 @@ const Work : React.FC = () => {
   const [filterWork, setFilterWork] = useState([]);
 
   useEffect(()=>{
-    const query = '*[_type == "works"]';
-    client.fetch(query).then(data=>{
-      setWorks(data);
-      setFilterWork(data);
-    });
+    FetchSanityData("works", setWorks, setFilterWork)
   }, [])
 
   const handleWorkFilter = (item) =>{
@@ -30,12 +29,12 @@ const Work : React.FC = () => {
     setTimeout(() => {
       setanimateCard([{y: 0, opacity: 1}]);
 
-      if(item === 'All'){
+      if(item === 'All')
         setFilterWork(works);
-      }else{
+      else
         setFilterWork(works.filter((work)=> work.tags.includes(item)))
-      }
-    }, 500);
+      
+    }, 400);
   }
 
   return (
