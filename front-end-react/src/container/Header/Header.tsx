@@ -9,16 +9,13 @@ import FadeIn from '../../components/FadeIn.tsx';
 import {AppWrap} from '../../wrapper/index.ts'
 
 import {images} from '../../constants';
-import Wait from '../../functions/Wait.ts';
 import TypingEffect from '../../functions/Typing.ts';
 
-const DELAY_BETWEEN_TITLE : number = 1.2;
-const BAR_DELAY : number = 0.8;
-const TYPING_DELAY : number = 0.1;
-const AMOUNT_OF_BAR_LOOPS : number = 11;
-
-const TITLE_LIST = ["Game Developer", "Gameplay Programmer", "UI Programmer"]
-const TECH_STACK = [images.roblox, images.unity, images.ue4];
+const MAIN_EMOJI : string = "👋";
+const WELCOMING_MESSAGE : string = "Hi there, I am";
+const DEV_NAME : string = "Vasco";
+const TITLE_LIST : Array<string> = ["Game Developer", "Gameplay Programmer", "UI Programmer"];
+const TECH_STACK : Array<any> = [images.roblox, images.unity, images.ue4];
 
 const scaleVariants = {
   whileInView:{
@@ -41,46 +38,45 @@ const Header : React.FC = () => {
   return (
     <>
       <div className="app__header app__flex">
-            <FadeIn 
-            className={"app__header-info"}
-            content={
-              <>
-                  <div className="app__header-badge">
-                    <div className="badge-cmp app__flex">
-                      <span>👋</span>
-                      <div style={{marginLeft: 20}}>
-                        <p className="p-text">Hi there, I am</p>
-                        <h1 className="head-text"><span>Vasco</span></h1>
-                      </div>
-                    </div>
+        <FadeIn 
+          className={"app__header-info"}
+          content={
+            <>
+              <div className="app__header-badge">
+                <div className="badge-cmp app__flex">
+                  <span>{MAIN_EMOJI}</span>
+                  <div style={{marginLeft: 20}}>
+                    <p className="p-text">{WELCOMING_MESSAGE}</p>
+                    <h1 className="head-text"><span>{DEV_NAME}</span></h1>
+                  </div>
+                </div>
 
-                    <div className="tag-cmp app__flex">
-                      <p className="p-text">{text}</p>
-                    </div>
-                  </div>        
-              </>
-            }>
-            </FadeIn>
+                <div className="tag-cmp app__flex">
+                  <p className="p-text">{text}</p>
+                </div>
+              </div>        
+            </>
+          }>
+        </FadeIn>
 
-            <FadeIn 
-            delayChildren={0.5}
-            className={"app__header-img"}
-            content={
-              <>
-                <img src={images.profile} alt="profile_bg" />
-                <motion.img
-                  whileInView={{scale:[0, 1]}}
-                  transition={{duration:1, ease:'easeInOut'}}
-                  className="overlay_circle"
-                  src={images.circle}
-                  alt="profile_circle"
-                />
-              </>
-            }>
+        <FadeIn 
+          delayChildren={0.5}
+          className={"app__header-img"}
+          content={
+            <>
+              <img src={images.profile} alt="profile_bg" />
+              <motion.img
+                whileInView={{scale:[0, 1]}}
+                transition={{duration:1, ease:'easeInOut'}}
+                className="overlay_circle"
+                src={images.circle}
+                alt="profile_circle"
+              />
+            </>
+          }>
+        </FadeIn>
 
-            </FadeIn>
-
-            <FadeIn
+        <FadeIn
             variant={scaleVariants}
             whileInView={scaleVariants.whileInView}
             className="app__header-circles"
@@ -106,14 +102,13 @@ const Header : React.FC = () => {
                       }}
                     />
                   </motion.div>   
-                )}          
+                )}
               </>
             }
             >
-            </FadeIn>
-          </div>        
-    </>
-    
+          </FadeIn>
+        </div>        
+    </> 
   )
 }
 
