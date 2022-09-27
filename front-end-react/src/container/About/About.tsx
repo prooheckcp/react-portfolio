@@ -16,6 +16,7 @@ const About : React.FC = () => {
 
   return (
     <>
+    <div className="app__about">
       <h2 className="head-text">
         A passionate
         <span className="green_text"> Portu</span><span className="red_text">guese </span><img className="emoji" src={images.portuguese} alt="PortugueseEmoji"/>
@@ -39,8 +40,10 @@ const About : React.FC = () => {
           </motion.div>
         )}
       </div>
+    </div>
+
     </>
   )
 }
 
-export default About
+export default AppWrap(About, "about")
