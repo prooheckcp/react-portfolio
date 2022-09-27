@@ -31,11 +31,11 @@ const Testimonial : React.FC = () => {
           <div className="app__testimonial-item app__flex">
             <img src={urlFor(currentTestimonial.imgurl)} alt="testimonial" />
             <div className="app__testimonial-content">
-              <p className="p-text">{currentTestimonial.feedback}</p>
               <div>
                 <h4 className="bold-text">{currentTestimonial.name}</h4>
                 <h5 className="p-text">{currentTestimonial.company}</h5>
               </div>
+              <p className="p-text">{currentTestimonial.feedback}</p>
             </div>
           </div>
 
