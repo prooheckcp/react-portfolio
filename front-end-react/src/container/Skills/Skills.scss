@@ -81,6 +81,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
+    background: var(--secondary-color);
+    border-radius: 15px;
 
     @media screen and (max-width: 900px){
         margin-top: 2rem;

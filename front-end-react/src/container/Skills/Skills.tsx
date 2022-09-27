@@ -2,7 +2,10 @@ import './Skills.scss';
 import React, {useEffect, useState} from 'react';
 import ReactToolTip from 'react-tooltip';
 import {motion, MotionConfig} from 'framer-motion';
-import { client, urlFor } from '../../client';
+import {client, urlFor } from '../../client';
+
+// @ts-ignore
+import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 
 const Skills : React.FC = () => {
   const [experience, setExperience] = useState([]);
@@ -93,4 +96,4 @@ const Skills : React.FC = () => {
   )
 }
 
-export default Skills
+export default AppWrap(MotionWrap(Skills, "app__skills"), "skills")
