@@ -3,13 +3,16 @@ import './About.scss';
 import {motion} from 'framer-motion';
 import {images} from '../../constants';
 import {urlFor} from '../../client';
+// @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
 // @ts-ignore
 import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
+// @ts-ignore
+import {AboutT} from '../../interfaces/About.ts'
 
 const About : React.FC = () => {
-  const [abouts, setAbouts] = useState<Array<About>>([]);
+  const [abouts, setAbouts] = useState<Array<AboutT>>([]);
 
   useEffect(()=>{
     FetchSanityData("abouts", setAbouts);
@@ -27,7 +30,7 @@ const About : React.FC = () => {
       </h2>
 
       <div className="app__profiles">
-        {abouts.map((about : About, index : number)=>
+        {abouts.map((about : AboutT, index : number)=>
           <motion.div
             whileInView={{opacity: 1}}
             whileHover={{scale: 1.1}}

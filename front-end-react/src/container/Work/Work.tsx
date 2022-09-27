@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {AiFillEye, AiFillGithub} from 'react-icons/ai';
 import {motion} from 'framer-motion';
 
+// @ts-ignore
+import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 import './Work.scss';
 import { client, urlFor } from '../../client';
 
@@ -106,4 +108,4 @@ const Work : React.FC = () => {
   )
 }
 
-export default Work
+export default AppWrap(MotionWrap(Work, "app__works"), "work")
