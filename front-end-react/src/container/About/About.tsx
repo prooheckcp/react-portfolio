@@ -37,7 +37,7 @@ const About : React.FC = () => {
           >
             <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bot-text" style={{marginTop:20}}>{about.title}</h2>
-            <p className="p-text" style={{marginTop:10}}>{about.description}</p>
+            <p className="p-text" style={{marginTop:2}}>{about.description}</p>
           </motion.div>
         )}
       </div>
