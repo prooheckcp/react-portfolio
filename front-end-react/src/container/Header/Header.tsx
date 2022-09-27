@@ -4,6 +4,8 @@ import {motion} from 'framer-motion';
 import FadeIn from '../../components/FadeIn.tsx';
 import {images} from '../../constants';
 import './Header.scss';
+// @ts-ignore
+import {AppWrap} from '../../wrapper/index.ts'
 
 const GAME_DEVELOPER_TITLE : string = "Game Developer";
 const GAMEPLAY_TITLE : string = "Gameplay Programmer";

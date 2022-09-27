@@ -3,6 +3,8 @@ import './About.scss';
 import {motion} from 'framer-motion';
 import {images} from '../../constants';
 import {urlFor, client} from '../../client';
+// @ts-ignore
+import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 
 const About : React.FC = () => {
   const [abouts, setAbouts] = useState([]);
