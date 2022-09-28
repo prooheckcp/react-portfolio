@@ -1,5 +1,7 @@
 export interface About {
     title? : string;
-    description? : string;
-    imgUrl : any;
+    name? : string;
+    icon? : string;
+    bgColor? : string;
+    section? : string;
 }

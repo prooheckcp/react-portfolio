@@ -4,12 +4,22 @@ import {motion} from 'framer-motion';
 import {client, urlFor } from '../../client';
 //@ts-ignore
 import WorkExperience from '../../interfaces/WorkExperience.ts';
-
 // @ts-ignore
 import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
+// @ts-ignore
+import Skill from '../../interfaces/Skill.ts';
 
 const MONTH_LIST : Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const SKILLS : Map<string , Array<>> = {}
+const GET_TITLE : Map<string, string> = new Map<string, string>([
+  ["language", "Programming Languages"],
+  ["tech", "Tech Stack"],
+  ["tool", "Tools"]
+]);
+const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
+  ["language", []],
+  ["tech", []],
+  ["tool", []]
+]);
 
 function getFormatedDateLength(startingDate : string, finalDate? : string){
   let startDate : Date = new Date(startingDate);
