@@ -67,7 +67,7 @@ span {
     color: var(--span-color);
 }
 
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 2600px) {
     font-size: 4rem;
 }
 
@@ -82,7 +82,7 @@ span {
     color: var(--text-color);
     line-height: 1.5;
 
-    @media screen and (min-width: 2000px) {
+    @media screen and (min-width: 2600px) {
         font-size: 1.75rem;
     }
 }
@@ -93,7 +93,7 @@ font-weight: 800;
 color: var(--black-color);
 text-align: left;
 
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 2600px) {
     font-size: 2rem;
 }
 
@@ -139,7 +139,7 @@ text-align: left;
             }
         }
 
-        @media screen and (min-width: 2000px) {
+        @media screen and (min-width: 2600px) {
         width: 70px;
         height: 70px;
 
@@ -174,7 +174,7 @@ text-align: left;
             background-color: var(--secondary-color);
         }
 
-        @media screen and (min-width: 2000px) {
+        @media screen and (min-width: 2600px) {
             width: 20px;
             height: 20px;
         }

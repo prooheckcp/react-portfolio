@@ -29,7 +29,7 @@
             color: var(--lightGray-color);
         }
 
-        @media screen and (min-width: 2000px) {
+        @media screen and (min-width: 2600px) {
             padding: 1rem 2rem;
             border-radius: 0.85rem;
         }
@@ -64,7 +64,7 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.2)
         }
 
-        @media screen and (min-width: 2000px){
+        @media screen and (min-width: 2600px){
             width: 570px;
             padding: 1.25rem;
             border-radius: 0.75rem;
@@ -94,7 +94,7 @@
         background-color: var(--primary-color);
     }
 
-    @media screen and (min-width: 2000px){
+    @media screen and (min-width: 2600px){
         height: 350px;
     }
 }

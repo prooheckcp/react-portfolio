@@ -7,6 +7,7 @@ import './Footer.scss';
 
 const EMAIL_ADDRESS : string = "vasco.soares.2001@gmail.com"
 const PHONE_NUMBER : string = "+351 918 495 220"
+
 const Footer : React.FC = () => {
   const [formData, setFormData] = useState({name: '', email: '', message: ''});
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
