@@ -22,6 +22,10 @@ h5{
     min-height: 100px !important;
     height: fit-content !important;
     flex-direction: column;
+
+    h2{
+        margin-top: 1.5rem;
+    }
 }
 
 .app__profiles{

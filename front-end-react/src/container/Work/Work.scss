@@ -6,6 +6,10 @@
     height: auto !important;
     flex-direction: column;
     justify-content: flex-start !important;
+
+    h2{
+        margin-top: 1.5rem;
+    }
 }
 
 .app__work-filter{
@@ -17,6 +21,7 @@
     width: 100%;
 
     margin: 4rem 0 2rem;
+    margin-top: 2rem;
 
     .app__work-filter-item{
         padding: 0.5rem 1rem;
