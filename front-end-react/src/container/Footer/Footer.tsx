@@ -71,4 +71,4 @@ const Footer : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Footer, "app__footer"), "contact");
+export default AppWrap(MotionWrap(Footer, "app__footer"), "contact", "app__background app__secondBackground");

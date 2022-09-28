@@ -112,4 +112,4 @@ const Header : React.FC = () => {
   )
 }
 
-export default AppWrap(Header, "home")
+export default AppWrap(Header, "home", "app__background")

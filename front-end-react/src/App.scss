@@ -11,6 +11,14 @@
     background-color: var(--primary-color);
 }
 
+.app__background{
+    background-color: #111111 !important;
+}
+
+.app__secondBackground{
+    background-color: #000000 !important;
+}
+
 p{
     color: var(--text-color);
 }

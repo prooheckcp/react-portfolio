@@ -50,4 +50,4 @@ const About : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(About, "app__about"), "about", "app__about")
+export default AppWrap(MotionWrap(About, "app__about"), "about", "app__about app__secondBackground")

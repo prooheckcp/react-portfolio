@@ -107,4 +107,4 @@ const Work : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Work, "app__works"), "work")
+export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__background")

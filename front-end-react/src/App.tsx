@@ -9,7 +9,9 @@ import './App.scss'
 const App = () => {
   return (
     <div className='app'>
+      {/*
       <Background />
+      */}
       <Navbar />
       <Header />
       <About />
@@ -17,11 +19,6 @@ const App = () => {
       <Skills />              
       <Testimonial />
       <Footer />
-      {/*
-
-      
-      */}      
-
     </div>
   )
 }
