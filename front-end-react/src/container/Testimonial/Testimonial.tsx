@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './Testimonial.scss';
 import {motion, MotionConfig, useAnimation} from 'framer-motion';
 import { HiChevronLeft, HiChevronRight} from 'react-icons/hi';
+import {FaQuoteRight} from 'react-icons/fa';
+
 import {urlFor} from '../../client';
 
 // @ts-ignore
@@ -44,6 +46,8 @@ const Testimonial : React.FC = () => {
 
   return (
     <>
+    <h2 className="head-text">What are people saying about me?</h2>
+
       {testimonials.length > 0 && (
         <>
 
@@ -54,7 +58,7 @@ const Testimonial : React.FC = () => {
             <img src={urlFor(currentTestimonial.imgurl)} alt="testimonial" />
             <div className="app__testimonial-content">
               <div>
-                <h4 className="bold-text">{currentTestimonial.name}</h4>
+                <h4 className="bold-text">{currentTestimonial.name}  <FaQuoteRight/></h4>
                 <h5 className="p-text">{currentTestimonial.company}</h5>
               </div>
               <p className="p-text">{currentTestimonial.feedback}</p>
@@ -89,4 +93,4 @@ const Testimonial : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Testimonial, "app__testimonial"), "testimonials", "app__background app__testimonial")
+export default AppWrap(MotionWrap(Testimonial, "app__testimonial"), "testimonials", "app__background app__testimonialSize")

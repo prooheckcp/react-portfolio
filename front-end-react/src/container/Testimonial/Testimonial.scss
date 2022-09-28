@@ -2,6 +2,15 @@
     flex: 1;
     width: 100%;
     flex-direction: column;
+    padding-top: 3.5rem;
+
+    h2{
+        margin-bottom: 2rem;
+    }
+}
+
+.app__testimonialSize{
+    min-height: auto !important;
 }
 
 .app__testimonial-item{
@@ -58,7 +67,7 @@
     align-items: flex-start;
 
     p{
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         line-height: 2rem;   
         color: var(--text-color);
         font-family: var(--font-base);
@@ -66,13 +75,14 @@
 
     h4{
         font-weight: 600;
+        font-size: 1.2rem;
         color: var(--secondary-text-color);
         margin-top: 0;
     }
 
     h5{
         font-weight: 400;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         color: var(--gray-text-color);
         margin-top: 5px;
     }
@@ -112,7 +122,7 @@
 .app__testimonial-brands{
     width: 80%;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
 
     div{
         width: 150px;
