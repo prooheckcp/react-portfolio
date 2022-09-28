@@ -49,18 +49,23 @@ const Footer : React.FC = () => {
         </div>
       </div>
 
-      <div className="app__footer-form app__flex">
-        <div className="app__flex">
-          <input className="p-text" type="text" placeholder="Your Name" name="name" value={name} onChange={handleChangeInput}></input>
-        </div>
-        <div className="app__flex">
-          <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput}></input>
-        </div>
+      {!isFormSubmitted ? 
+        <div className="app__footer-form app__flex">
+          <div className="app__flex">
+            <input className="p-text" type="text" placeholder="Your Name" name="name" value={name} onChange={handleChangeInput}></input>
+          </div>
+          <div className="app__flex">
+            <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput}></input>
+          </div>
+          <div>
+            <textarea className="p-text" placeholder='Your Message' value={message} name={message} onChange={handleChangeInput}></textarea>
+            <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
+          </div>
+        </div> :
         <div>
-          <textarea className="p-text" placeholder='Your Message' value={message} name={message} onChange={handleChangeInput}></textarea>
-          <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
+          <h3 className="head-text">Thank you for getting in touch!</h3>
         </div>
-      </div>
+      }
     </>
   )
 }
