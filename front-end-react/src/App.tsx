@@ -11,12 +11,16 @@ const App = () => {
     <div className='app'>
       {/*
       <Background />
-      */}
-      
       <Navbar />
       <Header />
       <About />
+      
+      */}
+      
+      
       <Work />
+      
+      
       <Skills />              
       <Testimonial />
       <Footer />

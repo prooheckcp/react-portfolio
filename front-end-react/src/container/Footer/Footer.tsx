@@ -12,7 +12,8 @@ const Footer : React.FC = () => {
   const [formData, setFormData] = useState({name: '', email: '', message: ''});
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const currentYear : number = (new Date()).getFullYear();
+  
   const {name, email, message} = formData;
   const handleChangeInput = (e) => {
     const {name, value} = e.target;
@@ -67,6 +68,11 @@ const Footer : React.FC = () => {
           <h3 className="head-text">Thank you for getting in touch!</h3>
         </div>
       }
+
+      <div className="copyright">
+        <p className="p-text">@{currentYear} Vasco Soares</p>
+        <p className="p-text">All rights reserved</p>
+      </div>
     </>
   )
 }

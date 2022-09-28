@@ -10,11 +10,11 @@ import { client, urlFor } from '../../client';
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
-const SECTIONS : Array<string> = ['UI/UX', 'Web App', 'amogus', 'Mobile App', 'React JS', 'All'];
+const SECTIONS : Array<string> = ['All', 'Web Development', 'Apps', 'Unity', 'Roblox', 'Unreal Engine'];
 
 const Work : React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All')
-  const [animateCard, setanimateCard] = useState<any>({y: 0, opacity: 1})
+  const [activeFilter, setActiveFilter] = useState(SECTIONS[0]);
+  const [animateCard, setanimateCard] = useState<any>({y: 0, opacity: 1});
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
@@ -107,4 +107,4 @@ const Work : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__background")
+export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__works app__background")
