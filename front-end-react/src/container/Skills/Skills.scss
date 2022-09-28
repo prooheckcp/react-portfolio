@@ -23,6 +23,18 @@
     }
 }
 
+.app__skills-list-container{
+    flex: 1;
+    flex-wrap: wrap;
+
+    h2{
+        font-size: 1.7rem;
+        width: 100%;
+        text-align: left;
+        height: auto;
+    }
+}
+
 .app__skills-list{
     flex: 1;
     display: flex;
@@ -47,8 +59,8 @@
     transition: all 0.3s ease-in-out;
 
     div{
-        width: 90px;
-        height: 90px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         background-color: var(--secondary-color);
 

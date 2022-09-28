@@ -21,6 +21,10 @@ export default{
               hotspot: true,
             },
         },
-        
+        {
+            name:'section',
+            title:'Section',
+            type:'string'
+        },
     ]
 }

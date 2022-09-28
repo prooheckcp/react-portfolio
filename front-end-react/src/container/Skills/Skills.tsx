@@ -1,7 +1,6 @@
 import './Skills.scss';
 import React, {useEffect, useState} from 'react';
-import ReactToolTip from 'react-tooltip';
-import {motion, MotionConfig} from 'framer-motion';
+import {motion} from 'framer-motion';
 import {client, urlFor } from '../../client';
 //@ts-ignore
 import WorkExperience from '../../interfaces/WorkExperience.ts';
@@ -10,6 +9,7 @@ import WorkExperience from '../../interfaces/WorkExperience.ts';
 import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 
 const MONTH_LIST : Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const SKILLS : Map<string , Array<>> = {}
 
 function getFormatedDateLength(startingDate : string, finalDate? : string){
   let startDate : Date = new Date(startingDate);
@@ -54,7 +54,7 @@ function getFormatedTools(toolsUsed?: Array<string>){
   for(let index : number = 0; index < toolsUsed.length; index++){
     if(index > 0)
       result += " · "
-      
+
     result += toolsUsed[index]
   }
 
@@ -83,21 +83,25 @@ const Skills : React.FC = () => {
       <h2 className="head-text">Skills & Experience</h2>
 
       <div className="app__skills-container">
-        <motion.div className="app__skills-list">
-          {skills?.map((skill)=>(
-            <motion.div
-              whileInView={{opacity: [0, 1]}}
-              transition={{duration: 0.5}}
-              className="app__skills-item app__flex"
-              key={skill.name}
-            >
-              <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
-                <img src={urlFor(skill.icon)} alt={skill.name} />
-              </div>
-              <p className="p-text">{skill.name}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="app__skills-list-container">
+          <h2 className="head-text">Programming Languages</h2>
+          <motion.div className="app__skills-list">
+            {skills?.map((skill)=>(
+              <motion.div
+                whileInView={{opacity: [0, 1]}}
+                transition={{duration: 0.5}}
+                className="app__skills-item app__flex"
+                key={skill.name}
+              >
+                <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
+                  <img src={urlFor(skill.icon)} alt={skill.name} />
+                </div>
+                <p className="p-text">{skill.name}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
 
         <motion.div
           className="app__skills-exp"
@@ -128,14 +132,6 @@ const Skills : React.FC = () => {
                         <p className="p-text desc-text">{workExperience.desc}</p>
                         <p className="p-text tools-text">{getFormatedTools(workExperience.toolsUsed)}</p>
                       </motion.div>
-                      <ReactToolTip
-                        id={"fasgas"}
-                        effect="solid"
-                        arrowColor="#fff"
-                        className="skills-tooltip"
-                      >
-                        {3}
-                      </ReactToolTip>
                 </motion.div>
               </motion.div>          
             </>
