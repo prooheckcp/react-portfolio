@@ -8,6 +8,20 @@ import './Footer.scss';
 const EMAIL_ADDRESS : string = "vasco.soares.2001@gmail.com"
 const PHONE_NUMBER : string = "+351 918 495 220"
 const Footer : React.FC = () => {
+  const [formData, setFormData] = useState({name: '', email: '', message: ''});
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const {name, email, message} = formData;
+  const handleChangeInput = (e) => {
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
+  }
+
+  const handleSubmit = () =>{
+    setLoading(true);
+  }
+
   return (
     <>
       <h2 className="head-text">Take a coffee & Chat With me</h2>
@@ -25,14 +39,14 @@ const Footer : React.FC = () => {
 
       <div className="app__footer-form app__flex">
         <div className="app__flex">
-          <input className="p-text" type="text" placeholder="Your Name" name="name" value={name} onChange={handleChangeInput}></>
+          <input className="p-text" type="text" placeholder="Your Name" name="name" value={name} onChange={handleChangeInput}></input>
         </div>
         <div className="app__flex">
-          <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput}></>
+          <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput}></input>
         </div>
         <div>
           <textarea className="p-text" placeholder='Your Message' value={message} name={message} onChange={handleChangeInput}></textarea>
-          <button type="button" className="p-text" onClick={handleSubmit}>Send Message</button>
+          <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
         </div>
       </div>
     </>
