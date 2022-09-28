@@ -36,7 +36,7 @@ const Footer : React.FC = () => {
 
   return (
     <>
-      <h2 className="head-text">Take a coffee & Chat With me</h2>
+      <h2 className="head-text">Liked my work? Chat with me!</h2>
 
       <div className="app__footer-cards">
         <div className="app__footer-card">
@@ -59,8 +59,8 @@ const Footer : React.FC = () => {
           </div>
           <div>
             <textarea className="p-text" placeholder='Your Message' value={message} name={message} onChange={handleChangeInput}></textarea>
-            <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
           </div>
+          <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
         </div> :
         <div>
           <h3 className="head-text">Thank you for getting in touch!</h3>
