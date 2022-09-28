@@ -121,7 +121,6 @@
         justify-content: flex-start;
         align-items: flex-start;
         margin-bottom: 0;
-        cursor: pointer;
 
         h4{
             color: var(--text-color);
@@ -147,6 +146,10 @@
         .desc-text{
             display: inline-block;
             white-space: pre-line
+        }
+
+        .tools-text{
+            color: var(--gray-text-color);
         }
     }
 }
