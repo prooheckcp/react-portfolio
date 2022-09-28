@@ -58,7 +58,7 @@ const Footer : React.FC = () => {
             <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput}></input>
           </div>
           <div>
-            <textarea className="p-text" placeholder='Your Message' value={message} name={message} onChange={handleChangeInput}></textarea>
+            <textarea className="p-text" placeholder='Your Message' value={message} name="message" onChange={handleChangeInput}></textarea>
           </div>
           <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending': 'Send Message'}</button>
         </div> :
