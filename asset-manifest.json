@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/react-portfolio/static/css/main.53f98b0b.css",
+    "main.js": "/react-portfolio/static/js/main.07c9d48c.js",
+    "static/media/DarkerVasco.png": "/react-portfolio/static/media/DarkerVasco.2e04da3058c1e60beedc.png",
+    "static/media/RobloxIcon.png": "/react-portfolio/static/media/RobloxIcon.cdb4ccbb7c123ff3a164.png",
+    "static/media/about04.png": "/react-portfolio/static/media/about04.fa7b3a72ed32b0e25bfb.png",
+    "static/media/about02.png": "/react-portfolio/static/media/about02.7a3df03410ee756268ec.png",
+    "static/media/about01.png": "/react-portfolio/static/media/about01.080509de05322b7aafda.png",
+    "static/media/bgWhite.png": "/react-portfolio/static/media/bgWhite.79658cadae50b3b16ee5.png",
+    "static/media/about03.png": "/react-portfolio/static/media/about03.c26c2547bb1a423cf283.png",
+    "static/media/spotify.png": "/react-portfolio/static/media/spotify.2b5e9be1eb1ab501e7cd.png",
+    "static/media/WhiteUnityLogo.png": "/react-portfolio/static/media/WhiteUnityLogo.5031d28a7688c42ce5a1.png",
+    "static/media/circle.png": "/react-portfolio/static/media/circle.bbc9b475fa4021de8626.png",
+    "static/media/nb.png": "/react-portfolio/static/media/nb.98f3253e32cc67a4cb5e.png",
+    "static/media/asus.png": "/react-portfolio/static/media/asus.514bc34955008a92e09f.png",
+    "static/media/adidas.png": "/react-portfolio/static/media/adidas.83df8153294f9137d308.png",
+    "static/media/prooheckcp.png": "/react-portfolio/static/media/prooheckcp.db1e65e3b3928ae5bfa4.png",
+    "static/media/bolt.png": "/react-portfolio/static/media/bolt.64e7d9d30ece478ef3a0.png",
+    "static/media/redux.png": "/react-portfolio/static/media/redux.c9be37e0fece29c624b0.png",
+    "static/media/sass.png": "/react-portfolio/static/media/sass.36e863bfbcb25c109d00.png",
+    "static/media/UE4LogoWhite.png": "/react-portfolio/static/media/UE4LogoWhite.e7da0c2e211b90f59dee.png",
+    "static/media/node.png": "/react-portfolio/static/media/node.8683d89cf78ffae3d1f7.png",
+    "static/media/cpp.png": "/react-portfolio/static/media/cpp.9002a804bbfa0354d0b8.png",
+    "static/media/graphql.png": "/react-portfolio/static/media/graphql.0372057049181c5de51a.png",
+    "static/media/amazon.png": "/react-portfolio/static/media/amazon.0a8be1f53138b5c52456.png",
+    "static/media/mobile.png": "/react-portfolio/static/media/mobile.145d9ce0157a56f8fcd8.png",
+    "static/media/email.png": "/react-portfolio/static/media/email.37b9e890eea501421fbf.png",
+    "static/media/figma.png": "/react-portfolio/static/media/figma.152e55329b6f1915967e.png",
+    "static/media/css.png": "/react-portfolio/static/media/css.5721a3928fe43de6baf8.png",
+    "static/media/git.png": "/react-portfolio/static/media/git.a54d3fa44e02f2f61e69.png",
+    "static/media/skype.png": "/react-portfolio/static/media/skype.c8d7ee175da5b4c8a8ab.png",
+    "index.html": "/react-portfolio/index.html",
+    "main.53f98b0b.css.map": "/react-portfolio/static/css/main.53f98b0b.css.map",
+    "main.07c9d48c.js.map": "/react-portfolio/static/js/main.07c9d48c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.53f98b0b.css",
+    "static/js/main.07c9d48c.js"
+  ]
+}
