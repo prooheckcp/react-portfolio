@@ -12,6 +12,7 @@ const App = () => {
       {/*
       <Background />
       */}
+      
       <Navbar />
       <Header />
       <About />

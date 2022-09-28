@@ -49,7 +49,7 @@ export default {
                 default: "bounce",
             },
             random: false,
-            speed: 1.2,
+            speed: 0.5,
             straight: false,
         },
         number: {

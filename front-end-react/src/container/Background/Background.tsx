@@ -13,9 +13,9 @@ const Background = () => {
     <>
         <div id="background">
             <Particles 
-                    id="tsparticles"
-                    init={particlesInit}
-                    options = {particlesData}
+              id="tsparticles"
+              init={particlesInit}
+              options = {particlesData}
             />
         </div>
     </>

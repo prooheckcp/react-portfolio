@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 import './Navbar.scss';
 import {images} from '../../constants'
 
-const sections : Array<string> = ['home', 'about', 'work', 'skills', 'contact']
+const sections : Array<string> = ['home', 'about', 'work', 'skills', 'testimonials', 'contact']
 
 const Navbar = () => {
   const [toggle, setToggle] = useState<boolean>(false);
