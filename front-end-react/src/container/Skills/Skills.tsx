@@ -108,9 +108,9 @@ const Skills : React.FC = () => {
                         key={3}
                       >
                         <h4 className="bold-text">{workExperience.name}</h4>
-                        <p className="p-text">{workExperience.company}</p>
-                        <p className="p-text">{getFormatedDateLength(workExperience.startingDate, workExperience.leaveDate)}</p>
-                        <p className="p-text">{"BIG CHUNGUS"}</p>
+                        <p className="p-text company-text">{workExperience.company}</p>
+                        <p className="p-text date-text">{getFormatedDateLength(workExperience.startingDate, workExperience.leaveDate)}</p>
+                        <p className="p-text desc-text">{workExperience.desc}</p>
                       </motion.div>
                       <ReactToolTip
                         id={"fasgas"}

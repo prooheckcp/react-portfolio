@@ -93,10 +93,16 @@
     @media screen and (max-width: 900px){
         margin-top: 2rem;
     }
+
+    @media screen and (max-width: 550px){
+        margin-right: 1.25rem;
+        margin-left: 1.25rem;
+    }
 }
 
 .app__skills-exp-item{
     width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -107,14 +113,14 @@
 
 .app__skills_right_container{
     flex: 1;
+    margin-right: 1rem;
 
     .app__skills-exp-work{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        margin-bottom: 1rem;
-
+        margin-bottom: 0;
         cursor: pointer;
 
         h4{
@@ -123,8 +129,24 @@
         }
 
         p{
+            word-wrap: break-word;
             font-weight: 400;
             margin-top: 5px;
+        }
+
+        .company-text{
+            color: var(--gray-text-color);
+            font-size: 0.85rem;
+        }
+
+        .date-text{
+            color: var(--gray-text-color);
+            font-size: 0.7rem;
+        }
+
+        .desc-text{
+            display: inline-block;
+            white-space: pre-line
         }
     }
 }
