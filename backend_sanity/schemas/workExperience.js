@@ -13,9 +13,39 @@ export default {
                 type:'string'
             },
             {
+                name:'startingDate',
+                title:'Starting Date',
+                type: 'date'
+            },
+            {
+                name:'leaveDate',
+                title:'Leaving Date',
+                type: 'date'
+            },
+            {
+                name:'imgUrl',
+                title:'ImgUrl',
+                type: 'image',
+                options: {
+                  hotspot: true,
+                },
+            },
+            {
                 name:'desc',
                 title:'Desc',
                 type:'string'
-            }
+            },
+            {
+                name: 'toolsUsed',
+                title: 'Tools Used',
+               type:'array',
+               of: [
+                 {
+                   name:'tool',
+                   title:'Tool',
+                   type:'string'
+                 }
+               ]
+              },
     ]
 }

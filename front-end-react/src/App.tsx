@@ -11,18 +11,22 @@ const App = () => {
     <div className='app'>
       {/*
       <Background />
-      */}
-      
       <Navbar />
       <Header />
-      <About />      
-      
+      <About />    
       <Work />
+      
+      <Testimonial />
+      <Footer />       
+      */}
+      
+   
+      
+      
       
       
       <Skills />              
-      <Testimonial />
-      <Footer />
+
     </div>
   )
 }
