@@ -20,6 +20,18 @@ const Footer : React.FC = () => {
 
   const handleSubmit = () =>{
     setLoading(true);
+
+    const contact = {
+      _type: 'contact',
+      name: name,
+      email: email,
+      message: message,
+    }
+
+    client.create(contact).then(()=>{
+      setLoading(false);
+      setIsFormSubmitted(true);
+    })
   }
 
   return (
