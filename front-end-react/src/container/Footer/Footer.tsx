@@ -7,6 +7,7 @@ import './Footer.scss';
 
 const EMAIL_ADDRESS : string = "vasco.soares.2001@gmail.com"
 const PHONE_NUMBER : string = "+351 918 495 220"
+const DISCORD : string = "Prooheckcp#1906"
 
 const Footer : React.FC = () => {
   const [formData, setFormData] = useState({name: '', email: '', message: ''});
@@ -48,6 +49,13 @@ const Footer : React.FC = () => {
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
           <a href={"tel: "+PHONE_NUMBER} className="p-text">{PHONE_NUMBER}</a>
+        </div>
+        <div className="app__footer-card">
+          <img src={images.discord} alt="mobile" />
+          <a href={"discord"} onClick={(evt)=>{
+              evt.preventDefault();
+              navigator.clipboard.writeText(DISCORD)
+          }} className="p-text">{DISCORD}</a>
         </div>
       </div>
 
