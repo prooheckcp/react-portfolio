@@ -110,6 +110,12 @@ function parseSkillsData(data : Array<Skill>){
     newSkills.get(skill.section)?.push(skill);
   }
 
+  newSkills.forEach((skillSet)=>{
+    skillSet?.sort((skill1, skill2)=>{
+      return skill1.level > skill2.level ? - 1 : 1;
+    })
+  })
+
   return newSkills;
 }
 
