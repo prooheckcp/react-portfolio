@@ -40,18 +40,6 @@ function getFormatedTools(toolsUsed?: Array<string>){
   return result;
 }
 
-/*
-        {skills.forEach((value : Array<Skill>, key : string)=>
-            <>
-              <h2>{GET_TITLE.get(key)}</h2>
-              {
-                value.map((skill : Skill)=>
-                )
-              }
-            </>
-          )}
-*/
-
 function getSkill(skill : Skill) : JSX.Element {
   return (
     <>
@@ -79,8 +67,6 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
     titles.push(key);
     skillsArray.push(value);
   })
-
-  console.log(skillsArray);
 
   return(
     <>
