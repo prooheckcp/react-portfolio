@@ -43,7 +43,6 @@ function getFormatedTools(toolsUsed?: Array<string>){
 function getSkill(skill : Skill) : JSX.Element {
   return (
     <>
-      <motion.div className="app__skills-list">
         <motion.div
           whileInView={{opacity: [0, 1]}}
           transition={{duration: 0.5}}
@@ -55,7 +54,6 @@ function getSkill(skill : Skill) : JSX.Element {
           </div>
           <p className="p-text">{skill.name}</p>
         </motion.div>
-      </motion.div>
     </>
   )
 }
@@ -76,9 +74,12 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
             {skillArray.length > 0 ?
               <>
                 <h2>{GET_TITLE.get(titles[index])}</h2>
-                {skillArray.map((skill : Skill)=>
-                  getSkill(skill)
-                )}
+                <motion.div className="app__skills-list">
+                  {skillArray.map((skill : Skill)=>
+                    getSkill(skill)
+                  )}
+                </motion.div>
+
               </>
                :
               ''
