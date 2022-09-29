@@ -15,6 +15,7 @@ import FetchSanityData from '../../functions/FetchSanityData.ts';
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import ReactTooltip from 'react-tooltip';
 
 const GET_TITLE : Map<string, string> = new Map<string, string>([
   ["language", "Programming Languages"],
@@ -33,6 +34,14 @@ const CIRCLE_COLOR : any = {
   y : 180,
   z : 101
 }
+
+const CONFIDENCE_LEVEL : Array<string> = [
+  "Bad",
+  "Okay",
+  "Good",
+  "Very Good",
+  "Fluent"
+]
 
 function getFormatedTools(toolsUsed?: Array<string>){
   if(!toolsUsed)
@@ -59,9 +68,10 @@ function getSkill(skill : Skill) : JSX.Element {
           transition={{duration: 0.5}}
           className="app__skills-item app__flex"
         >
+          <ReactTooltip className="skills-tooltip" />
           <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
             <img src={urlFor(skill.icon)} alt={skill.name} />
-            <div className="app__circular_progress">
+            <div data-tip={`${CONFIDENCE_LEVEL[skill.level-1]} ${skill.level}/5`} className="app__circular_progress">
               <CircularProgressbar 
               value={skill.level * 20} 
               styles={buildStyles({
@@ -153,7 +163,7 @@ const Skills : React.FC = () => {
 
   return (
     <>
-      <h2 className="head-text">Skills & Experience</h2>
+      <h2 className="head-text">Skills & <span>Experience</span></h2>
 
       <div className="app__skills-container">
         <div className="app__skills-list-container">
@@ -179,7 +189,6 @@ const Skills : React.FC = () => {
                         whileInView={{opacity: [0, 1]}}
                         transition={{duration: 0.5}}
                         className="app__skills-exp-work"
-                        data-tip
                       >
                         <h4 className="bold-text">{workExperience.name}</h4>
                         <p className="p-text company-text">{workExperience.company}</p>
