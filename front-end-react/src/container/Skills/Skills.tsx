@@ -54,7 +54,7 @@ function getSkill(skill : Skill) : JSX.Element {
           <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
             <img src={urlFor(skill.icon)} alt={skill.name} />
             <div className="app__circular_progress">
-              <CircularProgressbar value={66} />
+              <CircularProgressbar value={skill.level * 20} />
             </div>
             
           </div>

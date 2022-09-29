@@ -26,5 +26,10 @@ export default{
             title:'Section',
             type:'string'
         },
+        {
+            name:'level',
+            title:'Level',
+            type:'number'
+        },
     ]
 }
