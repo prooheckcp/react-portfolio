@@ -13,6 +13,9 @@ import getFormatedDateLength from '../../functions/getFormatedDateLength.ts';
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 const GET_TITLE : Map<string, string> = new Map<string, string>([
   ["language", "Programming Languages"],
   ["tech", "Tech Stack"],
@@ -47,10 +50,13 @@ function getSkill(skill : Skill) : JSX.Element {
           whileInView={{opacity: [0, 1]}}
           transition={{duration: 0.5}}
           className="app__skills-item app__flex"
-          key={skill.name}
         >
           <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
             <img src={urlFor(skill.icon)} alt={skill.name} />
+            <div className="app__circular_progress">
+              <CircularProgressbar value={66} />
+            </div>
+            
           </div>
           <p className="p-text">{skill.name}</p>
         </motion.div>
@@ -69,15 +75,15 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
   return(
     <>
       {
-        skillsArray.map((skillArray : Array<Skill>, index : number)=>
+        React.Children.toArray(skillsArray.map((skillArray : Array<Skill>, index : number)=>
           <>
             {skillArray.length > 0 ?
               <>
                 <h2>{GET_TITLE.get(titles[index])}</h2>
                 <motion.div className="app__skills-list">
-                  {skillArray.map((skill : Skill)=>
+                  {React.Children.toArray(skillArray.map((skill : Skill)=>
                     getSkill(skill)
-                  )}
+                  ))}
                 </motion.div>
 
               </>
@@ -86,7 +92,7 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
             }
             
           </>
-        )
+        ))
       }
     </>
   )
@@ -134,11 +140,10 @@ const Skills : React.FC = () => {
         <motion.div
           className="app__skills-exp"
         >
-          {experience?.map((workExperience : WorkExperience)=>
+          {React.Children.toArray(experience?.map((workExperience : WorkExperience)=>
             <>
               <motion.div
                 className="app__skills-exp-item"
-                key={workExperience.name}
               >
                 <div className="app__skills_left_container">
                   <img src={urlFor(workExperience.imgUrl)} alt="" />
@@ -151,8 +156,6 @@ const Skills : React.FC = () => {
                         transition={{duration: 0.5}}
                         className="app__skills-exp-work"
                         data-tip
-                        data-for={3}
-                        key={workExperience.name+"d"}
                       >
                         <h4 className="bold-text">{workExperience.name}</h4>
                         <p className="p-text company-text">{workExperience.company}</p>
@@ -163,7 +166,7 @@ const Skills : React.FC = () => {
                 </motion.div>
               </motion.div>          
             </>
-          )}
+          ))}
         </motion.div>
       </div>
     </>
