@@ -8,53 +8,22 @@ import WorkExperience from '../../interfaces/WorkExperience.ts';
 import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 // @ts-ignore
 import Skill from '../../interfaces/Skill.ts';
+// @ts-ignore
+import getFormatedDateLength from '../../functions/getFormatedDateLength.ts';
+// @ts-ignore
+import FetchSanityData from '../../functions/FetchSanityData.ts';
 
-const MONTH_LIST : Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const GET_TITLE : Map<string, string> = new Map<string, string>([
   ["language", "Programming Languages"],
   ["tech", "Tech Stack"],
   ["tool", "Tools"]
 ]);
+
 const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["language", []],
   ["tech", []],
   ["tool", []]
 ]);
-
-function getFormatedDateLength(startingDate : string, finalDate? : string){
-  let startDate : Date = new Date(startingDate);
-  let endDate : Date;
-  let startString : string = "";
-  let finalString : string = "";
-  let duration : string = "";
-
-  startString = MONTH_LIST[startDate.getMonth()] + " of " + startDate.getFullYear();
-  if(finalDate){
-    endDate = new Date(finalDate);
-    finalString = MONTH_LIST[endDate.getMonth()] + " of " + endDate.getFullYear();
-  }else{
-    endDate = new Date();
-    finalString = "now";
-  }
-
-  let differenceInYears : number = endDate.getFullYear() - startDate.getFullYear();
-  let differenceInMonths : number = endDate.getMonth() - startDate.getMonth();
-
-  if(differenceInYears > 0){
-    let prefix : string = "";
-    if(differenceInYears > 1)
-      prefix = "s";
-
-    duration = differenceInYears.toString()  + " year" + prefix + " and ";
-  }
-  
-  if(differenceInMonths <= 0)
-    differenceInMonths = 1;
-
-  duration += differenceInMonths.toString() + " months";
-
-  return startString + " - " + finalString + " · " + duration;
-}
 
 function getFormatedTools(toolsUsed?: Array<string>){
   if(!toolsUsed)
@@ -71,20 +40,97 @@ function getFormatedTools(toolsUsed?: Array<string>){
   return result;
 }
 
+/*
+        {skills.forEach((value : Array<Skill>, key : string)=>
+            <>
+              <h2>{GET_TITLE.get(key)}</h2>
+              {
+                value.map((skill : Skill)=>
+                )
+              }
+            </>
+          )}
+*/
+
+function getSkill(skill : Skill) : JSX.Element {
+  return (
+    <>
+      <motion.div className="app__skills-list">
+        <motion.div
+          whileInView={{opacity: [0, 1]}}
+          transition={{duration: 0.5}}
+          className="app__skills-item app__flex"
+          key={skill.name}
+        >
+          <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
+            <img src={urlFor(skill.icon)} alt={skill.name} />
+          </div>
+          <p className="p-text">{skill.name}</p>
+        </motion.div>
+      </motion.div>
+    </>
+  )
+}
+
+function parseCodeBlock(skills : Map<string , Array<Skill>>){
+  let titles : Array<string> = [];
+  let skillsArray : Array<Array<Skill>> = [];
+  skills.forEach((value : Skill, key : string)=>{
+    titles.push(key);
+    skillsArray.push(value);
+  })
+
+  console.log(skillsArray);
+
+  return(
+    <>
+      {
+        skillsArray.map((skillArray : Array<Skill>, index : number)=>
+          <>
+            {skillArray.length > 0 ?
+              <>
+                <h2>{GET_TITLE.get(titles[index])}</h2>
+                {skillArray.map((skill : Skill)=>
+                  getSkill(skill)
+                )}
+              </>
+               :
+              ''
+            }
+            
+          </>
+        )
+      }
+    </>
+  )
+}
+
+function parseSkillsData(data : Array<Skill>){
+  const newSkills : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
+    ["language", []],
+    ["tech", []],
+    ["tool", []]
+  ]);
+  
+  for(let index : number = 0; index < data.length; index++){
+    let skill : Skill = data[index];
+    newSkills.get(skill.section)?.push(skill);
+  }
+
+  return newSkills;
+}
+
 const Skills : React.FC = () => {
   const [experience, setExperience] = useState([]);
-  const [skills, setSkills] = useState<Array<WorkExperience>>([]);
+  const [skills, setSkills] = useState<Map<string , Array<Skill>>>(SKILLS);
 
   useEffect(()=>{
-    const experiencesQuery = '*[_type == "workExperience"]';
     const skillsQuery = '*[_type == "skills"]';
 
-    client.fetch(experiencesQuery).then(data=>{
-      setExperience(data);
-    });
+    FetchSanityData("workExperience", setExperience)
 
     client.fetch(skillsQuery).then(data=>{
-      setSkills(data);
+      setSkills(parseSkillsData(data));
     });
   }, [])
 
@@ -94,22 +140,7 @@ const Skills : React.FC = () => {
 
       <div className="app__skills-container">
         <div className="app__skills-list-container">
-          <h2 className="head-text">Programming Languages</h2>
-          <motion.div className="app__skills-list">
-            {skills?.map((skill)=>(
-              <motion.div
-                whileInView={{opacity: [0, 1]}}
-                transition={{duration: 0.5}}
-                className="app__skills-item app__flex"
-                key={skill.name}
-              >
-                <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
-                  <img src={urlFor(skill.icon)} alt={skill.name} />
-                </div>
-                <p className="p-text">{skill.name}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+          {parseCodeBlock(skills)}
         </div>
 
 
@@ -134,7 +165,7 @@ const Skills : React.FC = () => {
                         className="app__skills-exp-work"
                         data-tip
                         data-for={3}
-                        key={3}
+                        key={workExperience.name+"d"}
                       >
                         <h4 className="bold-text">{workExperience.name}</h4>
                         <p className="p-text company-text">{workExperience.company}</p>
