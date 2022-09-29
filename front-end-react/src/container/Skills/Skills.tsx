@@ -13,7 +13,7 @@ import getFormatedDateLength from '../../functions/getFormatedDateLength.ts';
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const GET_TITLE : Map<string, string> = new Map<string, string>([
@@ -27,6 +27,12 @@ const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["tech", []],
   ["tool", []]
 ]);
+
+const CIRCLE_COLOR : any = {
+  x : 236,
+  y : 180,
+  z : 101
+}
 
 function getFormatedTools(toolsUsed?: Array<string>){
   if(!toolsUsed)
@@ -43,6 +49,8 @@ function getFormatedTools(toolsUsed?: Array<string>){
   return result;
 }
 
+const lerp = (x, y, a) => x * (1 - a) + y * a;
+
 function getSkill(skill : Skill) : JSX.Element {
   return (
     <>
@@ -54,7 +62,17 @@ function getSkill(skill : Skill) : JSX.Element {
           <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
             <img src={urlFor(skill.icon)} alt={skill.name} />
             <div className="app__circular_progress">
-              <CircularProgressbar value={skill.level * 20} />
+              <CircularProgressbar 
+              value={skill.level * 20} 
+              styles={buildStyles({
+                // How long animation takes to go from one percentage to another, in seconds
+                pathTransitionDuration: 0.5,
+
+                pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill.level/5)}, 1)`,
+                trailColor: 'rgba(0, 0, 0, 0.2)',
+                strokeLinecap: 'butt'
+              })}
+              />
             </div>
             
           </div>
