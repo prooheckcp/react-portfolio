@@ -16,14 +16,14 @@ const App = () => {
       <About />    
       <Work />
       <Skills />   
-      <Testimonial />   
-           
+       
+      <Footer />       
       
     
       */}
       
-
-    <Footer />  
+      <Testimonial />  
+    
       
       
                  
