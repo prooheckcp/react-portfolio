@@ -16,7 +16,10 @@ import ue4 from '../assets/UE4LogoWhite.png';
 import roblox from '../assets/RobloxIcon.png';
 
 import portuguese from '../assets/PortugueseFlag.png';
-import discord from '../assets/Discord.png'
+import discord from '../assets/Discord.png';
+
+import whatsapp from '../assets/Discord.png';
+import gmail from '../assets/Discord.png';
 
 export default {
   discord,
