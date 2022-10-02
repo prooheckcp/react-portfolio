@@ -43,19 +43,16 @@ const Footer : React.FC = () => {
 
       <div className="app__footer-cards">
         <div className="app__footer-card">
-          <img src={images.email} alt="email" />
+          <img src={images.gmail} alt="email" />
           <a href={"mailto:"+EMAIL_ADDRESS} className="p-text">{EMAIL_ADDRESS}</a>
         </div>
         <div className="app__footer-card">
-          <img src={images.mobile} alt="mobile" />
-          <a href={"tel: "+PHONE_NUMBER} className="p-text">{PHONE_NUMBER}</a>
+          <img src={images.whatsapp} alt="mobile" />
+          <a href={"https://wa.me/351918495220"} target="_blank" className="p-text">{PHONE_NUMBER}</a>
         </div>
         <div className="app__footer-card">
           <img src={images.discord} alt="mobile" />
-          <a href={"discord"} onClick={(evt)=>{
-              evt.preventDefault();
-              navigator.clipboard.writeText(DISCORD)
-          }} className="p-text">{DISCORD}</a>
+          <a href={"https://discordapp.com/users/469204779168432148"} target="_blank" className="p-text">{DISCORD}</a>
         </div>
       </div>
 

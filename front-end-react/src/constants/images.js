@@ -18,11 +18,13 @@ import roblox from '../assets/RobloxIcon.png';
 import portuguese from '../assets/PortugueseFlag.png';
 import discord from '../assets/Discord.png';
 
-import whatsapp from '../assets/Discord.png';
-import gmail from '../assets/Discord.png';
+import whatsapp from '../assets/Whatsapp.png';
+import gmail from '../assets/GmailLogo.png';
 
 export default {
   discord,
+  gmail,
+  whatsapp,
   portuguese,
   email,
   mobile,
