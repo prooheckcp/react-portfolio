@@ -51,7 +51,7 @@ const Footer : React.FC = () => {
           <a href={"https://wa.me/351918495220"} target="_blank" className="p-text">{PHONE_NUMBER}</a>
         </div>
         <div className="app__footer-card">
-          <img src={images.discord} alt="mobile" />
+          <img src={images.discord} alt="discord" />
           <a href={"https://discordapp.com/users/469204779168432148"} target="_blank" className="p-text">{DISCORD}</a>
         </div>
       </div>
