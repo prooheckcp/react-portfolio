@@ -12,7 +12,7 @@ const App = () => {
     <div className='app'>
       <Navbar />
       <Routes>
-        <Route path="/" element={<MainPage/>} />
+          <Route path="/" element={<MainPage/>} />
           <Route path="/work/:workIndex" element={<WorkPage />} />
       </Routes>
     </div>

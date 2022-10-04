@@ -1,0 +1,40 @@
+.react-player {
+    height: 77vh !important;
+    width: 85% !important;
+}
+
+.video-wrapper{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.background{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: fit-content;
+    top: 5px;
+    background: var(--second-background);
+    z-index: -1;
+}
+
+.navbar-gap{
+    margin-top: 5rem;
+}
+
+.project-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        color: var(--text-color);
+    }
+
+    p{
+        margin-top: 1rem;
+        color: var(--secondary-text-color);
+    }
+}

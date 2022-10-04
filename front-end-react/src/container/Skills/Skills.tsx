@@ -12,10 +12,10 @@ import Skill from '../../interfaces/Skill.ts';
 import getFormatedDateLength from '../../functions/getFormatedDateLength.ts';
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
+// @ts-ignore
+import SkillCircle from '../../components/SkillCircle.tsx';
 
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import ReactTooltip from 'react-tooltip';
 
 const GET_TITLE : Map<string, string> = new Map<string, string>([
   ["language", "Programming Languages"],
@@ -29,19 +29,8 @@ const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["tool", []]
 ]);
 
-const CIRCLE_COLOR : any = {
-  x : 236,
-  y : 180,
-  z : 101
-}
 
-const CONFIDENCE_LEVEL : Array<string> = [
-  "Bad",
-  "Okay",
-  "Good",
-  "Very Good",
-  "Fluent"
-]
+
 
 function getFormatedTools(toolsUsed?: Array<string>){
   if(!toolsUsed)
@@ -58,39 +47,7 @@ function getFormatedTools(toolsUsed?: Array<string>){
   return result;
 }
 
-const lerp = (x, y, a) => x * (1 - a) + y * a;
 
-function getSkill(skill : Skill) : JSX.Element {
-  return (
-    <>
-        <motion.div
-          whileInView={{opacity: [0, 1]}}
-          transition={{duration: 0.5}}
-          className="app__skills-item app__flex"
-        >
-          <ReactTooltip className="skills-tooltip" />
-          <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
-            <img src={urlFor(skill.icon)} alt={skill.name} />
-            <div data-tip={`${CONFIDENCE_LEVEL[skill.level-1]} ${skill.level}/5`} className="app__circular_progress">
-              <CircularProgressbar 
-              value={skill.level * 20} 
-              styles={buildStyles({
-                // How long animation takes to go from one percentage to another, in seconds
-                pathTransitionDuration: 0.5,
-
-                pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill.level/5)}, 1)`,
-                trailColor: 'rgba(0, 0, 0, 0.2)',
-                strokeLinecap: 'butt'
-              })}
-              />
-            </div>
-            
-          </div>
-          <p className="p-text">{skill.name}</p>
-        </motion.div>
-    </>
-  )
-}
 
 function parseCodeBlock(skills : Map<string , Array<Skill>>){
   let titles : Array<string> = [];
@@ -110,7 +67,7 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
                 <h2>{GET_TITLE.get(titles[index])}</h2>
                 <motion.div className="app__skills-list">
                   {React.Children.toArray(skillArray.map((skill : Skill)=>
-                    getSkill(skill)
+                    <SkillCircle skill={skill}/>
                   ))}
                 </motion.div>
 
