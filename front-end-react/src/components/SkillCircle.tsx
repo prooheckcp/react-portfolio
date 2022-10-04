@@ -22,9 +22,10 @@ const CIRCLE_COLOR : any = {
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 
 const SkillCircle = (props) => {
-    const skill : Skill = props.skill;
-    const showCircle : any = props.showCircle;
-
+  const skill : Skill = props.skill;
+  const showCircle : any = props.showCircle;
+  const toolTip : any = props.toolTip != "name" ? `${CONFIDENCE_LEVEL[skill?.level-1]} ${skill?.level}/5` : skill.name;
+  
   return (
     <>
         <motion.div
@@ -35,7 +36,7 @@ const SkillCircle = (props) => {
           <ReactTooltip className="skills-tooltip" />
           <div className="app__flex" style={{ backgroundColor: skill?.bgColor}}>
             <img src={skill?.icon ? urlFor(skill?.icon) : ''} alt={skill?.name} />
-            <div data-tip={`${CONFIDENCE_LEVEL[skill?.level-1]} ${skill?.level}/5`} className="app__circular_progress">
+            <div data-tip={toolTip} className="app__circular_progress">
               {
                 showCircle == undefined || showCircle == true ? 
                 <CircularProgressbar 

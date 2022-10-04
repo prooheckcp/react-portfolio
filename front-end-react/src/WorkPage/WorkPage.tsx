@@ -68,7 +68,7 @@ const WorkPage = () => {
           </div>
           <div>
             <div>
-              <SkillContainer skillArray={usedTech} showCircle={false}/>
+              <SkillContainer skillArray={usedTech} showCircle={false} toolTip={"name"}/>
             </div>
           </div>
         </div>
