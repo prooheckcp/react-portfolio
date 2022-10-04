@@ -23,7 +23,7 @@ const App = () => {
         <Navbar />
       <Header />
       <About />
-      <Wave/>   
+      <Wave colorSchema="second-fill"/>   
       <Work />
       
       
