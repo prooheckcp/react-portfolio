@@ -45,7 +45,6 @@ const WorkPage = () => {
     if(!skillsMap)
       return;
 
-    console.log(skillsMap.get('React'))
     setUsedLanguages([skillsMap.get('Lua')]);
     setUsedTech([skillsMap.get('React'), skillsMap.get('React')]);
   }, [skillsMap])
@@ -69,7 +68,7 @@ const WorkPage = () => {
           </div>
           <div>
             <div>
-              <SkillContainer skillArray={usedTech}/>
+              <SkillContainer skillArray={usedTech} showCircle={false}/>
             </div>
           </div>
         </div>

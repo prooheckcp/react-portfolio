@@ -6,13 +6,13 @@ import Skill from '../interfaces/Skill.ts';
 import SkillCircle from './SkillCircle.tsx';
 import Skills from '../container/Skills/Skills';
 
-const SkillsContainer = ({skillArray, className}) => {
-  console.log("Here!", skillArray)
+const SkillsContainer = ({skillArray, className, showCircle}) => {
+
   return (
     <>
         <motion.div className={`app__skills-list ${className}`}>
             {React.Children.toArray(skillArray.map((skill : Skill)=>
-                <SkillCircle skill={skill}/>
+                <SkillCircle skill={skill} showCircle={showCircle}/>
             ))}
         </motion.div>
     </>

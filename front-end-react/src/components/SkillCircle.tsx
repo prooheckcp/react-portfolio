@@ -22,7 +22,9 @@ const CIRCLE_COLOR : any = {
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 
 const SkillCircle = (props) => {
-    const skill : Skill = props.skill
+    const skill : Skill = props.skill;
+    const showCircle : any = props.showCircle;
+
   return (
     <>
         <motion.div
@@ -34,17 +36,23 @@ const SkillCircle = (props) => {
           <div className="app__flex" style={{ backgroundColor: skill?.bgColor}}>
             <img src={skill?.icon ? urlFor(skill?.icon) : ''} alt={skill?.name} />
             <div data-tip={`${CONFIDENCE_LEVEL[skill?.level-1]} ${skill?.level}/5`} className="app__circular_progress">
-              <CircularProgressbar 
-              value={skill?.level * 20} 
-              styles={buildStyles({
-                // How long animation takes to go from one percentage to another, in seconds
-                pathTransitionDuration: 0.5,
+              {
+                showCircle == undefined || showCircle == true ? 
+                <CircularProgressbar 
+                value={skill?.level * 20} 
+                styles={buildStyles({
+                  // How long animation takes to go from one percentage to another, in seconds
+                  pathTransitionDuration: 0.5,
 
-                pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill?.level/5)}, 1)`,
-                trailColor: 'rgba(0, 0, 0, 0.2)',
-                strokeLinecap: 'butt'
-              })}
-              />
+                  pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill?.level/5)}, 1)`,
+                  trailColor: 'rgba(0, 0, 0, 0.2)',
+                  strokeLinecap: 'butt'
+                })}
+                />                  
+                :
+                ''
+              }
+
             </div>
             
           </div>
