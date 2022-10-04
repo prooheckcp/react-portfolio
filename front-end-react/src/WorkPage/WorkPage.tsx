@@ -1,10 +1,54 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactPlayer from 'react-player';
 import {useParams} from 'react-router-dom';
 import './WorkPage.scss';
+//@ts-ignore
+import SkillContainer from '../components/SkillsContainer.tsx';
+//@ts-ignore
+import FetchSanityData from '../functions/FetchSanityData.ts';
+import {client} from '../client';
+
+const TECH = ["React"];
+
+const nigga = {}
+nigga.level = 5
+nigga.title = "UwU"
+nigga.name = "amogus"
+nigga.icon = "";
 
 const WorkPage = () => {
   const {workIndex} = useParams();
+  const [skills, setSkills] = useState([]);
+  const [skillsMap, setSkillsMap] = useState<Map<any, any> | null>(null);
+  const [usedTech, setUsedTech] = useState<Array<any>>([]);
+  const [usedLanguages, setUsedLanguages] = useState<Array<any>>([]);
+
+  useEffect(()=>{
+    FetchSanityData("skills", setSkills);
+  }, []);
+
+  useEffect(()=>{
+    let newMap = new Map();
+    console.log(skills)
+    for(let index = 0; index < skills.length; index++){
+      let skill = skills[index];
+      
+      if(!skill?.name)
+        return;
+
+      newMap.set(skill.name, skill);
+      setSkillsMap(newMap);
+    }
+  }, [skills]);
+
+  useEffect(()=>{
+    if(!skillsMap)
+      return;
+
+    console.log(skillsMap.get('React'))
+    setUsedLanguages([skillsMap.get('Lua')]);
+    setUsedTech([skillsMap.get('React'), skillsMap.get('React')]);
+  }, [skillsMap])
 
   return (
     <>
@@ -24,7 +68,9 @@ const WorkPage = () => {
 
           </div>
           <div>
-            
+            <div>
+              <SkillContainer skillArray={usedTech}/>
+            </div>
           </div>
         </div>
 

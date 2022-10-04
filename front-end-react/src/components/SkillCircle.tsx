@@ -31,16 +31,16 @@ const SkillCircle = (props) => {
           className="app__skills-item app__flex"
         >
           <ReactTooltip className="skills-tooltip" />
-          <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
-            <img src={urlFor(skill.icon)} alt={skill.name} />
-            <div data-tip={`${CONFIDENCE_LEVEL[skill.level-1]} ${skill.level}/5`} className="app__circular_progress">
+          <div className="app__flex" style={{ backgroundColor: skill?.bgColor}}>
+            <img src={skill?.icon ? urlFor(skill?.icon) : ''} alt={skill?.name} />
+            <div data-tip={`${CONFIDENCE_LEVEL[skill?.level-1]} ${skill?.level}/5`} className="app__circular_progress">
               <CircularProgressbar 
-              value={skill.level * 20} 
+              value={skill?.level * 20} 
               styles={buildStyles({
                 // How long animation takes to go from one percentage to another, in seconds
                 pathTransitionDuration: 0.5,
 
-                pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill.level/5)}, 1)`,
+                pathColor: `rgba(${lerp(0, CIRCLE_COLOR.x, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.y, skill?.level/5)}, ${lerp(0, CIRCLE_COLOR.z, skill?.level/5)}, 1)`,
                 trailColor: 'rgba(0, 0, 0, 0.2)',
                 strokeLinecap: 'butt'
               })}
@@ -48,7 +48,7 @@ const SkillCircle = (props) => {
             </div>
             
           </div>
-          <p className="p-text">{skill.name}</p>
+          <p className="p-text">{skill?.name}</p>
         </motion.div>
     </>
   )

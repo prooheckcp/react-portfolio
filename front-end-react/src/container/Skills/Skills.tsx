@@ -13,7 +13,7 @@ import getFormatedDateLength from '../../functions/getFormatedDateLength.ts';
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 // @ts-ignore
-import SkillCircle from '../../components/SkillCircle.tsx';
+import SkillsContainer from '../../components/SkillsContainer.tsx';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -29,9 +29,6 @@ const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["tool", []]
 ]);
 
-
-
-
 function getFormatedTools(toolsUsed?: Array<string>){
   if(!toolsUsed)
     return "";
@@ -46,8 +43,6 @@ function getFormatedTools(toolsUsed?: Array<string>){
 
   return result;
 }
-
-
 
 function parseCodeBlock(skills : Map<string , Array<Skill>>){
   let titles : Array<string> = [];
@@ -65,12 +60,7 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
             {skillArray.length > 0 ?
               <>
                 <h2>{GET_TITLE.get(titles[index])}</h2>
-                <motion.div className="app__skills-list">
-                  {React.Children.toArray(skillArray.map((skill : Skill)=>
-                    <SkillCircle skill={skill}/>
-                  ))}
-                </motion.div>
-
+                <SkillsContainer skillArray={skillArray}/>
               </>
                :
               ''
