@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {HiMenuAlt4, HiX} from 'react-icons/hi';
 import {motion} from 'framer-motion'
-
+import {Link} from 'react-router-dom';
 import './Navbar.scss';
 import {images} from '../../constants'
+import { HashLink } from 'react-router-hash-link';
 
 const sections : Array<string> = ['home', 'about', 'work', 'skills', 'testimonials', 'contact']
 
@@ -11,6 +12,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
+    
     <nav className="app__navbar">
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo" />
@@ -19,7 +21,11 @@ const Navbar = () => {
         {sections.map(item =>
         <li className="app__flex p-text" key={`link-${item}`}>
           <div />
-          <a href={`#${item}`}>{item}</a>
+          <HashLink 
+            to={`/#${item}`}
+          >
+            {item}
+          </HashLink>
         </li>
         )}
       </ul>
