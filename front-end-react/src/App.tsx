@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 // @ts-ignore
 import {About, Footer, Header, Skills, Testimonial, Work, Wave} from './container/index.ts';
 // @ts-ignore
+import WorkPage from './WorkPage/WorkPage.tsx';
+// @ts-ignore
 import {Navbar} from './components/index.ts';
 import './App.scss'
 
@@ -27,6 +29,8 @@ const App = () => {
                 <Footer />    
             </>
           } />
+
+          <Route path="/work/:workIndex" element={<WorkPage />} />
       </Routes>
     </div>
     </BrowserRouter>
