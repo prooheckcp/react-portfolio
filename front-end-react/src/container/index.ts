@@ -13,3 +13,5 @@ export {default as Testimonial} from './Testimonial/Testimonial.tsx';
 export {default as Work} from './Work/Work.tsx';
 // @ts-ignore
 export {default as Background} from './Background/Background.tsx';
+//@ts-ignore
+export {default as Wave} from './Wave/Wave.tsx';

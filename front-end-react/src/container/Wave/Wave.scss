@@ -1,0 +1,24 @@
+.custom-shape-divider-top-1664916977 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1664916977 svg {
+    position: relative;
+    display: block;
+    width: calc(141% + 1.3px);
+    height: 70px;
+}
+
+.first-fill{
+    background-color: var(--second-background);
+    fill: var(--first-background) !important;
+}
+
+.second-fill{
+    background-color: var(--first-background);
+    fill: var(--second-background) !important;
+}

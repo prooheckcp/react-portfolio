@@ -12,11 +12,11 @@
 }
 
 .app__background{
-    background-color: #232323 !important;
+    background-color: var(--first-background) !important;
 }
 
 .app__secondBackground{
-    background-color: #181818 !important;
+    background-color: var(--second-background) !important;
 }
 
 p{
