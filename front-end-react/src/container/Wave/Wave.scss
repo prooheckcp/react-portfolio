@@ -14,11 +14,11 @@
 }
 
 .first-fill{
-    background-color: var(--second-background);
+    background-color: var(--second-background) !important;
     fill: var(--first-background) !important;
 }
 
 .second-fill{
-    background-color: var(--first-background);
+    background-color: var(--first-background) !important;
     fill: var(--second-background) !important;
 }

@@ -12,20 +12,23 @@ const App = () => {
       {/*
       <Background />
   
-      
-      <Skills />   
-      <Testimonial />   
-      <Footer />       
+    
       
     
       */}
       
-        <Navbar />
+      <Navbar />
       <Header />
+      <Wave colorSchema="first-fill"/>  
       <About />
       <Wave colorSchema="second-fill"/>   
       <Work />
-      
+      <Wave colorSchema="first-fill"/>  
+      <Skills />   
+      <Wave colorSchema="second-fill"/>  
+      <Testimonial />   
+      <Wave colorSchema="first-fill"/>  
+      <Footer />    
       
                  
 
