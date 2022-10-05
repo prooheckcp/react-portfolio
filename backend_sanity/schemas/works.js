@@ -12,7 +12,7 @@ export default {
       {
         name: 'description',
         title: 'Description',
-        type: 'string',
+        type: 'text',
       },
       {
         name: 'projectLink',
@@ -25,6 +25,11 @@ export default {
         type: 'string',
       },
       {
+        name: 'robloxLink',
+        title: 'Roblox ID for API',
+        type: 'string',
+      },
+      {
         name: 'imgUrl',
         title: 'ImageUrl',
         type: 'image',
@@ -32,7 +37,42 @@ export default {
           hotspot: true,
         },
       },
-   
+      {
+        name: 'languages',
+        title: 'Languages used',
+        type:'array',
+        of: [
+         {
+           name:'language',
+           title:'Language',
+           type:'string'
+         }
+        ]
+        },
+      {
+        name: 'techs',
+        title: 'Tech used',
+        type:'array',
+        of: [
+         {
+           name:'tech',
+           title:'Tech',
+           type:'string'
+         }
+        ]
+        },
+      {
+        name: 'images',
+        title: 'Images',
+        type:'array',
+        of: [
+         {
+           name:'image',
+           title:'Image',
+           type:'image'
+         }
+        ]
+        },
       {
         name: 'tags',
         title: 'Tags',
@@ -45,6 +85,5 @@ export default {
          }
        ]
       },
-     
     ],
   };

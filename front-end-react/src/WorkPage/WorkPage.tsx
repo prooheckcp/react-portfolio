@@ -7,6 +7,7 @@ import SkillContainer from '../components/SkillsContainer.tsx';
 //@ts-ignore
 import FetchSanityData from '../functions/FetchSanityData.ts';
 import {client} from '../client';
+import PictureGallery from '../components/PictureGallery.tsx';
 
 const TECH = ["React"];
 
@@ -81,9 +82,10 @@ const WorkPage = () => {
             controls
           />        
         </div>
-        <div>
-          <div>
-
+        <div className="picture-wrapper">
+          <h1>Watch the project's <span>pictures</span> </h1>
+          <div className="picture-gallery">
+            <PictureGallery />
           </div>
         </div>        
       </div>

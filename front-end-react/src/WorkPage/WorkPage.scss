@@ -25,6 +25,24 @@ span{
     }
 }
 
+.picture-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    h1{
+        color:var(--text-color);
+        width: 85%;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-style: oblique;
+        text-transform: capitalize;
+    }
+}
+
 .background{
     position: absolute;
     overflow: hidden;
