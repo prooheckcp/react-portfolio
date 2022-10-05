@@ -25,6 +25,11 @@ export default {
         type: 'string',
       },
       {
+        name: 'trailerLink',
+        title: 'Trailer Link',
+        type: 'string',
+      },
+      {
         name: 'robloxLink',
         title: 'Roblox ID for API',
         type: 'string',
