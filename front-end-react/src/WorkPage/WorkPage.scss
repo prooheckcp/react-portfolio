@@ -38,3 +38,37 @@
         color: var(--secondary-text-color);
     }
 }
+
+.skills_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+
+    h2{
+        color: var(--text-color);
+    }
+
+    .languages{
+        flex: 1;
+    }
+
+    .tech{
+        flex: 1;
+    }
+
+    .info-container{
+        background:var(--primary-color);
+        border-radius: 10px;
+        opacity: 0.95;
+        padding: 1rem 1.5rem;
+        margin: 1rem;
+        height: fit-content;
+    }
+}

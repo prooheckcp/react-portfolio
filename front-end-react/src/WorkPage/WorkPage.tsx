@@ -55,21 +55,21 @@ const WorkPage = () => {
         <div className="navbar-gap"/>
         <div className="project-info">
           <h1>
-            Project Title
+            Mizukura
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore magni minima quo fugit illo amet nulla asperiores dolorem sunt nostrum!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, sed excepturi. Illo ullam excepturi unde recusandae eligendi veniam commodi culpa corrupti, dicta consectetur ea! Ad, non at illo explicabo fugiat adipisci autem voluptates debitis beatae, eveniet incidunt porro earum vero praesentium, animi quidem totam sit! Ducimus asperiores fugit eveniet minima, totam dolor id! Odit quaerat quae saepe dolorum aut natus corporis doloremque, quisquam hic mollitia, at quasi error nostrum accusantium delectus fugiat. Magnam ullam nulla, in inventore debitis perspiciatis! Assumenda, magnam. Porro placeat, nostrum optio sequi molestiae corrupti. Nam quia ipsa fugiat, optio molestiae unde. Eum, sit magni repudiandae architecto autem laboriosam dolorum eaque repellat quaerat dolor! Animi est sed vel necessitatibus placeat similique vitae repellat illo obcaecati recusandae, ex porro reprehenderit, totam adipisci quasi quaerat voluptatibus quidem maxime aut expedita hic nobis. Iusto dolore voluptas quisquam nobis, et quas ullam facilis, eos repudiandae, illo optio? Corporis facere vel numquam, omnis facilis distinctio blanditiis unde quod eligendi, nam rem inventore molestiae aliquam sunt minus architecto nostrum recusandae excepturi? Asperiores debitis aliquid laboriosam unde placeat maiores dolor eveniet provident quod, molestiae repellendus numquam autem. Nesciunt accusamus a ratione officiis excepturi consectetur, officia fugit perferendis, quas saepe et cupiditate ducimus est nisi!
           </p>
         </div>
 
-        <div>
-          <div>
-
+        <div className="skills_container">
+          <div className="languages info-container">
+            <h2>Languages used</h2>
+            <SkillContainer className="container" skillArray={usedLanguages} showCircle={false} toolTip={"name"}/>
           </div>
-          <div>
-            <div>
+          <div className="tech info-container">
+            <h2>Tech used</h2>
               <SkillContainer skillArray={usedTech} showCircle={false} toolTip={"name"}/>
-            </div>
           </div>
         </div>
 
