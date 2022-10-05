@@ -105,7 +105,7 @@ const WorkPage = () => {
           trailerLink ?
           <>
             <div className="video-wrapper">
-              <h1>Watch the project's <span>trailer</span> </h1>
+              <h1>Watch {title}'s <span>trailer</span> </h1>
               <ReactPlayer
                 url={`${trailerLink}`}
                 className="react-player"
@@ -129,7 +129,7 @@ const WorkPage = () => {
         </div>
 
         <div className="picture-wrapper">
-          <h1>Watch the project's <span>pictures</span> </h1>
+          <h1>Watch the {title}'s <span>pictures</span> </h1>
           <div className="picture-gallery">
             <PictureGallery />
           </div>
