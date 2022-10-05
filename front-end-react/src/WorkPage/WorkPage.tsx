@@ -74,6 +74,7 @@ const WorkPage = () => {
         </div>
 
         <div className="video-wrapper">
+          <h1>Watch the project's <span>trailer</span> </h1>
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=BUd3V0D5d_E}`}
             className="react-player"
