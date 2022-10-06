@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import ReactPlayer from 'react-player';
 import {useParams} from 'react-router-dom';
 import './WorkPage.scss';
-//@ts-ignore
-import SkillContainer from '../components/SkillsContainer.tsx';
-//@ts-ignore
-import FetchSanityData from '../functions/FetchSanityData.ts';
+
 import {client} from '../client';
-//@ts-ignore
-import PictureGallery from '../components/PictureGallery.tsx';
+
 import {motion} from 'framer-motion';
-import {GiConsoleController} from 'react-icons/gi'
-import {BsGithub} from 'react-icons/bs'
+import ButtonsSection from './ButtonsSection.tsx';
+import Header from './Header.tsx';
+import Video from './Video.tsx';
+import SkillsContainer from './SkillsContainers.tsx';
+import PicturesWrapper from './PicturesWrapper.tsx';
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
 const WORKS_QUERY : string = '*[_type == "works"]';
@@ -89,69 +87,12 @@ const WorkPage = () => {
   return (
     <>
       <div className="background">
-        <div className="navbar-gap"/>
-        <div className="project-info">
-          <h1>
-            {title}
-          </h1>
-          <p>
-            {description}
-          </p>
-        </div>
-
-        <div className="buttonsContainers">
-          {
-            codeLink ?
-            <a href={codeLink} target="_blank">
-                <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
-                  <p><BsGithub/></p>
-                </motion.div>            
-            </a>
-            : null
-          }
-          {
-            projectLink ?
-            <a href={projectLink} target="_blank">
-                <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
-                <p><GiConsoleController/></p>
-                </motion.div>            
-            </a>
-            : null
-          }
-        </div>
-        {
-          trailerLink ?
-          <>
-            <div className="video-wrapper">
-              <h1>Watch {title}'s <span>trailer</span> </h1>
-              <ReactPlayer
-                url={`${trailerLink}`}
-                className="react-player"
-                controls
-              />        
-            </div> 
-          </>
-          :
-          ''
-        }
-
-        <div className="skills_container">
-          <div className="languages info-container">
-            <h2>Languages used</h2>
-            <SkillContainer className="container" skillArray={usedLanguages} showCircle={false} toolTip={"name"}/>
-          </div>
-          <div className="tech info-container">
-            <h2>Tech used</h2>
-              <SkillContainer skillArray={usedTech} showCircle={false} toolTip={"name"}/>
-          </div>
-        </div>
-
-        <div className="picture-wrapper">
-          <h1>Watch the {title}'s <span>pictures</span> </h1>
-          <div className="picture-gallery">
-            <PictureGallery />
-          </div>
-        </div>        
+        <Header title={title} description={description}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
+        <Video trailerLink={trailerLink} title={title}/>
+        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>
+        <PicturesWrapper title={title}/>
+    
       </div>
     </>
 
