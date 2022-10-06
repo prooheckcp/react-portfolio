@@ -10,6 +10,7 @@ import Header from './Header.tsx';
 import Video from './Video.tsx';
 import SkillsContainer from './SkillsContainers.tsx';
 import PicturesWrapper from './PicturesWrapper.tsx';
+import DetailBoxes from './DetailBoxes.tsx';
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
 const WORKS_QUERY : string = '*[_type == "works"]';
@@ -88,11 +89,15 @@ const WorkPage = () => {
     <>
       <div className="background">
         <Header title={title} description={description}/>
+
+        {/* 
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
-        <Video trailerLink={trailerLink} title={title}/>
-        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>
+        <Video trailerLink={trailerLink} title={title}/> 
+        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>       
+        */}
+        
+        <DetailBoxes />
         <PicturesWrapper title={title}/>
-    
       </div>
     </>
 
