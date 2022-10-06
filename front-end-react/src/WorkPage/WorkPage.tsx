@@ -7,32 +7,20 @@ import SkillContainer from '../components/SkillsContainer.tsx';
 //@ts-ignore
 import FetchSanityData from '../functions/FetchSanityData.ts';
 import {client} from '../client';
+//@ts-ignore
 import PictureGallery from '../components/PictureGallery.tsx';
+
+import {GiConsoleController} from 'react-icons/gi'
+
+const SKILLS_QUERY : string = '*[_type == "skills"]'
+const WORKS_QUERY : string = '*[_type == "works"]';
 
 const WorkPage = () => {
   const {workIndex} = useParams();
-  const [skills, setSkills] = useState([]);
   const [skillsMap, setSkillsMap] = useState<Map<any, any> | null>(null);
   const [usedTech, setUsedTech] = useState<Array<any>>([]);
   const [usedLanguages, setUsedLanguages] = useState<Array<any>>([]);
   const [currentWork, setCurrentWork] = useState(null);
-
-  useEffect(()=>{
-    FetchSanityData("skills", setSkills);
-  }, []);
-
-  useEffect(()=>{
-    let newMap = new Map();
-    for(let index = 0; index < skills.length; index++){
-      let skill = skills[index];
-      
-      if(!skill?.name)
-        return;
-
-      newMap.set(skill.name, skill);
-      setSkillsMap(newMap);
-    }
-  }, [skills]);
 
   const setDataArrays = (currentProject) =>{
     let techUsed : Array<any> = [];
@@ -58,22 +46,39 @@ const WorkPage = () => {
   }
 
   useEffect(()=>{
-    if(!skillsMap)
+    client.fetch(SKILLS_QUERY).then(skills=>{
+      let newMap = new Map();
+      for(let index = 0; index < skills.length; index++){
+        let skill = skills[index];
+        
+        if(!skill?.name)
+          continue;
+  
+        newMap.set(skill.name, skill);
+      }
+
+      setSkillsMap(newMap);
+
+      client.fetch(WORKS_QUERY).then(data=>{ 
+        for(let index = 0; index < data.length; index++){
+          const projectData = data[index]; 
+    
+          if(projectData.id == workIndex){
+            setCurrentWork(projectData);
+            break;
+          }
+        }
+      });
+
+    })
+  }, []);
+
+  useEffect(()=>{
+    if(currentWork == null)
       return;
 
-    const query = '*[_type == "works"]';
-    client.fetch(query).then(data=>{ 
-      for(let index = 0; index < data.length; index++){
-        const projectData = data[index]; 
-  
-        if(projectData.id == workIndex){
-          setCurrentWork(projectData);
-          setDataArrays(projectData);
-          break;
-        }
-      }
-    });
-  }, [skillsMap])
+    setDataArrays(currentWork);
+  }, [currentWork, skillsMap])
 
   if(!currentWork)
     return '404';
@@ -96,7 +101,7 @@ const WorkPage = () => {
         <div className="buttonsContainers">
           <a href="">
             <div className="button-item">
-              <img src="" alt="" />
+              <p><GiConsoleController/></p>
             </div>            
           </a>
         </div>
