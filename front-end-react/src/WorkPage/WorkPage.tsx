@@ -11,6 +11,7 @@ import {client} from '../client';
 import PictureGallery from '../components/PictureGallery.tsx';
 import {motion} from 'framer-motion';
 import {GiConsoleController} from 'react-icons/gi'
+import {BsGithub} from 'react-icons/bs'
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
 const WORKS_QUERY : string = '*[_type == "works"]';
@@ -83,7 +84,7 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  const {description, title, trailerLink} = currentWork;
+  const {description, title, trailerLink, codeLink, projectLink} = currentWork;
 
   return (
     <>
@@ -99,13 +100,25 @@ const WorkPage = () => {
         </div>
 
         <div className="buttonsContainers">
-          <a href="">
-            <motion.div className="button-item" whileHover={{scale: 1.2, transition: 0.2}}>
-              <p><GiConsoleController/></p>
-            </motion.div>            
-          </a>
+          {
+            codeLink ?
+            <a href={codeLink} target="_blank">
+                <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
+                  <p><BsGithub/></p>
+                </motion.div>            
+            </a>
+            : null
+          }
+          {
+            projectLink ?
+            <a href={projectLink} target="_blank">
+                <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
+                <p><GiConsoleController/></p>
+                </motion.div>            
+            </a>
+            : null
+          }
         </div>
-
         {
           trailerLink ?
           <>
