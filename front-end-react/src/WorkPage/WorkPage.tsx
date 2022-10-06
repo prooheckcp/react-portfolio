@@ -9,7 +9,7 @@ import FetchSanityData from '../functions/FetchSanityData.ts';
 import {client} from '../client';
 //@ts-ignore
 import PictureGallery from '../components/PictureGallery.tsx';
-
+import {motion} from 'framer-motion';
 import {GiConsoleController} from 'react-icons/gi'
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
@@ -100,9 +100,9 @@ const WorkPage = () => {
 
         <div className="buttonsContainers">
           <a href="">
-            <div className="button-item">
+            <motion.div className="button-item" whileHover={{scale: 1.2, transition: 0.2}}>
               <p><GiConsoleController/></p>
-            </div>            
+            </motion.div>            
           </a>
         </div>
 
