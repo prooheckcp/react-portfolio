@@ -7,11 +7,11 @@ import {FiClock} from 'react-icons/fi';
 import {BsFillPersonFill, BsBuilding} from 'react-icons/bs'
 import {IoMdSchool} from 'react-icons/io';
 
-const PROJECT_TYPE = [
-<BsFillPersonFill/>, //Personal
-<IoMdSchool/>, //University
-<BsBuilding/>
-]
+const ProjectTypes = new Map([
+    ["Company", <BsBuilding/>],
+    ["Personal", <BsFillPersonFill/>],
+    ["University", <IoMdSchool/>],
+]);
 
 const DetailBoxes = () => {
   return (

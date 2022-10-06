@@ -19,6 +19,21 @@ export default {
         type: 'text',
       },
       {
+        name: 'projectType',
+        title: 'Type of project [Personal, University, Company]',
+        type: 'string',
+      },
+      {
+        name: 'startingDate',
+        title: 'Start Date',
+        type: 'date',
+      },
+      {
+        name: 'finalDate',
+        title: 'Final Date',
+        type: 'date',
+      },
+      {
         name: 'projectLink',
         title: 'Project Link',
         type: 'string',
