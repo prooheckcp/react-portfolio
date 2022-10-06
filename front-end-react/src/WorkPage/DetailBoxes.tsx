@@ -1,15 +1,16 @@
 import React from 'react'
+import {motion} from 'framer-motion';
+import DetailBox from './DetailBox.tsx';
+import {SiRoblox} from 'react-icons/si';
+import {IoCalendarNumber} from 'react-icons/io5';
 
 const DetailBoxes = () => {
   return (
     <>
         <div className="detail-boxes">
-            <div className="detail-item">
-                <div className="detail-icon">
-                    <h1>G</h1>
-                </div>
-                <p>Personal Project gdsagsag g adga</p>
-            </div>
+            <DetailBox text={"hello"} icon={<SiRoblox/>}/>
+            <DetailBox text={"hello"} icon={<IoCalendarNumber/>}/>
+            <DetailBox text={"hello"} icon={"a"}/>
         </div>
     </>
   )
