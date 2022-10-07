@@ -25,7 +25,7 @@ const OPTIONS = {
   }
 }
 
-const PictureGallery = ({images}) => {
+const PictureGallery = ({images, setCurrentImage}) => {
   const [items, setItems] = useState<Array<any>>([]);
   const [container, setContainer] = useState({
     width: window.innerWidth,
@@ -54,7 +54,7 @@ const PictureGallery = ({images}) => {
         metaData: {
           type: 'image',
           title: 'sample-title',
-          description: 'sample-description',
+          description: urlFor(imageInstance),
           focalPoint: [0, 0],
           link: {
                   url: 'http://example.com',
@@ -73,7 +73,8 @@ const PictureGallery = ({images}) => {
       if(eventName != "ITEM_ACTION_TRIGGERED")
         return;
 
-      console.log(eventData.url);
+      console.log(eventData)
+      setCurrentImage(eventData.url);
     }}/>
   )
 }
