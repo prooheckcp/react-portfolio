@@ -11,6 +11,7 @@
     "axios": "^1.1.0",
     "framer-motion": "^7.3.6",
     "node-sass": "^7.0.3",
+    "pro-gallery": "^4.1.49",
     "react": "^18.2.0",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",

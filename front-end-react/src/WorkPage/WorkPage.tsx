@@ -81,7 +81,7 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl} = currentWork;
+  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images} = currentWork;
 
   return (
     <>
@@ -91,12 +91,16 @@ const WorkPage = () => {
         <div className="image-banner">
           {imgUrl ? <img src={urlFor(imgUrl)} alt="" /> : null}
         </div>
-
+        {
+          /*
         <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>              
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
-        <PicturesWrapper title={title}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>          
+          */
+        }
+
+        <PicturesWrapper title={title} images={images}/>
       </div>
     </>
 
