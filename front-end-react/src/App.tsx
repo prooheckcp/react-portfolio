@@ -8,15 +8,23 @@ import './App.scss'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className='app'>
-        <Navbar />
+    <>
+      <BrowserRouter basename='/'>
+        <div className='app'>
+          <Navbar />
+          <Routes>
+              <Route path="/work/:workIndex" element={<WorkPage />} />
+              <Route path="/" element={<MainPage/>} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+      <BrowserRouter basename='/work'>
         <Routes>
-            <Route path="/work/:workIndex" element={<WorkPage />} />
-            <Route path="/home" element={<MainPage/>} />
+          <Route path=":workIndex" element={<WorkPage />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
+
   )
 }
 
