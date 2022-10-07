@@ -24,6 +24,11 @@ export default {
         type: 'string',
       },
       {
+        name: 'multiplayer',
+        title: 'Is the game multiplayer',
+        type: 'boolean',
+      },
+      {
         name: 'startingDate',
         title: 'Start Date',
         type: 'date',

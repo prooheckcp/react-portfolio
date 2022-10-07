@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {motion} from 'framer-motion';
 import DetailBox from './DetailBox.tsx';
 import {SiRoblox} from 'react-icons/si';
 import {IoCalendarNumber} from 'react-icons/io5';
 import {FiClock} from 'react-icons/fi';
-import {BsFillPersonFill, BsBuilding} from 'react-icons/bs'
+import {BsFillPersonFill, BsBuilding, BsFillPeopleFill} from 'react-icons/bs';
 import {IoMdSchool} from 'react-icons/io';
+import {MdOutlineEmojiPeople} from 'react-icons/md';
+
+import getFormatedDateLength from '../functions/getFormatedDateLength.ts';
 
 const ProjectTypes = new Map([
     ["Company", <BsBuilding/>],
@@ -13,14 +16,18 @@ const ProjectTypes = new Map([
     ["University", <IoMdSchool/>],
 ]);
 
-const DetailBoxes = () => {
+const DetailBoxes = ({projectType, robloxLink, startingDate, finalDate, multiplayer}) => {
+
+  const {start, final, duration} = getFormatedDateLength(startingDate, finalDate)
+  const multiplayerLogo = multiplayer ? <BsFillPeopleFill/> : <MdOutlineEmojiPeople/>
+  const multiplayerText = multiplayer ? "Multiplayer" : "Singleplayer"
   return (
     <>
         <div className="detail-boxes">
-            <DetailBox text={"hello"} icon={<SiRoblox/>}/>
-            <DetailBox text={"hello"} icon={<IoCalendarNumber/>}/>
-            <DetailBox text={"hello"} icon={<FiClock/>}/>
-            <DetailBox text={"hello"} icon={<IoMdSchool/>}/>
+            <DetailBox text={`${start} - ${final}`} icon={<IoCalendarNumber/>}/>
+            <DetailBox text={duration} icon={<FiClock/>}/>
+            <DetailBox text={projectType} icon={<IoMdSchool/>}/>
+            <DetailBox text={multiplayerText} icon={multiplayerLogo}/>
         </div>
     </>
   )

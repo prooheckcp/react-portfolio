@@ -83,7 +83,7 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  const {description, title, trailerLink, codeLink, projectLink} = currentWork;
+  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer} = currentWork;
 
   return (
     <>
@@ -96,7 +96,7 @@ const WorkPage = () => {
         <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>       
         */}
         
-        <DetailBoxes />
+        <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <PicturesWrapper title={title}/>
       </div>
     </>

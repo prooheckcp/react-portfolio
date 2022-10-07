@@ -32,7 +32,7 @@ function getFormatedDateLength(startingDate : string, finalDate? : string){
   
     duration += differenceInMonths.toString() + " months";
   
-    return {formated: startString + " - " + finalString + " · " + duration, start: startString, final: finalString};
+    return {formated: startString + " - " + finalString + " · " + duration, start: startString, final: finalString, duration: duration};
 }
 
 export default getFormatedDateLength;
