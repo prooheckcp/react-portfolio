@@ -142,13 +142,16 @@ span{
 .image-banner{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: fit-content;
     margin-top: 1rem;
+    div{
+        flex: 2
+    }
     img {
         width: 75%;
-        height: 75vh;
+        height: 50vh;
         object-fit: contain;
     }
 }

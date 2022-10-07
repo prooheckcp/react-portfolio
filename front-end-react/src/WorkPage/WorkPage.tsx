@@ -86,11 +86,10 @@ const WorkPage = () => {
   return (
     <>
       <div className="background">
-        
-        <Header title={title} description={description}/>
-        
+      <div className="navbar-gap"/>  
+      <Header title={title} description={description}/>
         <div className="image-banner">
-          <img src={urlFor(imgUrl)} alt="" />
+          {imgUrl ? <img src={urlFor(imgUrl)} alt="" /> : null}
         </div>
 
         <Video trailerLink={trailerLink} title={title}/>
