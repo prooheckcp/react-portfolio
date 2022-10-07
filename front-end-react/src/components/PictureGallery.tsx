@@ -3,18 +3,40 @@ import { ProGallery } from 'pro-gallery';
 import 'pro-gallery/dist/statics/main.css';
 import {urlFor} from '../client';
 
+const OPTIONS = {
+  "layoutParams": {
+      "structure": {
+          "galleryLayout": -1
+      }
+  },
+  "behaviourParams": {
+      "item": {
+          "content": {
+              "hoverAnimation": "ZOOM_IN"
+          },
+          "clickAction": "FULLSCREEN",
+          "overlay": {
+              "hoveringBehaviour": "NEVER_VISIBLE"
+          }
+      },
+      "gallery": {
+          "blockContextMenu": false
+      }
+  }
+}
+
 const PictureGallery = ({images}) => {
   const [items, setItems] = useState<Array<any>>([]);
   const [container, setContainer] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight * 2
   });
 
   useLayoutEffect(() => {
     function updateSize() {
       setContainer({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight * 2
       });
     }
     window.addEventListener('resize', updateSize);
@@ -40,7 +62,6 @@ const PictureGallery = ({images}) => {
           },
         }        
       }
-      console.log(images)
       imagesArray.push(imageObject);
     }
     setItems(imagesArray)
@@ -48,15 +69,12 @@ const PictureGallery = ({images}) => {
 
   return (
     <ProGallery items={items} container={container} 
-    options={
-      {
-          "layoutParams": {
-              "structure": {
-                  "galleryLayout": -1
-              }
-          }
-      }
-          }/>
+    options={OPTIONS} eventsListener={(eventName, eventData)=>{
+      if(eventName != "ITEM_ACTION_TRIGGERED")
+        return;
+
+      console.log(eventData.url);
+    }}/>
   )
 }
 
