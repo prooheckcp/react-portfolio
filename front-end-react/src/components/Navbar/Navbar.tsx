@@ -3,6 +3,7 @@ import {HiMenuAlt4, HiX} from 'react-icons/hi';
 import {motion} from 'framer-motion'
 import './Navbar.scss';
 import {images} from '../../constants'
+import { Link } from 'react-router-dom'; 
 import { HashLink } from 'react-router-hash-link';
 
 const sections : Array<string> = ['home', 'about', 'work', 'skills', 'testimonials', 'contact']
@@ -14,7 +15,9 @@ const Navbar = () => {
     
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo" />
+        <Link to="/">
+          <img src={images.logo} alt="logo" />
+        </Link>  
       </div>
       <ul className="app__navbar-links">
         {sections.map(item =>
