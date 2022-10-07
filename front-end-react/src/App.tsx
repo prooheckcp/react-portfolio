@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 // @ts-ignore
 import WorkPage from './WorkPage/WorkPage.tsx';
 // @ts-ignore
+import NotFound from './container/404/404.tsx';
+// @ts-ignore
 import {Navbar, MainPage} from './components/index.ts';
 import './App.scss'
 
@@ -15,13 +17,9 @@ const App = () => {
           <Routes>
               <Route path="/work/:workIndex" element={<WorkPage />} />
               <Route path="/" element={<MainPage/>} />
+              <Route path="*" element={<NotFound/>} />
           </Routes>
         </div>
-      </BrowserRouter>
-      <BrowserRouter basename='/work'>
-        <Routes>
-          <Route path=":workIndex" element={<WorkPage />} />
-        </Routes>
       </BrowserRouter>
     </>
 

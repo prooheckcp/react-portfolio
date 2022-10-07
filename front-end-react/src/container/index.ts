@@ -15,3 +15,5 @@ export {default as Work} from './Work/Work.tsx';
 export {default as Background} from './Background/Background.tsx';
 //@ts-ignore
 export {default as Wave} from './Wave/Wave.tsx';
+//@ts-ignore
+export {default as NotFound} from './404/404.tsx';
