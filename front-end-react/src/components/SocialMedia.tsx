@@ -8,33 +8,29 @@ function openWeb(link : string){
 const SocialMedia = () => {
   return (
     <div className="app__social">
-        <div>
-          <BsTwitter 
-            onClick={()=>{
+        <div onClick={()=>{
               openWeb("https://twitter.com/Prooheckcp")
-            }}
-          />
+            }
+        }>
+          <BsTwitter/>
         </div>
-        <div>
-          <BsGithub 
-            onClick={()=>{
+        <div onClick={()=>{
               openWeb("https://github.com/prooheckcp")
-            }}
-          />
+            }
+        }>
+          <BsGithub/>
         </div>
-        <div>
-          <BsLinkedin 
-            onClick={()=>{
+        <div onClick={()=>{
               openWeb("https://www.linkedin.com/in/vasco-soares-564682194/")
-            }}
-          />
+            }
+        }>
+          <BsLinkedin/>
         </div>
-        <div>
-          <BsYoutube
-            onClick={()=>{
+        <div onClick={()=>{
               openWeb("https://www.youtube.com/prooheckcp")
-            }}
-          />  
+            }
+        }>
+          <BsYoutube/>  
         </div>
     </div>
   )
