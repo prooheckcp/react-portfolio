@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom';
 import './WorkPage.scss';
 
-import {client} from '../client';
-
-import {motion} from 'framer-motion';
+import {urlFor, client} from '../client';
 import ButtonsSection from './ButtonsSection.tsx';
 import Header from './Header.tsx';
 import Video from './Video.tsx';
@@ -83,20 +81,22 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer} = currentWork;
+  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl} = currentWork;
 
   return (
     <>
       <div className="background">
-        <Header title={title} description={description}/>
-
-        {/* 
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
-        <Video trailerLink={trailerLink} title={title}/> 
-        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>       
-        */}
         
+        <Header title={title} description={description}/>
+        
+        <div className="image-banner">
+          <img src={urlFor(imgUrl)} alt="" />
+        </div>
+
+        <Video trailerLink={trailerLink} title={title}/>
+        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>              
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
         <PicturesWrapper title={title}/>
       </div>
     </>

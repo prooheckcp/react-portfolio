@@ -26,7 +26,7 @@ const DetailBoxes = ({projectType, robloxLink, startingDate, finalDate, multipla
         <div className="detail-boxes">
             <DetailBox text={`${start} - ${final}`} icon={<IoCalendarNumber/>}/>
             <DetailBox text={duration} icon={<FiClock/>}/>
-            <DetailBox text={projectType} icon={<IoMdSchool/>}/>
+            <DetailBox text={projectType} icon={ProjectTypes.get(projectType)}/>
             <DetailBox text={multiplayerText} icon={multiplayerLogo}/>
         </div>
     </>
