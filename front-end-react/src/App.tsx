@@ -12,8 +12,12 @@ const App = () => {
     <div className='app'>
       <Navbar />
       <Routes>
-          <Route path="/" element={<MainPage/>} />
+          <Route path="/test/*" element={<>
+            <Route path=":id" children={<WorkPage />} />
+          </>} />
+          <Route path="/test2/:workIndex" element={<WorkPage />} />
           <Route path="/work/:workIndex" element={<WorkPage />} />
+          <Route path="/" element={<MainPage/>} />   
       </Routes>
     </div>
     </BrowserRouter>
