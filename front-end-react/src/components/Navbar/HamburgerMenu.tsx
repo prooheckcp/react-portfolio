@@ -10,7 +10,7 @@ const HamburgerMenu = ({setToggle, toggle, sections}) => {
         {
           toggle && (
             <motion.div
-              whileInView={{x: [300, 0]}}
+              whileInView={{y: [-300, 0]}}
               transition={{duration: 0.85, ease:'easeInOut'}}
             >
               <HiX onClick={()=> setToggle(false)}/>

@@ -85,6 +85,7 @@
     height: 35px;
     position: relative;
     position: absolute;
+    right: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,17 +104,16 @@
         right: 0;
 
         z-index: 5;
-        padding: 1rem;
 
-        width: 80%;
-        height: 100vh;
+        width: 100%;
+        height: fit-content;
 
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
         flex-direction: column;
-        background: url('../../assets/bgWhite.png');
-        background-color: var(--white-color);
+        background: black;
+
         background-size: cover;
         background-repeat: repeat;
 
@@ -122,8 +122,9 @@
         svg{
             width: 35px;
             height: 35px;
-            color: var(--secondary-color);
+            color: var(--text-color);
             margin: 0.5rem 1rem;
+            margin-top: 1rem;
         }
 
         ul{
@@ -139,17 +140,24 @@
             flex-direction: column;
 
             li{
-                margin: 1rem;
-                
+
+                border-bottom: rgba(255, 255, 255, 0.2) solid 3px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
                 a{
-                    color: var(--gray-color);
+                    height: 100%;
+                    color: var(--text-color);
                     text-decoration: none;
                     font-size: 1rem;
                     text-transform: uppercase;
                     font-weight: 500;
+                    margin: 1rem 0;
+                    margin-left: 1rem;
 
                     &:hover{
-                        color: var(--secondary-color);
+                        color: var(--span-color);
                     }
                 }
             }
