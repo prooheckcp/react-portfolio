@@ -3,6 +3,7 @@ import './Navbar.scss';
 import {images} from '../../constants'
 import { Link } from 'react-router-dom'; 
 import { HashLink } from 'react-router-hash-link';
+//@ts-ignore
 import HamburgerMenu from './HamburgerMenu.tsx';
 
 const sections : Array<string> = ['home', 'about', 'work', 'skills', 'testimonials', 'contact']
