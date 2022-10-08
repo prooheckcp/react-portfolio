@@ -93,16 +93,8 @@ const WorkPage = () => {
     <>
       <div className="background">
       <div className="navbar-gap"/>  
-        <Header title={title} description={description}/>
-        {
-          trailerLink ?
-            <Video trailerLink={trailerLink} title={title}/>
-          :
-          <div className="image-banner">
-            {imgUrl ? <img src={urlFor(imgUrl)} alt="" /> : null}
-          </div>      
-        }
-
+        <Header title={title} description={description} imgUrl={imgUrl}/>
+        <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>              
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>  
