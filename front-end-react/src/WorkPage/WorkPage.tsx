@@ -1,13 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom';
 import './WorkPage.scss';
-
+import {motion} from 'framer-motion';
 import {urlFor, client} from '../client';
+//@ts-ignore
 import ButtonsSection from './ButtonsSection.tsx';
+//@ts-ignore
 import Header from './Header.tsx';
+//@ts-ignore
 import Video from './Video.tsx';
+//@ts-ignore
 import SkillsContainer from './SkillsContainers.tsx';
+//@ts-ignore
 import PicturesWrapper from './PicturesWrapper.tsx';
+//@ts-ignore
 import DetailBoxes from './DetailBoxes.tsx';
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
@@ -88,13 +94,15 @@ const WorkPage = () => {
       <div className="background">
       <div className="navbar-gap"/>  
         <Header title={title} description={description}/>
-        {/*
+        {
+          trailerLink ?
+            <Video trailerLink={trailerLink} title={title}/>
+          :
           <div className="image-banner">
             {imgUrl ? <img src={urlFor(imgUrl)} alt="" /> : null}
           </div>      
-        */}
+        }
 
-        <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>              
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>  
