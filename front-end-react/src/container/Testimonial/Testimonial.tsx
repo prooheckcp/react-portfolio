@@ -93,4 +93,4 @@ const Testimonial : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Testimonial, "app__testimonial"), "testimonials", "app__background app__testimonialSize")
+export default AppWrap(MotionWrap(Testimonial, "app__testimonial"), null, "app__background app__testimonialSize")

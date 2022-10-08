@@ -153,4 +153,4 @@ const Skills : React.FC = () => {
   )
 }
 
-export default AppWrap(MotionWrap(Skills, "app__skills"), "skills", "app__secondBackground app__skillsSize")
+export default AppWrap(MotionWrap(Skills, "app__skills"), null, "app__secondBackground app__skillsSize")
