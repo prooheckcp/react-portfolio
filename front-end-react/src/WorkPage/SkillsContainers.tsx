@@ -5,19 +5,28 @@ import {motion} from 'framer-motion';
 
 const SkillsContainers = ({usedLanguages, usedTech}) => {
   return (
-    <motion.div 
-    whileInView={{opacity:[0, 1]}} 
-    transition={{duration: 0.5}}
+    <div 
     className="skills_container">
-      <div className="languages info-container">
+      <motion.div 
+      className="languages info-container"
+      initial={{ scale: 0 }}
+      whileInView={{scale:1}} 
+      transition={{duration: 0.5}}
+      >
         <h2>Languages used</h2>
         <SkillContainer className="container" skillArray={usedLanguages} showCircle={false} toolTip={"name"}/>
-      </div>
-      <div className="tech info-container">
+      </motion.div>
+      
+      <motion.div 
+      className="tech info-container"
+      initial={{ scale: 0 }}
+      whileInView={{scale:1}} 
+      transition={{duration: 0.5}}
+      >
         <h2>Tech used</h2>
           <SkillContainer skillArray={usedTech} showCircle={false} toolTip={"name"}/>
-      </div>
-  </motion.div>
+      </motion.div>
+  </div>
   )
 }
 

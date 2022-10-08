@@ -9,7 +9,12 @@ const ButtonsSection = ({codeLink, projectLink}) => {
     {
       codeLink ?
       <a href={codeLink} target="_blank">
-          <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
+          <motion.div 
+          className="button-item" 
+          initial={{ scale: 0 }}
+          whileInView={{scale:1}} 
+          transition={{duration: 0.5}}
+          whileHover={{scale: 1.1, transition: 0.2}}>
             <p><BsGithub/></p>
           </motion.div>            
       </a>
@@ -18,7 +23,12 @@ const ButtonsSection = ({codeLink, projectLink}) => {
     {
       projectLink ?
       <a href={projectLink} target="_blank">
-          <motion.div className="button-item" whileHover={{scale: 1.1, transition: 0.2}}>
+          <motion.div 
+          className="button-item" 
+          initial={{ scale: 0 }}
+          whileInView={{scale:1}} 
+          transition={{duration: 0.5}}
+          whileHover={{scale: 1.1, transition: 0.2}}>
           <p><GiConsoleController/></p>
           </motion.div>            
       </a>
