@@ -8,6 +8,8 @@ import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 import './Work.scss';
 import { client, urlFor } from '../../client';
 
+import {BsFillTagsFill} from 'react-icons/bs';
+
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
@@ -89,7 +91,7 @@ const Work : React.FC = () => {
               <p className="p-text" style={{marginTop: 10}}>{work.headline}</p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text">{work.tags[0]}</p>
+                <p className="p-text"><BsFillTagsFill/> {work.tags[0]}</p>
               </div>
             </div>
           </div>
