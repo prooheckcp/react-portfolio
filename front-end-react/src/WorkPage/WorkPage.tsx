@@ -95,12 +95,14 @@ const WorkPage = () => {
       <div className="navbar-gap"/>  
         <Header title={title} description={description} imgUrl={imgUrl}/>
         <Video trailerLink={trailerLink} title={title}/>
-        <SkillsContainers usedLanguages={usedLanguages} usedTech={usedTech} className="skills-container"/>              
+        <SkillsContainers usedLanguages={usedLanguages} usedTech={usedTech} className="skills-container"/>
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
         {
           /*
-           <PicturesWrapper title={title} images={images}/>
+         
+       
+          <PicturesWrapper title={title} images={images}/>
           */
         }
        
