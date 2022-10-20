@@ -1,8 +1,8 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
-import {AiFillEye, AiFillGithub} from 'react-icons/ai';
-import { client, urlFor } from '../../client';
+import {AiFillEye} from 'react-icons/ai';
+import {urlFor } from '../../client';
 import {BsFillTagsFill} from 'react-icons/bs';
 
 export default ({name, id, imgUrl, title, headline, tags}, index) => {
