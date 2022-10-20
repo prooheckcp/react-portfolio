@@ -93,7 +93,7 @@
 
 .app__work-img{
     width: 100%;
-    height: 230px;
+    height: 250px;
 
     position: relative;
 
@@ -145,7 +145,7 @@
 }
 
 .app__work-content{
-    padding: 0.5rem;
+    padding: 0, 0.5rem;
     width: 100%;
     position: relative;
     flex-direction: column;
@@ -158,14 +158,12 @@
     }
 
     .app__work-tag{
-        position: absolute;
-
-        padding: 0.5rem 1rem;
-        border-radius: 10px;
-        background-color: var(--secondary-color);
-        top: -25px;
+        margin-top: 1rem;
+        text-align: left;
+        width: 100%;
 
         p{
+            width: 100%;
             color: var(--lightGray-color);
         }
     }
@@ -174,7 +172,7 @@
         width: 100%;
         height: fit-content;
         position: absolute;
-        top: -250px;
+        top: -270px;
     }
 
     .icons-container-tech{
@@ -183,7 +181,7 @@
         width: 100%;
         height: fit-content;
         position: absolute;
-        top: -250px;
+        top: -270px;
     }
 
     .app__work-languages{
