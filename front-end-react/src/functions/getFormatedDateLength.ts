@@ -16,8 +16,11 @@ function getFormatedDateLength(startingDate : string, finalDate? : string){
       finalString = "now";
     }
   
-    let differenceInYears : number = endDate.getFullYear() - startDate.getFullYear();
-    let differenceInMonths : number = endDate.getMonth() - startDate.getMonth();
+    const differenceInTime : number = Math.abs(endDate - startDate);
+    const differenceInDays : number = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24)); 
+
+    let differenceInYears : number = Math.floor(differenceInDays/365);
+    let differenceInMonths : number = Math.ceil(differenceInDays/30) - differenceInYears * 12;
   
     if(differenceInYears > 0){
       let prefix : string = "";
