@@ -12,8 +12,7 @@ import './Work.scss';
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 import {BsFillTagsFill} from 'react-icons/bs';
 
-
-const SECTIONS : Array<string> = ['All', 'Web Development', 'Apps', 'Unity', 'Roblox', 'Unreal Engine', '2D', '3D', 'Game'];
+const SECTIONS : Array<string> = ['All', 'Web Development', 'App', 'Unity', 'Roblox', 'Unreal Engine', '2D', '3D', 'Game'];
 
 const Work : React.FC = () => {
   const [activeFilter, setActiveFilter] = useState(SECTIONS[0]);
