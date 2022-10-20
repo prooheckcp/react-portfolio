@@ -10,8 +10,10 @@ import './Work.scss';
 
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
+import {BsFillTagsFill} from 'react-icons/bs';
 
-const SECTIONS : Array<string> = ['All', 'Web Development', 'Apps', 'Unity', 'Roblox', 'Unreal Engine'];
+
+const SECTIONS : Array<string> = ['All', 'Web Development', 'Apps', 'Unity', 'Roblox', 'Unreal Engine', '2D', '3D', 'Game'];
 
 const Work : React.FC = () => {
   const [activeFilter, setActiveFilter] = useState(SECTIONS[0]);
@@ -51,7 +53,9 @@ const Work : React.FC = () => {
             onClick={()=> handleWorkFilter(item)}
             className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
           >
-            {item}
+            <p>
+              <BsFillTagsFill/> {item}
+            </p>    
           </div>
         )}
       </div>
