@@ -12,7 +12,7 @@ import './Work.scss';
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 import {BsFillTagsFill} from 'react-icons/bs';
 
-const SECTIONS : Array<string> = ['All', 'Web Development', 'App', 'Unity', 'Roblox', 'Unreal Engine', '2D', '3D', 'Game'];
+const SECTIONS : Array<string> = ['All', 'Web Development', 'App', 'Unity', 'Roblox', 'Unreal Engine', '2D', '3D', 'Game', 'Multiplayer', 'SinglePlayer'];
 
 const Work : React.FC = () => {
   const [activeFilter, setActiveFilter] = useState(SECTIONS[0]);
@@ -34,7 +34,11 @@ const Work : React.FC = () => {
       if(item === 'All')
         setFilterWork(works);
       else
-        setFilterWork(works.filter((work)=> work.tags.includes(item)))
+        setFilterWork(works.filter((work)=> 
+          work.tags.includes(item) || 
+          (item == "Multiplayer" && work.multiplayer) ||
+          (item == "SinglePlayer" && !work.multiplayer)
+        ))
       
     }, 400);
   }
