@@ -46,7 +46,9 @@
 
     .item-active{
         background-color: var(--span-color);
-        color: var(--secondary-color);
+        p{
+            color:black;
+        }
     }
 }
 
