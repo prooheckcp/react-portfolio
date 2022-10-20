@@ -48,7 +48,7 @@ const WorkPage = () => {
         if(skillsMap?.has(name))
           languagesUsed.push(skillsMap?.get(name));
       }
-      
+
     setUsedTech(techUsed);
     setUsedLanguages(languagesUsed);
   }
@@ -91,7 +91,7 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images} = currentWork;
+  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images, tags} = currentWork;
 
   title = title || "N/A";
   description = description || "N/A";
@@ -101,13 +101,12 @@ const WorkPage = () => {
     <>
       <div className="background">
       <div className="navbar-gap"/>  
-        <Header title={title} description={description} imgUrl={imgUrl}/>
+        <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
         <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []} className="skills-container"/>
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
-          <PicturesWrapper title={title} images={images}/>
-      
+        <PicturesWrapper title={title} images={images}/>
       </div>
     </>
 
