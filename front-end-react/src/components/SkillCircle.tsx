@@ -25,16 +25,17 @@ const SkillCircle = (props) => {
   const skill : Skill = props.skill;
   const showCircle : any = props.showCircle;
   const toolTip : any = props.toolTip != "name" ? `${CONFIDENCE_LEVEL[skill?.level-1]} ${skill?.level}/5` : skill.name;
-  
+  const circleClassName : string = props.circleClassName
+
   return (
     <>
         <motion.div
           whileInView={{opacity: [0, 1]}}
           transition={{duration: 0.5}}
-          className="app__skills-item app__flex"
+          className={`app__skills-item app__flex`}
         >
           <ReactTooltip className="skills-tooltip" />
-          <div className="app__flex" style={{ backgroundColor: skill?.bgColor}}>
+          <div className={`app__flex ${circleClassName}`} style={{ backgroundColor: skill?.bgColor}}>
             <img src={skill?.icon ? urlFor(skill?.icon) : ''} alt={skill?.name} />
             <div data-tip={toolTip} className="app__circular_progress">
               {

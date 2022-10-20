@@ -10,7 +10,7 @@ import Header from './Header.tsx';
 //@ts-ignore
 import Video from './Video.tsx';
 //@ts-ignore
-import SkillsContainer from './SkillsContainers.tsx';
+import SkillsContainers from './SkillsContainers.tsx';
 //@ts-ignore
 import PicturesWrapper from './PicturesWrapper.tsx';
 //@ts-ignore
@@ -95,10 +95,15 @@ const WorkPage = () => {
       <div className="navbar-gap"/>  
         <Header title={title} description={description} imgUrl={imgUrl}/>
         <Video trailerLink={trailerLink} title={title}/>
-        <SkillsContainer usedLanguages={usedLanguages} usedTech={usedTech}/>              
+        <SkillsContainers usedLanguages={usedLanguages} usedTech={usedTech} className="skills-container"/>              
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>  
-        <PicturesWrapper title={title} images={images}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
+        {
+          /*
+           <PicturesWrapper title={title} images={images}/>
+          */
+        }
+       
       </div>
     </>
 
