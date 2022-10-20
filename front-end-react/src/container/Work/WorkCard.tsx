@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 import {AiFillEye} from 'react-icons/ai';
 import {urlFor} from '../../client';
 import {BsFillTagsFill} from 'react-icons/bs';
+//@ts-ignore
 import GetSkillIcon from '../../functions/GetSkillIcon.ts';
+//@ts-ignore
+import GetFormattedTags from '../../functions/GetFormattedTags.ts';
 
 export default ({name, id, imgUrl, title, headline, tags, languages, techs}, index) => {
-
-    console.log(GetSkillIcon("language", "Lua"))
-
     return(
         <>
         <div className="app__work-item app__flex">
@@ -39,7 +39,7 @@ export default ({name, id, imgUrl, title, headline, tags, languages, techs}, ind
               <p className="p-text" style={{marginTop: 10}}>{headline}</p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text"><BsFillTagsFill/> {tags[0] || "N/A"}</p>
+                <p className="p-text"><BsFillTagsFill/> {GetFormattedTags(tags)}</p>
               </div>
 
 
