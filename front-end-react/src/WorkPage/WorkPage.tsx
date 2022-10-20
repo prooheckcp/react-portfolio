@@ -30,21 +30,25 @@ const WorkPage = () => {
     let techUsed : Array<any> = [];
     let languagesUsed : Array<any> = [];
 
-    for(let index = 0; index < currentProject.techs.length; index++){
-      const currentTech = currentProject.techs[index];
-      const name : string = currentTech?.trim();
+    if(currentProject.techs)
+      for(let index = 0; index < currentProject.techs.length; index++){
+        const currentTech = currentProject.techs[index];
+        const name : string = currentTech?.trim();
 
-      if(skillsMap?.has(name))
-        techUsed.push(skillsMap?.get(name));
-    }
+        if(skillsMap?.has(name))
+          techUsed.push(skillsMap?.get(name));
+      }      
+    
 
-    for(let index = 0; index < currentProject.languages.length; index++){
-      const currentLanguage = currentProject.languages[index];
-      const name : string = currentLanguage?.trim();
+    if(currentProject.languages)
+      for(let index = 0; index < currentProject.languages.length; index++){
+        const currentLanguage = currentProject.languages[index];
+        const name : string = currentLanguage?.trim();
 
-      if(skillsMap?.has(name))
-        languagesUsed.push(skillsMap?.get(name));
-    }
+        if(skillsMap?.has(name))
+          languagesUsed.push(skillsMap?.get(name));
+      }
+      
     setUsedTech(techUsed);
     setUsedLanguages(languagesUsed);
   }
@@ -87,7 +91,11 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  const {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images} = currentWork;
+  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images} = currentWork;
+
+  title = title || "N/A";
+  description = description || "N/A";
+  images = images || [];
 
   return (
     <>
@@ -95,17 +103,11 @@ const WorkPage = () => {
       <div className="navbar-gap"/>  
         <Header title={title} description={description} imgUrl={imgUrl}/>
         <Video trailerLink={trailerLink} title={title}/>
-        <SkillsContainers usedLanguages={usedLanguages} usedTech={usedTech} className="skills-container"/>
+        <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []} className="skills-container"/>
         <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
-        {
-          /*
-         
-       
           <PicturesWrapper title={title} images={images}/>
-          */
-        }
-       
+      
       </div>
     </>
 
