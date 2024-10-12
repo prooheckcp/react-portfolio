@@ -1,68 +1,26 @@
+import projectType from "../dropdowns/projectType"
+import programmingLanguages from "../dropdowns/programmingLanguages"
+import tech from "../dropdowns/tech"
+import tags from "../dropdowns/tags"
+import {createString} from "../functions/createString"
+import {createArray} from "../functions/createArray"
+
 export default {
     name: 'works',
     title: 'Works',
     type: 'document',
     fields: [
-      {
-        name: 'title',
-        title: 'Title',
-        type: 'string',
-      },
-      {
-        name: 'id',
-        title: 'ID',
-        type: 'string',
-      },
-      {
-        name: 'headline',
-        title: 'headline',
-        type: 'string'
-      },
-      {
-        name: 'description',
-        title: 'Description',
-        type: 'text',
-      },
-      {
-        name: 'projectType',
-        title: 'Type of project [Personal, University, Company]',
-        type: 'string',
-      },
-      {
-        name: 'multiplayer',
-        title: 'Is the game multiplayer',
-        type: 'boolean',
-      },
-      {
-        name: 'startingDate',
-        title: 'Start Date',
-        type: 'date',
-      },
-      {
-        name: 'finalDate',
-        title: 'Final Date',
-        type: 'date',
-      },
-      {
-        name: 'projectLink',
-        title: 'Project Link',
-        type: 'string',
-      },
-      {
-        name: 'codeLink',
-        title: 'Code Link',
-        type: 'string',
-      },
-      {
-        name: 'trailerLink',
-        title: 'Trailer Link',
-        type: 'string',
-      },
-      {
-        name: 'robloxLink',
-        title: 'Roblox ID for API',
-        type: 'string',
-      },
+      createString("Title"),
+      createString("ID"),
+      createString("Headline"),
+      createString("Description", "text"),
+      projectType,
+      createString("Multiplayer", "boolean"),
+      createString("Starting Date", "date"),
+      createString("Final Date", "date"),
+      createString("Project Link"),
+      createString("Code Link"),
+      createString("Trailer Link"),
       {
         name: 'imgUrl',
         title: 'ImageUrl',
@@ -71,53 +29,13 @@ export default {
           hotspot: true,
         },
       },
-      {
-        name: 'languages',
-        title: 'Languages used',
-        type:'array',
-        of: [
-         {
-           name:'language',
-           title:'Language',
-           type:'string'
-         }
-        ]
-        },
-      {
-        name: 'techs',
-        title: 'Tech used',
-        type:'array',
-        of: [
-         {
-           name:'tech',
-           title:'Tech',
-           type:'string'
-         }
-        ]
-        },
-      {
-        name: 'images',
-        title: 'Images',
-        type:'array',
-        of: [
-         {
-           name:'image',
-           title:'Image',
-           type:'image'
-         }
-        ]
-        },
-      {
-        name: 'tags',
-        title: 'Tags',
-       type:'array',
-       of: [
-         {
-           name:'tag',
-           title:'Tag',
-           type:'string'
-         }
-       ]
-      },
+      createArray("Languages", programmingLanguages),
+      createArray("Tech", tech),
+      createArray("Tags", tags),
+      createArray("Images",{
+        name:'image',
+        title:'Image',
+        type:'image'
+      })
     ],
   };

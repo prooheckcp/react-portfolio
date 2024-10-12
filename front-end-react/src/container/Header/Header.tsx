@@ -12,8 +12,8 @@ import {images} from '../../constants';
 import TypingEffect from '../../functions/Typing.ts';
 
 const MAIN_EMOJI : string = "👋";
-const WELCOMING_MESSAGE : string = "Hi there, I am";
 const DEV_NAME : string = "Vasco";
+const WELCOMING_MESSAGE : string = "Hi there, I am";
 const TITLE_LIST : Array<string> = ["Game Developer", "Gameplay Programmer", "UI Programmer"];
 const TECH_STACK : Array<any> = [images.roblox, images.unity, images.ue4];
 
@@ -64,7 +64,8 @@ const Header : React.FC = () => {
           className={"app__header-img"}
           content={
             <>
-              <img src={images.profile} alt="profile_bg" />
+              <img src={images.profile} alt="profile_bg" width = "800" height="800" 
+              />
               <motion.img
                 whileInView={{scale:[0, 1]}}
                 transition={{duration:1, ease:'easeInOut'}}

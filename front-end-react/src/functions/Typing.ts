@@ -10,7 +10,7 @@ const changeText = async (title : string, setHook : any) =>{
 
   for (let i = 0; i < title.length; i++) {
     currentTitle += title[i];
-    setHook(currentTitle+"|");
+    setHook(currentTitle + "|");
     await Wait(TYPING_DELAY)
   }
 
