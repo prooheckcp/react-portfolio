@@ -1,20 +1,12 @@
+import {createString} from "../functions/createString"
+import {createImage} from "../functions/createImage"
+
 export default{
     name:'brands',
     title:'Brands',
     type: 'document',
     fields:[
-        {
-            name:'imgUrl',
-            title:'ImgUrl',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-        },
-        {
-            name:'name',
-            title:'Name',
-            type:'string'
-        }
+        createString("Name"),
+        createImage("Img Url")
     ]
 }

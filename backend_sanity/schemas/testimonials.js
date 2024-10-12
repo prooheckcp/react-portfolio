@@ -1,30 +1,14 @@
+import {createString} from "../functions/createString"
+import {createImage} from "../functions/createImage"
+
 export default {
     name:'testimonials',
     title:'Testimonials',
     type: 'document',
     fields:[
-        { 
-            name:'name',
-            title:'Name',
-            type: 'string'
-        },
-        {
-            name:'company',
-            title:'Company',
-            type:'string'
-        },
-        {
-            name:'imgurl',
-            title:'ImgUrl',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-        },  
-        {
-            name:'feedback',
-            title:'Feedback',
-            type:'string'
-        }
+        createString("Name"),
+        createString("Company"),
+        createImage("ImgUrl"),
+        createString("Feedback", "text")
     ]
 }

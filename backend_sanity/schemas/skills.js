@@ -1,35 +1,14 @@
+import {createString} from "../functions/createString"
+import {createImage} from "../functions/createImage"
+
 export default{
     name:'skills',
     title:'Skills',
     type: 'document',
     fields:[
-        {
-            name:'name',
-            title:'Name',
-            type:'string'
-        },
-        {
-            name:'bgColor',
-            title:'BgColor',
-            type:'string'
-        },
-        {
-            name:'icon',
-            title:'Icon',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-        },
-        {
-            name:'section',
-            title:'Section',
-            type:'string'
-        },
-        {
-            name:'level',
-            title:'Level',
-            type:'number'
-        },
+        createString("Name"),
+        createImage("Icon"),
+        createString("Section"),
+        createString("Level", "number"),
     ]
 }

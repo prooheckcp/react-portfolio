@@ -1,8 +1,8 @@
 import tags from "../data/tags.json"
 
 export default {
-    name: "programmingLanguages",
-    title: "Programming Languages",
+    name: "tags",
+    title: "Tags",
     type: "string",
     options: {
         list: tags,

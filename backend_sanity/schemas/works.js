@@ -4,6 +4,7 @@ import tech from "../dropdowns/tech"
 import tags from "../dropdowns/tags"
 import {createString} from "../functions/createString"
 import {createArray} from "../functions/createArray"
+import {createImage} from "../functions/createImage"
 
 export default {
     name: 'works',
@@ -21,21 +22,10 @@ export default {
       createString("Project Link"),
       createString("Code Link"),
       createString("Trailer Link"),
-      {
-        name: 'imgUrl',
-        title: 'ImageUrl',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      },
+      createImage("Img Url"),
       createArray("Languages", programmingLanguages),
       createArray("Tech", tech),
       createArray("Tags", tags),
-      createArray("Images",{
-        name:'image',
-        title:'Image',
-        type:'image'
-      })
+      createArray("Images",createImage("Image"))
     ],
   };
