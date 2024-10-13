@@ -112,10 +112,13 @@ text-align: left;
 }
 
 .app__social {
+    position: fixed; /* Keep the div fixed on the screen */
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex-direction: column; /* Stack the icons vertically */
+    gap: 10px; /* Space between icons */
+    z-index: 1000; /* Ensure it's on top of other elements */
 
     padding: 1rem;
 
@@ -167,8 +170,9 @@ text-align: left;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    position: absolute;
     padding: 1rem;
+    transform: translateY(150%); /* Centers the element by shifting it up by half its own height */
 
     .app__navigation-dot {
         width: 10px;

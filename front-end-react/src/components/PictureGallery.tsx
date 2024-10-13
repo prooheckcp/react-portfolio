@@ -73,7 +73,6 @@ const PictureGallery = ({images, setCurrentImage}) => {
       if(eventName != "ITEM_ACTION_TRIGGERED")
         return;
 
-      console.log(eventData)
       setCurrentImage(eventData.url);
     }}/>
   )

@@ -1,10 +1,12 @@
 import React from 'react'
 // @ts-ignore
 import {About, Footer, Header, Skills, Testimonial, Work, Wave} from '../container/index.ts';
+import { SocialMedia } from './../components/index.ts';
 
 const MainPage = () => {
   return (
     <> 
+      <SocialMedia />
        <Header />
         <Wave id={"about"} colorSchema="first-fill"/>  
         <About />      

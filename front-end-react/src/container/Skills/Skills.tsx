@@ -50,7 +50,6 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
     <>
       {
         React.Children.toArray(skillsArray.map((skillArray : Array<Skill>, index : number)=>{
-          console.log("Skills:", skillsArray)
           return <>
           {skillArray.length > 0 ?
             <>
