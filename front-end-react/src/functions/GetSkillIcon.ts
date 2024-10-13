@@ -7,17 +7,18 @@ const skillsQuery = '*[_type == "skills"]';
 let skills : Map<string , Map<string, Skill>>  | undefined = undefined;
 
 function parseSkillsData(data : Array<Skill>){
-    const newSkills : Map<string , Map<string, Skill>> = new Map<string, Map<string, Skill>>([
-      ["language", new Map<string, Skill>()],
-      ["tech", new Map<string, Skill>()],
-      ["tool", new Map<string, Skill>()]
-    ]);
-    
+    const newSkills : Map<string , Map<string, Skill>> = new Map<string, Map<string, Skill>>([]);
+
     for(let index : number = 0; index < data.length; index++){
       let skill : Skill = data[index];
-      newSkills.get(skill.section)?.set(skill.name, skill);
+
+      if (!newSkills.get(skill.categories)){
+        newSkills.set(skill.categories, new Map<string, Skill>());
+      }
+
+      newSkills.get(skill.categories)?.set(skill.name, skill);
     }
-  
+
     return newSkills;
   }
 

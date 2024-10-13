@@ -1,5 +1,6 @@
 import {createString} from "../functions/createString"
 import {createImage} from "../functions/createImage"
+import categories from "../dropdowns/categories"
 
 export default{
     name:'skills',
@@ -8,7 +9,7 @@ export default{
     fields:[
         createString("Name"),
         createImage("Icon"),
-        createString("Section"),
+        categories,
         createString("Level", "number"),
     ]
 }

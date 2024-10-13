@@ -71,9 +71,10 @@ const Work : React.FC = () => {
         transition={{duration: 0.5, delayChildren: 0.5}}
         className="app__work-portfolio"
       >
-        {React.Children.toArray(filterWork.map((work, index)=>
-          WorkCard(work, index)
-        ))}
+        {React.Children.toArray(filterWork.map((work)=>
+          WorkCard(work)
+        ))
+        }
       </motion.div>
     </>
   )

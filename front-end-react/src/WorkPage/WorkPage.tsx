@@ -30,9 +30,9 @@ const WorkPage = () => {
     let techUsed : Array<any> = [];
     let languagesUsed : Array<any> = [];
 
-    if(currentProject.techs)
-      for(let index = 0; index < currentProject.techs.length; index++){
-        const currentTech = currentProject.techs[index];
+    if(currentProject.tech)
+      for(let index = 0; index < currentProject.tech.length; index++){
+        const currentTech = currentProject.tech[index];
         const name : string = currentTech?.trim();
 
         if(skillsMap?.has(name))
@@ -91,7 +91,9 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, robloxLink, projectType, multiplayer, imgUrl, images, tags} = currentWork;
+  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, projectType, multiplayer, imgUrl, images, tags} = currentWork;
+
+  console.log("Current work: ", currentWork)
 
   title = title || "N/A";
   description = description || "N/A";
@@ -104,7 +106,7 @@ const WorkPage = () => {
         <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
         <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []} className="skills-container"/>
-        <DetailBoxes projectType={projectType} robloxLink={robloxLink} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
+        <DetailBoxes projectType={projectType} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
         <PicturesWrapper title={title} images={images}/>
       </div>

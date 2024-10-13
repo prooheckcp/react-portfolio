@@ -7,9 +7,9 @@ import Skill from '../interfaces/Skill.ts';
 import {urlFor } from '../client';
 
 const CONFIDENCE_LEVEL : Array<string> = [
-    "Bad",
-    "Okay",
-    "Good",
+    "Used but not confident",
+    "Know the Basics",
+    "Comfortable",
     "Very Good",
     "Fluent"
 ]

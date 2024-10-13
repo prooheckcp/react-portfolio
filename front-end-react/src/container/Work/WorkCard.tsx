@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
 import {AiFillEye} from 'react-icons/ai';
@@ -9,13 +9,14 @@ import GetSkillIcon from '../../functions/GetSkillIcon.ts';
 //@ts-ignore
 import GetFormattedTags from '../../functions/GetFormattedTags.ts';
 
-export default ({name, id, imgUrl, title, headline, tags, languages, techs}, index) => {
+//{name, id, imgUrl, title, headline, tags, languages, techs}
+export default (work) => {
     return(
-        <>
-        <div className="app__work-item app__flex">
+      <>
+        <div key={work.id}  className="app__work-item app__flex">
             <div className="app__work-img app__flex">
-              <img src={urlFor(imgUrl)} alt={name} />
-              <Link to={`/work/${id}`}>
+              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <Link to={`/work/${work.id}`}>
                 <motion.div
                   whileHover={{opacity:[0, 1]}}
                   transition={{duration: 0.25, easy: 'easeInOut', staggerChildren: 0.5}}
@@ -35,22 +36,27 @@ export default ({name, id, imgUrl, title, headline, tags, languages, techs}, ind
             </div>
 
             <div className="app__work-content app__flex">
-              <h4 className="bold-text">{title}</h4>
-              <p className="p-text" style={{marginTop: 10}}>{headline}</p>
+              <h4 className="bold-text">{work.title}</h4>
+              <p className="p-text" style={{marginTop: 10}}>{work.headline}</p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text"><BsFillTagsFill/> {GetFormattedTags(tags)}</p>
+                <p className="p-text"><BsFillTagsFill/> {GetFormattedTags(work.tags ?? [])}</p>
               </div>
 
 
                 {
-                languages ?
+                work.languages ?
                 <div className="icons-container">
                     <div className="app__work-languages">                            
                         {
-                            languages.map((value)=>(
-                                <img src={urlFor(GetSkillIcon("language", value).icon)} alt="" />
-                            ))                                
+                            work.languages.map((value)=>{
+                              let icon = GetSkillIcon("Programming Languages", value)?.icon
+
+                              if(!icon)
+                                return null;
+
+                              return <img key={`languages${value}`} src={urlFor(icon)} alt="" />
+                            })
                         }
                     </div>
                 </div>
@@ -58,13 +64,18 @@ export default ({name, id, imgUrl, title, headline, tags, languages, techs}, ind
                 null
                 }
                 {
-                techs ?
+                work.tech ?
                 <div className="icons-container-tech">
                     <div className="app__work-techs">
                         {
-                            techs.map((value)=>(
-                                <img src={urlFor(GetSkillIcon("tech", value).icon)} alt="" />
-                            ))
+                            work.tech.map((value)=>{
+                              let icon = GetSkillIcon("Tech", value)?.icon
+
+                              if(!icon)
+                                return null;
+
+                                return <img key={`tech${value}`} src={urlFor(icon)} alt="" />
+                            })
                         }
                     </div>
                 </div>
@@ -73,6 +84,6 @@ export default ({name, id, imgUrl, title, headline, tags, languages, techs}, ind
                 }
             </div>
           </div>
-        </>
+      </>
     )
 }

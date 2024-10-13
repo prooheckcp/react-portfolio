@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {motion} from 'framer-motion';
 
 import './Header.scss';
@@ -14,7 +14,7 @@ import TypingEffect from '../../functions/Typing.ts';
 const MAIN_EMOJI : string = "👋";
 const DEV_NAME : string = "Vasco";
 const WELCOMING_MESSAGE : string = "Hi there, I am";
-const TITLE_LIST : Array<string> = ["Game Developer", "Gameplay Programmer", "UI Programmer"];
+const TITLE_LIST : Array<string> = ["Game Programmer", "Software Engineer", "UI Programmer"];
 const TECH_STACK : Array<any> = [images.roblox, images.unity, images.ue4];
 
 const scaleVariants = {
@@ -30,9 +30,14 @@ const scaleVariants = {
 
 const Header : React.FC = () => {
   const [text, setText] = useState<string>(TITLE_LIST[0])
+  const hasMounted = useRef(false);
 
   useEffect(()=>{
+    if (hasMounted.current) 
+      return;
+
     TypingEffect(TITLE_LIST, text, setText);
+    hasMounted.current = true;
   }, [])
 
   return (

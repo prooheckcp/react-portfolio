@@ -17,12 +17,6 @@ import SkillsContainer from '../../components/SkillsContainer.tsx';
 
 import 'react-circular-progressbar/dist/styles.css';
 
-const GET_TITLE : Map<string, string> = new Map<string, string>([
-  ["language", "Programming Languages"],
-  ["tech", "Tech Stack"],
-  ["tool", "Tools"]
-]);
-
 const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["language", []],
   ["tech", []],
@@ -55,18 +49,20 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
   return(
     <>
       {
-        React.Children.toArray(skillsArray.map((skillArray : Array<Skill>, index : number)=>
-          <>
-            {skillArray.length > 0 ?
-              <>
-                <h2>{GET_TITLE.get(titles[index])}</h2>
-                <SkillsContainer skillArray={skillArray}/>
-              </>
-               :
-              ''
-            }
-            
-          </>
+        React.Children.toArray(skillsArray.map((skillArray : Array<Skill>, index : number)=>{
+          console.log("Skills:", skillsArray)
+          return <>
+          {skillArray.length > 0 ?
+            <>
+              <h2>{titles[index] ?? "N/A"}</h2>
+              <SkillsContainer skillArray={skillArray}/>
+            </>
+             :
+            ''
+          }
+          
+        </>
+        }
         ))
       }
     </>
@@ -74,24 +70,25 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
 }
 
 function parseSkillsData(data : Array<Skill>){
-  const newSkills : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
-    ["language", []],
-    ["tech", []],
-    ["tool", []]
-  ]);
-  
-  for(let index : number = 0; index < data.length; index++){
-    let skill : Skill = data[index];
-    newSkills.get(skill.section)?.push(skill);
-  }
+    const newSkills : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
+    ]);
+    
+    for(let index : number = 0; index < data.length; index++){
+      let skill : Skill = data[index];
 
-  newSkills.forEach((skillSet)=>{
-    skillSet?.sort((skill1, skill2)=>{
-      return skill1.level > skill2.level ? - 1 : 1;
+      if (!newSkills.has(skill.categories))
+        newSkills.set(skill.categories, []);
+
+      newSkills.get(skill.categories)?.push(skill);
+    }
+
+    newSkills.forEach((skillSet)=>{
+      skillSet?.sort((skill1, skill2)=>{
+        return skill1.level > skill2.level ? - 1 : 1;
+      })
     })
-  })
 
-  return newSkills;
+    return newSkills;
 }
 
 const Skills : React.FC = () => {
@@ -104,7 +101,7 @@ const Skills : React.FC = () => {
     FetchSanityData("workExperience", setExperience)
 
     client.fetch(skillsQuery).then(data=>{
-      setSkills(parseSkillsData(data));
+        setSkills(parseSkillsData(data));
     });
   }, [])
 
@@ -141,7 +138,7 @@ const Skills : React.FC = () => {
                         <p className="p-text company-text">{workExperience.company}</p>
                         <p className="p-text date-text">{getFormatedDateLength(workExperience.startingDate, workExperience.leaveDate).formated}</p>
                         <p className="p-text desc-text">{workExperience.desc}</p>
-                        <p className="p-text tools-text">{getFormatedTools(workExperience.toolsUsed)}</p>
+                        <p className="p-text tools-text">{workExperience.toolsUsed}</p>
                       </motion.div>
                 </motion.div>
               </motion.div>          

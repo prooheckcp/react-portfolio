@@ -23,36 +23,36 @@
     }
 }
 
-.app__skills-list-container{
+.app__skills-list-container {
     flex: 1;
     flex-wrap: wrap;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* This can remain as is, or you can change it to center if you want vertical centering */
     flex-direction: row;
 
-    h2{
+    h2 {
         color: var(--text-color);
         font-size: 1.7rem;
         width: 100%;
-        text-align: left;
+        text-align: left; /* You might want to keep this for your title */
         height: auto;
         margin-bottom: 1rem;
     }
 }
 
-.app__skills-list{
+.app__skills-list {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center; /* Change this to 'center' to center items horizontally */
+    align-items: center; /* Center items vertically within the container */
     width: 100%;
     margin-right: 0;
 
-    @media screen and (max-width: 900px){
+    @media screen and (max-width: 900px) {
         margin-right: 0;
-        justify-content: center;
-        align-items: center;
+        justify-content: center; /* Keep it centered for smaller screens */
+        align-items: center; /* Center items vertically */
     }
 }
 

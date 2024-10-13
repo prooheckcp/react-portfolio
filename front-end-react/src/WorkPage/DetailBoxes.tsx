@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react'
-import {motion} from 'framer-motion';
+import React from 'react'
 import DetailBox from './DetailBox.tsx';
-import {SiRoblox} from 'react-icons/si';
 import {IoCalendarNumber} from 'react-icons/io5';
 import {FiClock} from 'react-icons/fi';
 import {BsFillPersonFill, BsBuilding, BsFillPeopleFill} from 'react-icons/bs';
@@ -16,18 +14,25 @@ const ProjectTypes = new Map([
     ["University", <IoMdSchool/>],
 ]);
 
-const DetailBoxes = ({projectType, robloxLink, startingDate, finalDate, multiplayer}) => {
-
+const DetailBoxes = ({projectType, startingDate, finalDate, multiplayer}) => {
   const {start, final, duration} = getFormatedDateLength(startingDate, finalDate)
   const multiplayerLogo = multiplayer ? <BsFillPeopleFill/> : <MdOutlineEmojiPeople/>
   const multiplayerText = multiplayer ? "Multiplayer" : "Singleplayer"
+
+  console.log("Project Type: ", projectType)
+
   return (
     <>
         <div className="detail-boxes">
             <DetailBox text={`${start} - ${final}`} icon={<IoCalendarNumber/>}/>
             <DetailBox text={duration} icon={<FiClock/>}/>
-            <DetailBox text={projectType} icon={ProjectTypes.get(projectType)}/>
-            <DetailBox text={multiplayerText} icon={multiplayerLogo}/>
+            <DetailBox text={projectType} icon={ProjectTypes.get(projectType)}/> :
+
+            {
+              projectType == "Game" ?
+              <DetailBox text={multiplayerText} icon={multiplayerLogo}/> :
+              null
+            }
         </div>
     </>
   )

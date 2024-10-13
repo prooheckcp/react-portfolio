@@ -11,7 +11,7 @@ import {AppWrap, MotionWrap} from '../../wrapper/index.ts'
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
 
-const ANIMATION_DURATION : number = 0.7;
+const ANIMATION_DURATION : number = 1;
 
 const Testimonial : React.FC = () => {
   const [brands, setBrands] = useState([]);
@@ -19,30 +19,38 @@ const Testimonial : React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardMoving, setCardMoving] = useState(false);
   const currentTestimonial = testimonials[currentIndex];
-  const controls = useAnimation()
+  const controls = useAnimation();
 
-  const handleClick = (index : number, direction : number) => {
-    if(cardMoving)
-      return;
-    
+  const handleClick = (index, direction) => {
+    if (cardMoving) return;
+
     setCardMoving(true);
 
     controls.start({
-      opacity: [1, 0, 0, 0, 0, 1],
-      x: [0, 200 * direction, 200 * direction, -200 * direction, -200 * direction, 0],
-      transition: {ease:"linear", repeat: 0, times: [0, 0.2, 0.5, 0.5, 0.8, 1], duration: ANIMATION_DURATION},
-    });
-
-    setTimeout(() => {
+      opacity: [0, 0],
+      transition: {
+        ease: 'linear',
+        duration: ANIMATION_DURATION
+      },
+    }).then(() => {
+      // Animation is complete, now update the state
       setCurrentIndex(index);
       setCardMoving(false);
-    }, ANIMATION_DURATION * 1000);
-  }
+    }).then(()=>{
+      controls.start({
+        opacity: [1, 1],
+        transition: {
+          ease: 'linear',
+          duration: ANIMATION_DURATION,
+        },
+      })
+    });
+  };
+  
   useEffect(()=>{
     FetchSanityData("testimonials", setTestimonials);
     FetchSanityData("brands", setBrands);    
   }, [])
-
 
   return (
     <>
@@ -75,20 +83,21 @@ const Testimonial : React.FC = () => {
               <HiChevronRight />
             </div>
           </div>
-
-          <div className="app__testimonial-brands app__flex">
-            {brands.map((brand) =>
-              <motion.div
-                whileInView={{opacity: [0, 1]}}
-                transition={{duration: 0.5, type:'tween'}}
-                key={brand._id}
-              >
-                <img src={urlFor(brand.imgUrl)} alt={brand.name} />
-              </motion.div>
-            )}
-          </div>
         </>
       )}
+
+      <h2 className="head-text">Companies I've worked with</h2>
+      <div className="app__testimonial-brands app__flex">
+        {brands.map((brand) =>
+          <motion.div
+            whileInView={{opacity: [0, 1]}}
+            transition={{duration: 0.5, type:'tween'}}
+            key={brand._id}
+          >
+            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+          </motion.div>
+        )}
+      </div>
     </>
   )
 }

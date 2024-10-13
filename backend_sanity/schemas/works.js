@@ -2,6 +2,7 @@ import projectType from "../dropdowns/projectType"
 import programmingLanguages from "../dropdowns/programmingLanguages"
 import tech from "../dropdowns/tech"
 import tags from "../dropdowns/tags"
+import projectContext from "../dropdowns/projectContext"
 import {createString} from "../functions/createString"
 import {createArray} from "../functions/createArray"
 import {createImage} from "../functions/createImage"
@@ -16,6 +17,7 @@ export default {
       createString("Headline"),
       createString("Description", "text"),
       projectType,
+      projectContext,
       createString("Multiplayer", "boolean"),
       createString("Starting Date", "date"),
       createString("Final Date", "date"),

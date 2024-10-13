@@ -7,7 +7,7 @@ import './Footer.scss';
 
 const EMAIL_ADDRESS : string = "vasco.soares.2001@gmail.com"
 const PHONE_NUMBER : string = "+351 918 495 220"
-const DISCORD : string = "Prooheckcp#1906"
+const DISCORD : string = "prooheckcp"
 
 const Footer : React.FC = () => {
   const [formData, setFormData] = useState({name: '', email: '', message: ''});
@@ -78,6 +78,9 @@ const Footer : React.FC = () => {
         <p className="p-text">@{currentYear} Vasco Soares</p>
         <p className="p-text">All rights reserved</p>
       </div>
+
+      <p  style={{ textAlign: 'center', fontSize: '0.8em', margin: '10px 0' }}
+      className="copyright">Disclaimer: By sending a message through this form, you consent to your message being emailed to us. We do not store any personal data submitted through this form. Please avoid including sensitive personal information in your message. We will respond to your inquiry as soon as possible.</p>
     </>
   )
 }

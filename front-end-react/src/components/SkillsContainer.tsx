@@ -6,7 +6,6 @@ import Skill from '../interfaces/Skill.ts';
 import SkillCircle from './SkillCircle.tsx';
 
 const SkillsContainer = ({skillArray, className, showCircle, toolTip, circleClassName}) => {
-
   return (
     <>
         <motion.div 
