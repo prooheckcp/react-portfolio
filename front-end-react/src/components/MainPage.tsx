@@ -4,8 +4,8 @@ import {About, Footer, Header, Skills, Testimonial, Work, Wave} from '../contain
 
 const MainPage = () => {
   return (
-    <>
-        <Header />
+    <> 
+       <Header />
         <Wave id={"about"} colorSchema="first-fill"/>  
         <About />      
         <Wave id={"work"} colorSchema="second-fill"/>   

@@ -5,7 +5,7 @@ import {AiFillEye} from 'react-icons/ai';
 import {urlFor} from '../../client';
 import {BsFillTagsFill} from 'react-icons/bs';
 //@ts-ignore
-import GetSkillIcon from '../../functions/GetSkillIcon.ts';
+import {getSkill} from '../../functions/GetSkill.ts';
 //@ts-ignore
 import GetFormattedTags from '../../functions/GetFormattedTags.ts';
 
@@ -50,7 +50,7 @@ export default (work) => {
                     <div className="app__work-languages">                            
                         {
                             work.languages.map((value)=>{
-                              let icon = GetSkillIcon("Programming Languages", value)?.icon
+                              let icon = getSkill("Programming Languages", value)?.icon
 
                               if(!icon)
                                 return null;
@@ -69,7 +69,7 @@ export default (work) => {
                     <div className="app__work-techs">
                         {
                             work.tech.map((value)=>{
-                              let icon = GetSkillIcon("Tech", value)?.icon
+                              let icon = getSkill("Tech", value)?.icon
 
                               if(!icon)
                                 return null;

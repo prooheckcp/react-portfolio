@@ -1,4 +1,4 @@
-import {client} from '../client';
+import {client} from '../client.js';
 
 // @ts-ignore
 import Skill from '../interfaces/Skill.ts';
@@ -26,6 +26,10 @@ client.fetch(skillsQuery).then(data=>{
     skills = parseSkillsData(data);
 });
 
-export default (type : string, id : string) =>{
+export function getSkill(type : string, id : string){
     return skills?.get(type)?.get(id);
+}
+
+export function getAllSkills(){
+    return skills;
 }
