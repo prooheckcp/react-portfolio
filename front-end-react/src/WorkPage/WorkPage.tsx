@@ -91,9 +91,7 @@ const WorkPage = () => {
   if(!currentWork)
     return '404';
 
-  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, projectType, multiplayer, imgUrl, images, tags} = currentWork;
-
-  console.log("Current work: ", currentWork)
+  let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, projectType, multiplayer, imgUrl, images, tags, projectContext} = currentWork;
 
   title = title || "N/A";
   description = description || "N/A";
@@ -106,7 +104,7 @@ const WorkPage = () => {
         <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
         <Video trailerLink={trailerLink} title={title}/>
         <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []} className="skills-container"/>
-        <DetailBoxes projectType={projectType} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
+        <DetailBoxes projectContext={projectContext} projectType={projectType} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
         <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
         <PicturesWrapper title={title} images={images}/>
       </div>
