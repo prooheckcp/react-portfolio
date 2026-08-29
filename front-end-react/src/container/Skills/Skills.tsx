@@ -135,7 +135,7 @@ const Skills : React.FC = () => {
                       >
                         <h4 className="bold-text">{workExperience.name}</h4>
                         <p className="p-text company-text">{workExperience.company}</p>
-                        <p className="p-text date-text">{getFormatedDateLength(workExperience.startingDate, workExperience.leaveDate).formated}</p>
+                        <p className="p-text date-text">{getFormatedDateLength(workExperience.startingDate, workExperience.leavingDate).formated}</p>
                         <p className="p-text desc-text">{workExperience.desc}</p>
                         <p className="p-text tools-text">{workExperience.toolsUsed}</p>
                       </motion.div>
