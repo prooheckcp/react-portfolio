@@ -1,17 +1,28 @@
 .app__navbar{
     z-index: 1000;
     width: 100%;
-    min-height: 65px;
+    min-height: var(--navbar-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 1rem 2rem;
-    background-color: var(--secondary-color);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    position: fixed; 
+    padding: var(--space-3) var(--space-6);
+    /* Translucent so content passing underneath reads as motion, not a seam. */
+    background-color: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+
+    /* sticky, not fixed: it pins to the top while scrolling AND occupies
+       layout space, so content flows underneath it instead of behind it. */
+    position: sticky;
+    top: 0;
+
+    @media screen and (max-width: 450px){
+        padding: var(--space-3) var(--space-4);
+    }
 }
 
 .app__navbar-logo{
@@ -24,10 +35,6 @@
         width: 150px;
         height: auto;
 
-        @media screen and (min-width: 2600px) {
-            width: 90px;
-            height: 40px;
-        }
     }
 }
 
@@ -48,7 +55,7 @@
             width: 5px;
             height: 5px;
             background: transparent;
-            border-radius: 50%;
+            border-radius: var(--radius-full);
 
             margin-bottom: 5px;
         }
@@ -61,7 +68,7 @@
 
             text-transform: uppercase;
             font-weight: 500;
-            transition: all 0.3s ease-in-out;
+            transition: var(--transition-common);
 
             &:hover{
                 color: var(--span-color);
@@ -117,7 +124,7 @@
         background-size: cover;
         background-repeat: repeat;
 
-        box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+        box-shadow: var(--shadow-md);
 
         svg{
             width: 35px;

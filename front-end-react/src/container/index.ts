@@ -2,7 +2,7 @@
 // @ts-ignore
 export {default as About} from './About/About.tsx';
 // @ts-ignore
-export {default as Footer} from './Footer/Footer.tsx';
+export {default as Contact} from './Contact/Contact.tsx';
 // @ts-ignore
 export {default as Header} from './Header/Header.tsx';
 // @ts-ignore
@@ -16,4 +16,7 @@ export {default as Background} from './Background/Background.tsx';
 //@ts-ignore
 export {default as Wave} from './Wave/Wave.tsx';
 //@ts-ignore
-export {default as NotFound} from './404/404.tsx';
+export {default as NotFound} from './404/404.tsx';// @ts-ignore
+export {default as Credentials} from './Credentials/Credentials.tsx';
+// @ts-ignore
+export {default as QuickLinks} from './QuickLinks/QuickLinks.tsx';

@@ -5,13 +5,13 @@
 }
 
 .app__skillsSize{
-    min-height: 100vh !important;
-    height: fit-content !important;
+    min-height: 100dvh;
     padding: 2rem 0;
 }
 
 .app__skills-container{
-    width: 80%;
+    /* Was `width: 80%` — on a 4K display that produced ~3000px line lengths. */
+    width: min(100%, var(--content-max));
     margin-top: 3rem;
 
     display: flex;
@@ -60,13 +60,13 @@
     flex-direction: column;
     text-align: center;
     width: 100px;
-    margin: 1rem;
-    transition: all 0.3s ease-in-out;
+    margin: var(--space-4) clamp(1rem, 0.1429rem + 1.143vw, 2rem);
+    transition: var(--transition-common);
 
     div{
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
+        width: clamp(4.375rem, 0.08929rem + 5.714vw, 9.375rem);
+        height: clamp(4.375rem, 0.08929rem + 5.714vw, 9.375rem);
+        border-radius: var(--radius-full);
         background-color: var(--secondary-color);
 
         img{
@@ -76,13 +76,9 @@
         }
 
         &:hover{
-            box-shadow: 0 0 25px #fef4f5;
+            box-shadow: var(--shadow-lg);
         }
 
-        @media screen and (min-width: 2600px){
-            width: 150px;
-            height: 150px;
-        }
     }
 
     p{
@@ -90,13 +86,6 @@
       margin-top: 0.5rem;
     }
 
-    @media screen and (min-width: 2600px){
-        margin: 1rem 2rem;
-
-        p{
-            margin-top: 1rem;
-        }
-    }
 }
 
 .app__circular_progress{
@@ -116,39 +105,119 @@
     align-items: flex-start;
     flex-direction: column;
     height: 100%;
+    /* Timeline rail: one continuous line the entries hang off. */
+    position: relative;
+    padding-left: var(--space-7);
+
+    &::before{
+        content: "";
+        position: absolute;
+        left: 1.35rem;
+        top: 0.75rem;
+        bottom: 0.75rem;
+        width: 2px;
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            var(--border-strong) 8%,
+            var(--border-strong) 92%,
+            transparent
+        );
+    }
+
+    @media screen and (max-width: 450px){
+        padding-left: var(--space-6);
+
+        &::before{ left: 0.95rem; }
+    }
 
     @media screen and (max-width: 900px){
         margin-top: 2rem;
     }
 
-    @media screen and (max-width: 550px){
+    @media screen and (max-width: 600px){
         margin-right: 1.25rem;
         margin-left: 1.25rem;
     }
 }
 
 .app__skills-exp-item{
+    position: relative;
     width: 100%;
-    background: var(--secondary-color);
-    border-radius: 15px;
-    padding: 1rem;
+    background: var(--surface-raised);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 1rem 0;
-    box-shadow: 0 0 20px var(--secondary-color);
+    gap: var(--space-4);
+    margin: 0 0 var(--space-5);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-common);
+
+    /* Node on the rail, aligned with the logo. */
+    &::before{
+        content: "";
+        position: absolute;
+        left: calc(var(--space-7) * -1 + 1.1rem);
+        top: 1.9rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: var(--radius-full);
+        background: var(--accent);
+        box-shadow: 0 0 0 4px var(--surface);
+        transition: var(--transition-common);
+    }
+
+    /* Connector from the rail to the card. */
+    &::after{
+        content: "";
+        position: absolute;
+        left: calc(var(--space-7) * -1 + 1.7rem);
+        top: 2.15rem;
+        width: calc(var(--space-7) - 1.7rem);
+        height: 1px;
+        background: var(--border-strong);
+    }
+
+    &:hover{
+        border-color: var(--border-accent);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+
+        &::before{
+            transform: scale(1.4);
+        }
+    }
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 450px){
+        padding: var(--space-4);
+        gap: var(--space-3);
+
+        &::before{ left: calc(var(--space-6) * -1 + 0.7rem); }
+        &::after{
+            left: calc(var(--space-6) * -1 + 1.3rem);
+            width: calc(var(--space-6) - 1.3rem);
+        }
+    }
 }
 
 .app__skills_right_container{
     flex: 1;
-    margin-right: 1rem;
+    min-width: 0;
 
     .app__skills-exp-work{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        gap: var(--space-1);
         margin-bottom: 0;
 
         h4{
@@ -158,18 +227,24 @@
 
         p{
             word-wrap: break-word;
+            overflow-wrap: anywhere;
             font-weight: 400;
-            margin-top: 5px;
+            margin-top: var(--space-1);
         }
 
         .company-text{
-            color: var(--gray-text-color);
-            font-size: 0.85rem;
+            color: var(--accent);
+            font-size: var(--text-sm);
+            font-weight: 500;
         }
 
         .date-text{
-            color: var(--gray-text-color);
-            font-size: 0.7rem;
+            order: -1;
+            color: var(--text-muted);
+            font-size: var(--text-xs);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 0;
         }
 
         .desc-text{
@@ -184,16 +259,16 @@
 }
 
 .app__skills_left_container{
-    margin-right: 1rem;
-    margin-left: 1rem;
     height: fit-content;
     width: fit-content;
 
     img{
-        width: 50px;
-        height: 50px;
+        width: clamp(2.75rem, 2.5rem + 0.7vw, 3.75rem);
+        height: clamp(2.75rem, 2.5rem + 0.7vw, 3.75rem);
         z-index: 3;
-        border-radius: 5px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        object-fit: cover;
     }
 
     p{
@@ -211,16 +286,44 @@
     width: fit-content !important;
     height: fit-content !important;
     background-color: var(--secondary-color) !important;
-    border-radius: 15px !important;
+    border-radius: var(--radius-lg) !important;
     padding: 1rem !important;
     color: var(--text-color) !important;
     text-align: center !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
+    font-size: var(--text-sm) !important;
     opacity: 1 !important;
 
-    @media screen and (min-width: 2600px) {
-        font-size: 1.75rem !important;
-        max-width: 500px !important;
-        line-height: 2 !important;
+}
+/* Category headings on the Skills page (Tools, Tech, ...) */
+.app__skills-list-container h2.app__skills-category{
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    font-size: var(--text-xl);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-4);
+
+    &:first-child{
+        margin-top: 0;
+    }
+}
+
+.app__skills-category-icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    color: var(--accent);
+
+    svg{
+        width: 1.1rem;
+        height: 1.1rem;
     }
 }

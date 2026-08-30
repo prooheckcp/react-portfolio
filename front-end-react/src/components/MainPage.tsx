@@ -1,23 +1,21 @@
 import React from 'react'
 // @ts-ignore
-import {About, Footer, Header, Skills, Testimonial, Work, Wave} from '../container/index.ts';
+import {About, Header, QuickLinks, Testimonial, Wave} from '../container/index.ts';
 import { SocialMedia } from './../components/index.ts';
 
+/* Home is the narrative only: who I am and proof.
+   Work, Skills and Contact are their own routes. */
 const MainPage = () => {
   return (
-    <> 
+    <>
       <SocialMedia />
-       <Header />
-        <Wave id={"about"} colorSchema="first-fill"/>  
-        <About />      
-        <Wave id={"work"} colorSchema="second-fill"/>   
-        <Work />
-        <Wave id={"skills"} colorSchema="first-fill"/>  
-        <Skills />   
-        <Wave id={"testimonials"} colorSchema="second-fill"/>  
-        <Testimonial />   
-        <Wave id={"contact"} colorSchema="first-fill"/>  
-        <Footer />
+      <Header />
+      <Wave colorSchema="first-fill"/>
+      <About />
+      <Wave colorSchema="second-fill"/>
+      <Testimonial />
+      <Wave colorSchema="first-fill"/>
+      <QuickLinks />
     </>
   )
 }

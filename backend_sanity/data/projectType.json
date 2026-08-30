@@ -3,5 +3,6 @@
     { "title": "Website", "value": "Website" },
     { "title": "Library", "value": "Library" },
     { "title": "App", "value": "App" },
-    { "title": "Tech Demo", "value": "Tech Demo" }
+    { "title": "Tech Demo", "value": "TechDemo" },
+    { "title": "Research", "value": "Research" }
 ]

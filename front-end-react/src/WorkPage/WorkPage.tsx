@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom';
 import './WorkPage.scss';
-import {motion} from 'framer-motion';
-import {urlFor, client} from '../client';
+import {client} from '../client';
 //@ts-ignore
 import ButtonsSection from './ButtonsSection.tsx';
 //@ts-ignore
@@ -71,7 +70,7 @@ const WorkPage = () => {
         for(let index = 0; index < data.length; index++){
           const projectData = data[index]; 
     
-          if(projectData.id == workIndex){
+          if(projectData.id === workIndex){
             setCurrentWork(projectData);
             break;
           }
@@ -98,17 +97,23 @@ const WorkPage = () => {
   images = images || [];
 
   return (
-    <>
-      <div className="background">
-      <div className="navbar-gap"/>  
-        <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
-        <Video trailerLink={trailerLink} title={title}/>
-        <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []} className="skills-container"/>
+    <div className="project-page">
+      <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
+
+      <div className="project-body">
         <DetailBoxes projectContext={projectContext} projectType={projectType} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>                 
+
+        <section className="project-section">
+          <h2 className="project-section__title">About the <span>project</span></h2>
+          <p className="project-description">{description}</p>
+        </section>
+
+        <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
+        <Video trailerLink={trailerLink} title={title}/>
         <PicturesWrapper title={title} images={images}/>
       </div>
-    </>
+    </div>
 
   )
 }

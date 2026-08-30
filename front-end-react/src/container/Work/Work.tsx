@@ -14,19 +14,21 @@ import {BsFillTagsFill} from 'react-icons/bs';
 import {
   FaGamepad,
   FaMagic,
-  FaAppStoreIos 
+  FaAppStoreIos,
+  FaFlask
 } from 'react-icons/fa';
 import { CgWebsite } from "react-icons/cg";
 import {IoLibrary } from 'react-icons/io5';
 import { FaThList } from "react-icons/fa";
 
 const ProjectTypes = new Map([
-  ["Game", <FaGamepad style={{ fontSize: '35px' }}/>],
-  ["Website", <CgWebsite style={{ fontSize: '35px' }}/>],
-  ["Library", <IoLibrary style={{ fontSize: '35px' }}/>],
-  ["App", <FaAppStoreIos style={{ fontSize: '35px' }}/>],
-  ["TechDemo", <FaMagic style={{ fontSize: '35px' }}/>],
-  ["All", <FaThList style={{ fontSize: '35px' }}/>],
+  ["Game", <FaGamepad style={{ fontSize: '18px' }}/>],
+  ["Website", <CgWebsite style={{ fontSize: '18px' }}/>],
+  ["Library", <IoLibrary style={{ fontSize: '18px' }}/>],
+  ["App", <FaAppStoreIos style={{ fontSize: '18px' }}/>],
+  ["TechDemo", <FaMagic style={{ fontSize: '18px' }}/>],
+  ["Research", <FaFlask style={{ fontSize: '18px' }}/>],
+  ["All", <FaThList style={{ fontSize: '18px' }}/>],
 ]);
 
 
@@ -148,19 +150,15 @@ const Work : React.FC = () => {
             className={`app__work-filter-item app__flex p-text ${currentSection === item ? 'item-active' : ''}`}
           >
             
-            <p style={{ 
-            fontSize: '18px', 
-            display: 'flex', 
-            alignItems: 'center' // Center the icon vertically
-            }}>
-              {ProjectTypes.get(item) ?? <BsFillTagsFill style={{ fontSize: '35px' }} />} 
-              <em style={{ marginLeft: '8px' }}>{item}</em>
+            <p style={{ fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {ProjectTypes.get(item) ?? <BsFillTagsFill style={{ fontSize: '18px' }} />}
+              <em style={{ fontStyle: 'normal' }}>{item}</em>
             </p>
           </div>
         )}
       </div>
 
-      <div className="app__work-filter" style={{ marginBottom: "1rem" }}>
+      <div className="app__work-filter" style={{ marginTop: "0.75rem" }}>
         {currentTags.map((item ,index) =>
         {
           return <div
@@ -171,11 +169,7 @@ const Work : React.FC = () => {
             className={`app__work-filter-item app__flex p-text ${selectedTags.includes(item) ? 'item-active' : ''}`}
           >
             
-            <p style={{ 
-            fontSize: '10px', 
-            display: 'flex', 
-            alignItems: 'center' // Center the icon vertically
-            }}>
+            <p style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <BsFillTagsFill/>{item}
             </p>
           </div>}
@@ -187,10 +181,9 @@ const Work : React.FC = () => {
         transition={{duration: 0.5, delayChildren: 0.5}}
         className="app__work-portfolio"
       >
-        {React.Children.toArray(filterWork.map((work)=>
-          WorkCard(work)
-        ))
-        }
+        {filterWork.map((work, index)=>
+          <WorkCard key={`${work.id}-${index}`} {...work} />
+        )}
       </motion.div>
     </>
   )

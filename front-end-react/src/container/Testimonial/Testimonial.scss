@@ -21,32 +21,25 @@
     max-height: 200px;
 
     background-color: var(--secondary-color);
-    box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+    box-shadow: var(--shadow-md);
     display: flex;
     padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition-common);
 
     img{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+        width: clamp(6.25rem, 3.571rem + 3.571vw, 9.375rem);
+        height: clamp(6.25rem, 3.571rem + 3.571vw, 9.375rem);
+        border-radius: var(--radius-full);
         background-color: var(--primary-color);
         object-fit: cover;
     }
 
-    @media screen and (min-width: 2600px) {
-        img{
-            width: 150px;
-            height: 150px;
-        }
-    }
 
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 900px) {
         width: 100%;
-
     }
 
     @media screen and (max-width: 600px) {
@@ -103,11 +96,11 @@
     div{
         width: 50px;
         height: 50px;
-        border-radius: 50%;
+        border-radius: var(--radius-full);
         background-color: var(--secondary-color);
 
         margin: 1rem;
-        transition: all 0.3s ease-in-out;
+        transition: var(--transition-common);
 
         svg{
             width: 20px;
@@ -127,40 +120,84 @@
     }
 }
 
-.app__testimonial-brands{
-    width: 80%;
-    flex-wrap: wrap;
-    margin-top: 1.25rem;
 
-    div{
-        width: 150px;
-        margin: 1.5rem;
+/* Fixed-height stage stops the section jumping as quotes of different
+   lengths swap in and out. */
+.app__testimonial-stage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 12rem;
 
-        img{
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            filter: grayscale(1);
-        }
+    @media screen and (max-width: 600px){
+        min-height: 18rem;
+    }
+}
 
-        &:hover{
-            img{
-                filter: grayscale(0);
-            }
-        }
+/* ---------- Brands: continuous left-to-right loop ---------- */
 
-        @media screen and (min-width: 2600px) {
-            width: 210px;
-            margin: 2rem;
-        }
+.app__brands-marquee{
+    width: 100%;
+    overflow: hidden;
+    margin-top: var(--space-5);
+    /* Fade the edges so logos enter and leave instead of being cut off. */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
 
-        @media screen and (max-width: 450px) {
-            width: 120px;
-            margin: 1rem;
-        }
+.app__brands-track{
+    display: flex;
+    width: max-content;
+    animation: brands-scroll 40s linear infinite;
+}
+
+.app__brands-marquee:hover .app__brands-track{
+    animation-play-state: paused;
+}
+
+.app__brands-group{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.app__brands-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(9rem, 7rem + 6vw, 13rem);
+    padding: 0 var(--space-4);
+
+    img{
+        width: 100%;
+        height: auto;
+        max-height: 4.5rem;
+        object-fit: contain;
+        filter: grayscale(1);
+        opacity: 0.65;
+        transition: var(--transition-common);
     }
 
-    @media screen and (max-width: 800px) {
-        width: 100%;
+    &:hover img{
+        filter: grayscale(0);
+        opacity: 1;
+    }
+}
+
+@keyframes brands-scroll{
+    /* Track holds two identical copies, so -50% lands copy 2 exactly where
+       copy 1 started. Negative direction moves logos left-to-right visually. */
+    from{ transform: translate3d(-50%, 0, 0); }
+    to{ transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .app__brands-track{
+        animation: none;
+        transform: none;
+    }
+
+    .app__brands-marquee{
+        overflow-x: auto;
     }
 }

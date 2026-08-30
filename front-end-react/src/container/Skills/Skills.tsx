@@ -15,7 +15,17 @@ import FetchSanityData from '../../functions/FetchSanityData.ts';
 // @ts-ignore
 import SkillsContainer from '../../components/SkillsContainer.tsx';
 
+import {FaToolbox, FaCode, FaDatabase, FaMicrochip} from 'react-icons/fa';
+
 import 'react-circular-progressbar/dist/styles.css';
+
+/* Category titles come straight from Sanity's `categories` dropdown. */
+const CATEGORY_ICONS = new Map<string, any>([
+  ["Tools", <FaToolbox />],
+  ["Tech", <FaMicrochip />],
+  ["Programming Languages", <FaCode />],
+  ["DataBases", <FaDatabase />],
+]);
 
 const SKILLS : Map<string , Array<Skill>> = new Map<string, Array<Skill>>([
   ["language", []],
@@ -53,7 +63,12 @@ function parseCodeBlock(skills : Map<string , Array<Skill>>){
           return <>
           {skillArray.length > 0 ?
             <>
-              <h2>{titles[index] ?? "N/A"}</h2>
+              <h2 className="app__skills-category">
+                <span className="app__skills-category-icon">
+                  {CATEGORY_ICONS.get(titles[index]) ?? <FaToolbox />}
+                </span>
+                {titles[index] ?? "N/A"}
+              </h2>
               <SkillsContainer skillArray={skillArray}/>
             </>
              :

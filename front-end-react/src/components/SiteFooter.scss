@@ -1,0 +1,57 @@
+.site-footer{
+    width: 100%;
+    background-color: var(--surface);
+    border-top: 1px solid var(--border);
+    /* Also the page's bottom padding: content no longer ends flush at the
+       viewport edge. */
+    padding: var(--space-7) var(--space-6) var(--space-8);
+
+    @media screen and (max-width: 600px){
+        padding: var(--space-6) var(--space-4) var(--space-7);
+    }
+}
+
+.site-footer__inner{
+    width: min(100%, var(--content-max));
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.site-footer__socials{
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.site-footer__social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: var(--transition-common);
+
+    svg{ width: 1.15rem; height: 1.15rem; }
+
+    &:hover{
+        color: var(--accent);
+        border-color: var(--border-accent);
+        transform: translateY(-2px);
+    }
+}
+
+.site-footer__rights{
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-subtle);
+    text-align: center;
+}

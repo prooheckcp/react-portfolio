@@ -1,34 +1,155 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 :root {
-  --font-base: "DM Sans", sans-serif;
+  color-scheme: dark;
 
-  --first-background: #232323;
-  --second-background: #181818;
+  --font-base: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --background-primary: #111111;
-  --background-secondary: #000000;
+  /* ---- Surfaces: elevation gets lighter, the convention on dark UI ---- */
+  --surface-sunken: #0c0c0e;
+  --surface: #131316;
+  --surface-alt: #1a1a1e;
+  --surface-raised: #1e1e23;
+  --surface-overlay: #26262c;
 
-  --primary-color: #20232a;
-  --secondary-color: #050505;
-  --black-color: #131516;
-  --lightGray-color: #e4e4e4;
-  --gray-color: #6b7688;
-  --brown-color: #46364a;
-  --white-color: #e8e6e3;
+  /* ---- Text: three real tiers ---- */
+  --text: #ededf2;
+  --text-muted: #a1a1ae;
+  --text-subtle: #74747f;
+  --text-on-accent: #1a1206;
 
-  --highlight-color: #fef4f5;
-  --hovering-color: #ECB365;
+  /* ---- Accent ---- */
+  --accent: #ecb365;
+  --accent-hover: #f3c98d;
 
-  --span-color: #ECB365;
-  --text-color: #e4e4e4;
-  --secondary-text-color: #e4e4e4;
-  --gray-text-color: #6b7688;
+  /* ---- Borders: on dark UI these read better than glows ---- */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-accent: rgba(236, 179, 101, 0.45);
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* ---- Radius ---- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-full: 999px;
+
+  /* ---- Shadows: real Y-offset, layered ---- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.45);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 400ms;
+  /* Explicit property list: `transition: all` also animates layout props. */
+  --transition-common: background-color var(--dur-base) var(--ease),
+                       border-color var(--dur-base) var(--ease),
+                       color var(--dur-base) var(--ease),
+                       box-shadow var(--dur-base) var(--ease),
+                       transform var(--dur-base) var(--ease),
+                       opacity var(--dur-base) var(--ease);
+
+  /* ---- Layout ---- */
+  --navbar-height: 4.5rem;
+  --content-max: 75rem;
+
+  /* ---- Fluid type scale: replaces the 2600px breakpoints ---- */
+  --text-xs: clamp(0.78rem, 0.75rem + 0.15vw, 1rem);
+  --text-sm: clamp(0.875rem, 0.84rem + 0.18vw, 1.15rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.35rem);
+  --text-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.6rem);
+  --text-xl: clamp(1.4rem, 1.2rem + 0.7vw, 2.1rem);
+  --text-2xl: clamp(1.9rem, 1.5rem + 1.6vw, 3.25rem);
+  --text-3xl: clamp(2.4rem, 1.7rem + 2.8vw, 4.5rem);
+
+  /* ---- Legacy aliases: existing SCSS keeps working, but every ----
+     ---- name now resolves into the scale above.               ---- */
+  --first-background: var(--surface-alt);
+  --second-background: var(--surface);
+  --background-primary: var(--surface);
+  --background-secondary: var(--surface-sunken);
+  --primary-color: var(--surface-overlay);
+  --secondary-color: var(--surface-raised);
+  --black-color: var(--text);
+  --lightGray-color: var(--text);
+  --gray-color: var(--text-subtle);
+  --white-color: var(--text);
+  --highlight-color: var(--border-strong);
+  --hovering-color: var(--accent-hover);
+  --span-color: var(--accent);
+  --text-color: var(--text);
+  --secondary-text-color: var(--text-muted);
+  --gray-text-color: var(--text-muted);
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  /* Was on `*`, which animated every nested scroll container. */
   scroll-behavior: smooth;
+  /* Stops anchor targets landing underneath the fixed navbar. */
+  scroll-padding-top: calc(var(--navbar-height) + var(--space-4));
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Keyboard navigation was completely invisible before this. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

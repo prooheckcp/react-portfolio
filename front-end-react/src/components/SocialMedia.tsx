@@ -1,5 +1,6 @@
 import React from 'react'
-import {BsTwitter, BsGithub, BsLinkedin, BsYoutube} from 'react-icons/bs';
+import {BsGithub, BsLinkedin, BsYoutube} from 'react-icons/bs';
+import {FaXTwitter} from 'react-icons/fa6';
 
 function openWeb(link : string){
   window.open(link);
@@ -12,7 +13,7 @@ const SocialMedia = () => {
               openWeb("https://twitter.com/Prooheckcp")
             }
         }>
-          <BsTwitter/>
+          <FaXTwitter/>
         </div>
         <div onClick={()=>{
               openWeb("https://github.com/prooheckcp")

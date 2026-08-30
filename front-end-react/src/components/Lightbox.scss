@@ -1,0 +1,79 @@
+.lightbox{
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+    background-color: color-mix(in srgb, var(--surface-sunken) 88%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    @media screen and (max-width: 600px){
+        padding: var(--space-4);
+    }
+}
+
+.lightbox__image{
+    max-width: min(100%, 80rem);
+    max-height: 85dvh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    cursor: default;
+}
+
+.lightbox__close,
+.lightbox__nav{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background-color: color-mix(in srgb, var(--surface-raised) 85%, transparent);
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition-common);
+
+    svg{ width: 1.35rem; height: 1.35rem; }
+
+    &:hover{
+        background-color: var(--surface-overlay);
+        border-color: var(--border-accent);
+        color: var(--accent);
+    }
+}
+
+.lightbox__close{
+    top: var(--space-5);
+    right: var(--space-5);
+}
+
+.lightbox__nav--prev{ left: var(--space-5); }
+.lightbox__nav--next{ right: var(--space-5); }
+
+@media screen and (max-width: 600px){
+    .lightbox__nav--prev{ left: var(--space-2); }
+    .lightbox__nav--next{ right: var(--space-2); }
+    .lightbox__close{ top: var(--space-3); right: var(--space-3); }
+}
+
+.lightbox__counter{
+    position: absolute;
+    bottom: var(--space-5);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    background-color: color-mix(in srgb, var(--surface-raised) 85%, transparent);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+}

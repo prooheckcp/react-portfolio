@@ -1,41 +1,25 @@
-import React from 'react'
-import {motion} from 'framer-motion';
-import {GiConsoleController} from 'react-icons/gi'
-import {BsGithub} from 'react-icons/bs'
+import React from 'react';
+import {GiConsoleController} from 'react-icons/gi';
+import {BsGithub} from 'react-icons/bs';
 
 const ButtonsSection = ({codeLink, projectLink}) => {
+  if(!codeLink && !projectLink)
+    return null;
+
   return (
-    <div className="buttonsContainers">
-    {
-      codeLink ?
-      <a href={codeLink} target="_blank">
-          <motion.div 
-          className="button-item" 
-          initial={{ scale: 0 }}
-          whileInView={{scale:1}} 
-          transition={{duration: 0.5}}
-          whileHover={{scale: 1.1, transition: 0.2}}>
-            <p><BsGithub/></p>
-          </motion.div>            
-      </a>
-      : null
-    }
-    {
-      projectLink ?
-      <a href={projectLink} target="_blank">
-          <motion.div 
-          className="button-item" 
-          initial={{ scale: 0 }}
-          whileInView={{scale:1}} 
-          transition={{duration: 0.5}}
-          whileHover={{scale: 1.1, transition: 0.2}}>
-          <p><GiConsoleController/></p>
-          </motion.div>            
-      </a>
-      : null
-    }
-  </div>
-  )
+    <div className="project-links">
+      {codeLink &&
+        <a href={codeLink} target="_blank" rel="noreferrer" className="project-link">
+          <BsGithub /> View source
+        </a>
+      }
+      {projectLink &&
+        <a href={projectLink} target="_blank" rel="noreferrer" className="project-link project-link--primary">
+          <GiConsoleController /> Play the project
+        </a>
+      }
+    </div>
+  );
 }
 
-export default ButtonsSection
+export default ButtonsSection;

@@ -1,17 +1,21 @@
-import React from 'react'
-
-const sections : Array<string> = ['home', 'about', 'work', 'skills', 'testimonials', 'contact']
+import React from 'react';
+//@ts-ignore
+import {HOME_SECTIONS} from '../constants/navigation.ts';
 
 const NavigationDots = ({active}) => {
+  // Work and Skills are their own routes now, so they get no scroll dot.
+  if(!HOME_SECTIONS.includes(active))
+    return null;
+
   return (
     <div className="app__navigation">
-        {sections.map( (item, index) =>
-            <a 
+        {HOME_SECTIONS.map((item, index) =>
+            <a
             href={`#${item}`}
             key={item + index}
+            aria-label={item}
             className="app__navigation-dot"
-            onClick={()=>{}}
-            style={active === item ? {backgroundColor: '#313BAC'} : {}}
+            style={active === item ? {backgroundColor: 'var(--accent)'} : {}}
             />
         )}
     </div>

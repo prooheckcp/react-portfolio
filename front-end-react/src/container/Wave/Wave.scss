@@ -1,9 +1,13 @@
 .custom-shape-divider-top-1664916977 {
+    position: relative;
+    /* Purely decorative: must never paint over adjacent section content. */
+    z-index: 0;
     top: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    pointer-events: none;
 }
 
 .custom-shape-divider-top-1664916977 svg {

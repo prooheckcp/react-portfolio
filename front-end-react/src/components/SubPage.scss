@@ -1,0 +1,19 @@
+.sub-page{
+    width: 100%;
+    min-height: calc(100dvh - var(--navbar-height));
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+
+    /* These sections were written to sit mid-scroll with their own full-height
+       rule; standalone they only need to fill what's left below the navbar. */
+    .app__container{
+        min-height: 0;
+        flex: 1;
+    }
+
+    .app__wrapper{
+        min-height: 0;
+        padding-top: var(--space-7);
+    }
+}

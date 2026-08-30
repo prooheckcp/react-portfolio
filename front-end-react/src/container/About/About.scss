@@ -20,7 +20,7 @@ h5{
     flex: 1;
     width: 100%;
     min-height: 100px !important;
-    height: fit-content !important;
+    height: fit-content;
     flex-direction: column;
 
     h2{
@@ -31,32 +31,42 @@ h5{
 .app__profiles{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    /* Was flex-start, which left the cards staggered at different heights. */
+    align-items: stretch;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
 }
 
 .emoji{
     height: 2.5rem;
+    /* The global reset makes images block-level; this one sits inside a
+       heading and must stay on the same line as the text. */
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .app__profile-item{
+    /* Establish a stacking context above the section dividers, or the scaled
+       card on hover slides behind the wave that follows this section. */
+    position: relative;
+    z-index: 1;
     background: var(--secondary-color);
-    border-radius: 15px;
-    width: 225px;
+    border-radius: var(--radius-lg);
+    width: clamp(14.06rem, 6.295rem + 10.36vw, 23.12rem);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    margin: 2rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    box-shadow: var(--shadow-md);
     border-color: var(--secondary-color);
     border-style:solid;
     border-width: 6px;
 
     img{
         width: 100%;
-        height: 185px;
+        height: clamp(11.56rem, 4.33rem + 9.643vw, 20rem);
         border-radius: 0;
         object-fit: cover;
         border-top-left-radius: 9px;
@@ -75,12 +85,5 @@ h5{
         margin-bottom: 5%;
     }
 
-    @media screen and (min-width: 2600px){
-        width: 370px;
-        margin: 2rem 4rem;
 
-        img{
-            height: 320px;
-        }
-    }
 }

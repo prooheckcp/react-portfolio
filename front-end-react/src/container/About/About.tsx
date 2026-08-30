@@ -33,8 +33,8 @@ const About : React.FC = () => {
         {abouts.map((about : AboutT, index : number)=>
           <motion.div
             whileInView={{opacity: 1}}
-            whileHover={{scale: 1.1}}
-            transition={{duration: 0.5, type:'tween'}}
+            whileHover={{scale: 1.06, zIndex: 5}}
+            transition={{duration: 0.18, ease: [0.2, 0.8, 0.2, 1]}}
             className="app__profile-item"
             key={about.title! + index}
           >

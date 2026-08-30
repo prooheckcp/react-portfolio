@@ -17,20 +17,29 @@
 .app__header{
     flex: 1;
     width: 100%;
-    height: 100%;
+    /* Fit inside the viewport minus the fixed navbar, so nothing is clipped. */
+    min-height: calc(100dvh - var(--navbar-height));
+    max-height: calc(100dvh - var(--navbar-height));
+    overflow: hidden;
     flex-direction: row;
-    padding: 6rem 2rem 0;
+    padding: var(--space-5) var(--space-6) 0;
 
-    @media screen and (min-width: 2600px) {
-        padding-top: 8rem;
-    }
 
     @media screen and (max-width: 1200px) {
         flex-direction: column;
     }
 
+    @media screen and (max-width: 1200px){
+        /* Stacked column: let it grow, but clear the fixed navbar. */
+        max-height: none;
+        overflow: visible;
+        justify-content: flex-start;
+        padding: var(--space-5) var(--space-6) var(--space-6);
+        gap: var(--space-4);
+    }
+
     @media screen and (max-width: 450px){
-        padding: 6rem 1rem 2rem;
+        padding: var(--space-4) var(--space-4) var(--space-5);
     }
 }
 
@@ -41,11 +50,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     height: 100%;
-
-    @media screen and (max-width: 2600px){
-        width: 100%;
-        margin-right: 0rem;
-    }
+    width: 100%;
+    margin-right: 0;
 }
 
 .app__header-badge{
@@ -60,11 +66,11 @@
         opacity: 100%;
         padding: 1rem 2rem;
         border: var(--white-color);
-        border-radius: 15px;
+        border-radius: var(--radius-lg);
         flex-direction: row;
         width: auto;
 
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        box-shadow: var(--shadow-md);
     }
 
     .tag-cmp{
@@ -79,10 +85,7 @@
     }
 
     span{
-        font-size: 2.5rem;
-        @media screen and (min-width: 2600px){
-            font-size: 5rem;
-        }
+        font-size: var(--text-3xl);
     }
 
     @media screen and (max-width: 1200px){
@@ -100,13 +103,29 @@
     height: 100%;
     margin-left: 1rem;
 
+    @media screen and (max-width: 1200px){
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        margin-left: 0;
+        gap: var(--space-4);
+
+        div{
+            margin: 0 !important;
+            width: clamp(3rem, 2.4rem + 2.4vw, 4.5rem) !important;
+            height: clamp(3rem, 2.4rem + 2.4vw, 4.5rem) !important;
+        }
+    }
+
     div{
         width: 100px;
         height: 100px;
-        border-radius: 50%;
+        border-radius: var(--radius-full);
 
         background: var(--secondary-color);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        box-shadow: var(--shadow-md);
 
         img{
             width: 65%;
@@ -115,39 +134,20 @@
     }
 
     div:nth-child(1){
-        width: 100px;
-        height: 100px;
+        width: clamp(6.25rem, -9.821rem + 21.43vw, 25rem);
+        height: clamp(6.25rem, -9.821rem + 21.43vw, 25rem);
     }
 
     div:nth-child(2){
         margin: 1.75rem;
-        width: 150px;
-        height: 150px;
+        width: clamp(9.375rem, 8.304rem + 1.429vw, 10.62rem);
+        height: clamp(9.375rem, 8.304rem + 1.429vw, 10.62rem);
     }
 
     div:nth-child(3){
         margin: 1.75rem;
-        width: 70px;
-        height: 70px;
-    }
-
-    @media screen and (min-width: 2600px) {
-        div:nth-child(1){
-            width: 400px;
-            height: 400px;
-        }
-    
-        div:nth-child(2){
-            margin: 1.75rem;
-            width: 170px;
-            height: 170px;
-        }
-    
-        div:nth-child(3){
-            margin: 1.75rem;
-            width: 200px;
-            height: 200px;
-        }
+        width: clamp(4.375rem, -2.589rem + 9.286vw, 12.5rem);
+        height: clamp(4.375rem, -2.589rem + 9.286vw, 12.5rem);
     }
 
     @media screen and (max-width: 1200px){
@@ -173,7 +173,10 @@
 
     img{
         width: 100%;
+        /* Cap by height too, or an 800px-tall portrait overflows the hero. */
+        max-height: 100%;
         object-fit: contain;
+        object-position: bottom;
         z-index: 1;
     }
 
@@ -188,7 +191,12 @@
     }
 
     @media screen and (max-width: 1200px){
-        margin: 2rem 0;
+        margin: var(--space-4) 0 0;
+
+        img{
+            /* Was rendering at its intrinsic 800px, blowing out the stack. */
+            max-height: 42dvh;
+        }
     }
 }
 
