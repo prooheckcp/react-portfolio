@@ -329,3 +329,51 @@
 .white-skill{
     background-color: transparent !important;
 }
+
+/* ---------- In-development status ---------- */
+
+.project-hero__wip{
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-on-accent);
+    background-color: color-mix(in srgb, var(--accent) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.project-hero__wip-dot{
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+    animation: work-card-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .project-hero__wip-dot{ animation: none; }
+}
+
+/* Reads as a counter attached to "View source", not a second button. */
+.project-link__stars{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 0.15rem;
+    padding-left: var(--space-2);
+    border-left: 1px solid var(--border);
+    color: var(--text-muted);
+    font-weight: 600;
+
+    svg{
+        width: 0.9rem;
+        height: 0.9rem;
+        color: #f5b301;
+    }
+}

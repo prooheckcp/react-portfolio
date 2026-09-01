@@ -26,7 +26,7 @@ const About : React.FC = () => {
         <span className="green_text"> Portu</span><span className="red_text">guese </span><img className="emoji" src={images.portuguese} alt="PortugueseEmoji"/>
         <br/>
         
-        <span>Game Developer</span>
+        <span>Software Engineer &amp; Researcher</span>
       </h2>
 
       <div className="app__profiles">

@@ -1,7 +1,6 @@
 import React from 'react';
 import {motion} from 'framer-motion';
-import {SiGmail, SiWhatsapp, SiDiscord, SiGithub, SiLinkedin, SiYoutube} from 'react-icons/si';
-import {FaXTwitter} from 'react-icons/fa6';
+import {SiGmail, SiWhatsapp, SiDiscord} from 'react-icons/si';
 import {IoArrowForward} from 'react-icons/io5';
 import './Contact.scss';
 
@@ -34,13 +33,6 @@ const CHANNELS = [
     href: 'https://discordapp.com/users/469204779168432148',
     hint: 'For a casual chat',
   },
-];
-
-const SOCIALS = [
-  {key: 'github',   icon: <SiGithub />,    label: 'GitHub',   href: 'https://github.com/prooheckcp'},
-  {key: 'linkedin', icon: <SiLinkedin />,  label: 'LinkedIn', href: 'https://www.linkedin.com/in/vasco-soares-564682194/'},
-  {key: 'twitter',  icon: <FaXTwitter />,  label: 'X',        href: 'https://twitter.com/Prooheckcp'},
-  {key: 'youtube',  icon: <SiYoutube />,   label: 'YouTube',  href: 'https://www.youtube.com/prooheckcp'},
 ];
 
 const Contact : React.FC = () => {
@@ -85,25 +77,6 @@ const Contact : React.FC = () => {
               <span className="contact-card__arrow"><IoArrowForward /></span>
             </motion.a>
           )}
-        </div>
-
-        <div className="contact-socials">
-          <span className="contact-socials__label">Elsewhere</span>
-          <div className="contact-socials__list">
-            {SOCIALS.map((social) =>
-              <a
-                key={social.key}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="contact-social"
-                aria-label={social.label}
-                title={social.label}
-              >
-                {social.icon}
-              </a>
-            )}
-          </div>
         </div>
 
       </div>

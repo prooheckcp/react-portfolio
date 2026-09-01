@@ -13,23 +13,31 @@ import './Credentials.scss';
 
 const MONTH_LIST : Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-const formatAwarded = (value?: string) => {
-  if(!value)
+/* Sanity date fields arrive as "YYYY-MM-DD". Parsing those through `new Date`
+   treats them as UTC midnight, so a visitor west of UTC would read 2025-01-01
+   back as December 2024 - hence reading the parts literally instead.
+
+   `yearOnly` exists because the awards are cited by year on the CV and nothing
+   records the month; showing "January" for them would invent a fact. */
+const formatAwarded = (value?: string, yearOnly?: boolean) => {
+  const parts = /^(\d{4})-(\d{2})-(\d{2})/.exec(value ?? '');
+
+  if(!parts)
     return null;
 
-  const date = new Date(value);
+  const [, year, month] = parts;
 
-  if(Number.isNaN(date.getTime()))
-    return null;
+  if(yearOnly)
+    return year;
 
-  return `${MONTH_LIST[date.getMonth()]} ${date.getFullYear()}`;
+  return `${MONTH_LIST[Number(month) - 1]} ${year}`;
 }
 
 /* Most recent first, matching how the experience timeline reads.
    Sanity returns documents in no guaranteed order, so sort explicitly.
    Entries without a start date sink to the bottom rather than jumping to
    the top on an invalid Date. */
-const byStartDateDesc = (a, b) => {
+const byDateDesc = (field : string) => (a, b) => {
   const toTime = (value?: string) => {
     if(!value)
       return null;
@@ -38,8 +46,8 @@ const byStartDateDesc = (a, b) => {
     return Number.isNaN(time) ? null : time;
   };
 
-  const timeA = toTime(a?.startingDate);
-  const timeB = toTime(b?.startingDate);
+  const timeA = toTime(a?.[field]);
+  const timeB = toTime(b?.[field]);
 
   if(timeA === null && timeB === null) return 0;
   if(timeA === null) return 1;
@@ -56,7 +64,7 @@ const SectionHeading = ({icon, title, accent}) => (
 );
 
 /* Awards and certificates share a shape: title, issuer, blurb, verify link. */
-const CredentialCard = ({item, index}) => (
+const CredentialCard = ({item, index, yearOnly}) => (
   <motion.article
     className="credential-card"
     initial={{opacity: 0, y: 14}}
@@ -75,8 +83,8 @@ const CredentialCard = ({item, index}) => (
 
       <p className="credential-card__meta">
         {item.issuer}
-        {item.issuer && formatAwarded(item.dateReceived) ? ' · ' : ''}
-        {formatAwarded(item.dateReceived)}
+        {item.issuer && formatAwarded(item.dateReceived, yearOnly) ? ' · ' : ''}
+        {formatAwarded(item.dateReceived, yearOnly)}
       </p>
 
       {item.description && <p className="credential-card__desc">{item.description}</p>}
@@ -101,9 +109,9 @@ const Credentials : React.FC = () => {
   const [awards, setAwards] = useState<Array<any>>([]);
 
   useEffect(() => {
-    FetchSanityData("university", (data) => setUniversity([...data].sort(byStartDateDesc)));
-    FetchSanityData("certificates", setCertificates);
-    FetchSanityData("awards", setAwards);
+    FetchSanityData("university", (data) => setUniversity([...data].sort(byDateDesc("startingDate"))));
+    FetchSanityData("certificates", (data) => setCertificates([...data].sort(byDateDesc("dateReceived"))));
+    FetchSanityData("awards", (data) => setAwards([...data].sort(byDateDesc("dateReceived"))));
   }, []);
 
   const hasNothing =
@@ -174,10 +182,10 @@ const Credentials : React.FC = () => {
 
         {awards.length > 0 &&
           <section className="credentials__section">
-            <SectionHeading icon={<FaTrophy />} title="" accent="Awards" />
+            <SectionHeading icon={<FaTrophy />} title="" accent="Awards/Nominations" />
             <div className="credentials__grid">
               {awards.map((item, index) =>
-                <CredentialCard item={item} index={index} key={`award-${item.title}-${index}`} />
+                <CredentialCard item={item} index={index} yearOnly key={`award-${item.title}-${index}`} />
               )}
             </div>
           </section>

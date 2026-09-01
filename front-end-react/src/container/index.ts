@@ -20,3 +20,5 @@ export {default as NotFound} from './404/404.tsx';// @ts-ignore
 export {default as Credentials} from './Credentials/Credentials.tsx';
 // @ts-ignore
 export {default as QuickLinks} from './QuickLinks/QuickLinks.tsx';
+// @ts-ignore
+export {default as Research} from './Research/Research.tsx';

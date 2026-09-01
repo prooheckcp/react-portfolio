@@ -2,8 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {IoArrowBack} from 'react-icons/io5';
 import {urlFor} from '../client';
+//@ts-ignore
+import {isInDevelopment} from '../functions/workStatus.ts';
 
-const ProjectHero = ({title, description, imgUrl, tags}) => {
+const ProjectHero = ({title, description, imgUrl, tags, finalDate}) => {
   const cleanTags = (tags ?? []).filter((tag) => tag && tag.toLowerCase().trim() !== "all");
 
   return (
@@ -17,6 +19,13 @@ const ProjectHero = ({title, description, imgUrl, tags}) => {
         <Link to="/work" className="project-hero__back">
           <IoArrowBack /> Back to portfolio
         </Link>
+
+        {isInDevelopment({finalDate}) &&
+          <span className="project-hero__wip">
+            <span className="project-hero__wip-dot" />
+            In development
+          </span>
+        }
 
         <h1 className="project-hero__title">{title}</h1>
 

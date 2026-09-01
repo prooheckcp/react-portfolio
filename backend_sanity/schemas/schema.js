@@ -13,6 +13,9 @@ import contact from './contact'
 import awards from './awards'
 import certificates from './certificates'
 import university from './university'
+import researchPapers from './researchPapers'
+import conferences from './conferences'
+import workshops from './workshops'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -31,6 +34,9 @@ export default createSchema({
     contact,
     awards,
     certificates,
-    university
+    university,
+    researchPapers,
+    conferences,
+    workshops
   ]),
 })

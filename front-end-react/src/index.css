@@ -153,3 +153,10 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+/* Slow blink on the "In development" status dots (work cards + project hero).
+   Global because both stylesheets that use it are compiled separately. */
+@keyframes work-card-pulse{
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}

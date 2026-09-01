@@ -14,6 +14,8 @@ import SkillsContainers from './SkillsContainers.tsx';
 import PicturesWrapper from './PicturesWrapper.tsx';
 //@ts-ignore
 import DetailBoxes from './DetailBoxes.tsx';
+//@ts-ignore
+import {parseGithubRepo, useGithubStars} from '../functions/githubStars.ts';
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
 const WORKS_QUERY : string = '*[_type == "works"]';
@@ -24,6 +26,11 @@ const WorkPage = () => {
   const [usedTech, setUsedTech] = useState<Array<any>>([]);
   const [usedLanguages, setUsedLanguages] = useState<Array<any>>([]);
   const [currentWork, setCurrentWork] = useState(null);
+
+  // Hooks cannot sit below the `!currentWork` early return, so this runs with an
+  // empty list until the project arrives and then refetches for its repo.
+  const repo = parseGithubRepo((currentWork as any)?.codeLink);
+  const stars = useGithubStars(repo ? [repo] : []);
 
   const setDataArrays = (currentProject) =>{
     let techUsed : Array<any> = [];
@@ -98,7 +105,7 @@ const WorkPage = () => {
 
   return (
     <div className="project-page">
-      <Header title={title} description={description} imgUrl={imgUrl} tags={tags}/>
+      <Header title={title} description={description} imgUrl={imgUrl} tags={tags} finalDate={finalDate}/>
 
       <div className="project-body">
         <DetailBoxes projectContext={projectContext} projectType={projectType} startingDate={startingDate} finalDate={finalDate} multiplayer={multiplayer}/>
@@ -109,7 +116,7 @@ const WorkPage = () => {
         </section>
 
         <SkillsContainers usedLanguages={usedLanguages || []} usedTech={usedTech || []}/>
-        <ButtonsSection codeLink={codeLink} projectLink={projectLink}/>
+        <ButtonsSection codeLink={codeLink} projectLink={projectLink} stars={stars.get(repo)}/>
         <Video trailerLink={trailerLink} title={title}/>
         <PicturesWrapper title={title} images={images}/>
       </div>

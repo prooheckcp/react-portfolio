@@ -82,8 +82,12 @@
     }
 
     p{
-      font-weight: 500;  
+      font-weight: 500;
       margin-top: 0.5rem;
+      /* `.p-text` sets text-align: left globally; override it here so a
+         single-word or single-item skill name centers under its circle
+         instead of hugging its left edge. */
+      text-align: center;
     }
 
 }

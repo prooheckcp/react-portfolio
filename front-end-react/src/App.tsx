@@ -5,7 +5,7 @@ import WorkPage from './WorkPage/WorkPage.tsx';
 // @ts-ignore
 import NotFound from './container/404/404.tsx';
 // @ts-ignore
-import {Navbar, MainPage, WorkRoute, SkillsRoute, ContactRoute, CredentialsRoute, SiteFooter} from './components/index.ts';
+import {Navbar, MainPage, WorkRoute, SkillsRoute, ContactRoute, CredentialsRoute, ResearchRoute, SiteFooter} from './components/index.ts';
 import './App.scss'
 
 const App = () => {
@@ -18,6 +18,7 @@ const App = () => {
               <Route path="/work/:workIndex" element={<WorkPage />} />
               <Route path="/work" element={<WorkRoute/>} />
               <Route path="/skills" element={<SkillsRoute/>} />
+              <Route path="/research" element={<ResearchRoute/>} />
               <Route path="/credentials" element={<CredentialsRoute/>} />
               <Route path="/contact" element={<ContactRoute/>} />
               <Route path="/" element={<MainPage/>} />

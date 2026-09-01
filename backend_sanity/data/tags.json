@@ -5,5 +5,12 @@
     { "title": "SinglePlayer", "value": "SinglePlayer" },
     { "title": "Roblox", "value": "Roblox" },
     { "title": "Unity", "value": "Unity" },
-    { "title": "Unreal Engine", "value": "Unreal Engine" }
+    { "title": "Unreal Engine", "value": "Unreal Engine" },
+    { "title": "Mobile", "value": "Mobile" },
+    { "title": "Desktop", "value": "Desktop" },
+    { "title": "Static", "value": "Static" },
+    { "title": "Framework", "value": "Framework" },
+    { "title": "Tool", "value": "Tool" },
+    { "title": "System", "value": "System" },
+    { "title": "Helper", "value": "Helper" }
 ]

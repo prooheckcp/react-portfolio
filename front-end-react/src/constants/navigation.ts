@@ -12,6 +12,7 @@ export const NAV_ITEMS : Array<NavItem> = [
     {label: 'home',    kind: 'route', target: '/'},
     {label: 'work',    kind: 'route', target: '/work'},
     {label: 'skills',  kind: 'route', target: '/skills'},
+    {label: 'research', kind: 'route', target: '/research'},
     {label: 'credentials', kind: 'route', target: '/credentials'},
     {label: 'contact', kind: 'route', target: '/contact'},
 ];

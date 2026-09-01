@@ -16,4 +16,6 @@ export {default as ContactRoute} from './ContactRoute.tsx';
 // @ts-ignore
 export {default as CredentialsRoute} from './CredentialsRoute.tsx';
 // @ts-ignore
+export {default as ResearchRoute} from './ResearchRoute.tsx';
+// @ts-ignore
 export {default as SiteFooter} from './SiteFooter.tsx';

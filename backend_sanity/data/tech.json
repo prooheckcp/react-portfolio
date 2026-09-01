@@ -10,5 +10,6 @@
     { "title": "NodeJS", "value": "NodeJS" },
     { "title": "Android Studio", "value": "Android Studio" },
     { "title": "Unreal Engine", "value": "Unreal Engine" },
-    { "title": "Electron", "value": "Electron" }
+    { "title": "Electron", "value": "Electron" },
+    { "title": "Supabase", "value": "Supabase" }
 ]

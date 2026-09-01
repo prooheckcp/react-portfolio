@@ -10,6 +10,10 @@ import './Work.scss';
 
 // @ts-ignore
 import FetchSanityData from '../../functions/FetchSanityData.ts';
+// @ts-ignore
+import {byFinalDateDesc} from '../../functions/workStatus.ts';
+// @ts-ignore
+import {parseGithubRepo, useGithubStars} from '../../functions/githubStars.ts';
 import {BsFillTagsFill} from 'react-icons/bs';
 import {
   FaGamepad,
@@ -42,6 +46,12 @@ const Work : React.FC = () => {
   const [works, setWorks] = useState([]);
   const [skills, setSkills] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
+
+  // One hook for the whole grid rather than one per card: the repos are known
+  // as soon as the works land, and this way the fetches are deduped up front.
+  const stars = useGithubStars(
+    works.map((work : any)=> parseGithubRepo(work.codeLink)).filter(Boolean)
+  );
 
   function updateFilter(){
     setFilterWork(works.filter((work)=>{
@@ -83,7 +93,13 @@ const Work : React.FC = () => {
 }
 
   useEffect(()=>{
-    FetchSanityData("works", setWorks, setFilterWork);
+    // Sanity returns documents in no guaranteed order, so ordering happens
+    // here once - `updateFilter` only ever narrows this list, never reorders it.
+    FetchSanityData("works", (data : Array<any>)=>{
+      const ordered = [...data].sort(byFinalDateDesc);
+      setWorks(ordered);
+      setFilterWork(ordered);
+    });
     FetchSanityData("skills", setSkills);
   }, [])
 
@@ -182,7 +198,11 @@ const Work : React.FC = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index)=>
-          <WorkCard key={`${work.id}-${index}`} {...work} />
+          <WorkCard
+            key={`${work.id}-${index}`}
+            stars={stars.get(parseGithubRepo(work.codeLink))}
+            {...work}
+          />
         )}
       </motion.div>
     </>

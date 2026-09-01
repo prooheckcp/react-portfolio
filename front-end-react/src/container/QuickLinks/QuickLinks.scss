@@ -3,6 +3,14 @@
     width: 100%;
     flex-direction: column;
     justify-content: center;
+    /* MotionWrap does not apply `.app__wrapper`, and `min-height: auto` below
+       collapses the section to its content, so this is the only padding the
+       section gets - without it the cards sit flush against the footer. */
+    padding: var(--space-6) var(--space-6) var(--space-8);
+
+    @media screen and (max-width: 600px){
+        padding: var(--space-5) var(--space-4) var(--space-7);
+    }
 }
 
 .app__quicklinksSize{
