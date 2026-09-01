@@ -88,95 +88,127 @@
 }
 
 .app__navbar-menu{
-    width: 35px;
-    height: 35px;
-    position: relative;
     position: absolute;
-    right: 1rem;
+    right: var(--space-4);
+    display: none;
+
+    @media screen and (max-width: 900px){
+        display: block;
+    }
+}
+
+.app__navbar-menu-trigger{
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: var(--secondary-color);
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background-color: var(--surface-raised);
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition-common);
 
-    svg {
-        width: 70%;
-        height: 70%;
-        color: var(--white-color);
+    svg{ width: 1.35rem; height: 1.35rem; }
+
+    &:hover{
+        border-color: var(--border-accent);
+        color: var(--accent);
+    }
+}
+
+/* Dims and blurs whatever is behind the drawer - the click target that lets
+   a visitor close it without hunting for the X, which matters most on
+   mobile where there's no Escape key. */
+.app__navbar-menu-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.app__navbar-menu-panel{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1002;
+    width: min(82vw, 22rem);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-raised);
+    border-left: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    /* `env(safe-area-inset-*)` keeps the close button and last link clear of
+       a notch or the home-indicator bar on iOS. */
+    padding: calc(var(--space-4) + env(safe-area-inset-top)) var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom));
+    overflow-y: auto;
+}
+
+.app__navbar-menu-close{
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background-color: var(--surface-overlay);
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition-common);
+
+    svg{ width: 1.35rem; height: 1.35rem; }
+
+    &:hover{
+        border-color: var(--border-accent);
+        color: var(--accent);
+    }
+}
+
+.app__navbar-menu-panel ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.app__navbar-menu-panel li{
+    border-bottom: 1px solid var(--border);
+
+    &:last-child{ border-bottom: none; }
+}
+
+.app__navbar-menu-panel a{
+    display: flex;
+    align-items: center;
+    /* A ~52px row keeps every link a comfortable thumb target (Apple's HIG
+       and Android's Material both call for 44-48px minimum). */
+    min-height: 3.25rem;
+    border-left: 3px solid transparent;
+    padding-left: var(--space-1);
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    transition: var(--transition-common);
+
+    &:hover{
+        color: var(--text);
     }
 
-    div{
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-
-        z-index: 5;
-
-        width: 100%;
-        height: fit-content;
-
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        flex-direction: column;
-        background: black;
-
-        background-size: cover;
-        background-repeat: repeat;
-
-        box-shadow: var(--shadow-md);
-
-        svg{
-            width: 35px;
-            height: 35px;
-            color: var(--text-color);
-            margin: 0.5rem 1rem;
-            margin-top: 1rem;
-        }
-
-        ul{
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-direction: column;
-
-            li{
-
-                border-bottom: rgba(255, 255, 255, 0.2) solid 3px;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                width: 100%;
-                a{
-                    height: 100%;
-                    color: var(--text-color);
-                    text-decoration: none;
-                    font-size: 1rem;
-                    text-transform: uppercase;
-                    font-weight: 500;
-                    margin: 1rem 0;
-                    margin-left: 1rem;
-
-                    &:hover{
-                        color: var(--span-color);
-                    }
-                }
-            }
-        }
-
-        @media screen and (min-width: 900px) {
-            display: none;
-        }
-    }
-
-    
-    @media screen and (min-width: 900px) {
-        display: none;
+    &.is-active{
+        color: var(--accent);
+        border-left-color: var(--accent);
+        padding-left: var(--space-3);
     }
 }

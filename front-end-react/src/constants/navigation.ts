@@ -19,3 +19,9 @@ export const NAV_ITEMS : Array<NavItem> = [
 
 /* Sections that remain on the landing page, in scroll order. */
 export const HOME_SECTIONS : Array<string> = ['home', 'about', 'testimonials', 'next'];
+
+/* Shared by the desktop nav and the mobile drawer so "current page" always
+   agrees between the two. */
+export const isNavItemActive = (item : NavItem, pathname : string) : boolean =>
+    item.kind === 'route' &&
+    (item.target === '/' ? pathname === '/' : pathname.startsWith(item.target));
