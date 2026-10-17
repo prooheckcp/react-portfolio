@@ -16,6 +16,8 @@ import PicturesWrapper from './PicturesWrapper.tsx';
 import DetailBoxes from './DetailBoxes.tsx';
 //@ts-ignore
 import {parseGithubRepo, useGithubStars} from '../functions/githubStars.ts';
+//@ts-ignore
+import NotFound from '../container/404/404.tsx';
 
 const SKILLS_QUERY : string = '*[_type == "skills"]'
 const WORKS_QUERY : string = '*[_type == "works"]';
@@ -26,6 +28,8 @@ const WorkPage = () => {
   const [usedTech, setUsedTech] = useState<Array<any>>([]);
   const [usedLanguages, setUsedLanguages] = useState<Array<any>>([]);
   const [currentWork, setCurrentWork] = useState(null);
+  // Separate from `currentWork` so "still loading" and "no such project" render differently.
+  const [notFound, setNotFound] = useState(false);
 
   // Hooks cannot sit below the `!currentWork` early return, so this runs with an
   // empty list until the project arrives and then refetches for its repo.
@@ -73,15 +77,13 @@ const WorkPage = () => {
 
       setSkillsMap(newMap);
 
-      client.fetch(WORKS_QUERY).then(data=>{ 
-        for(let index = 0; index < data.length; index++){
-          const projectData = data[index]; 
-    
-          if(projectData.id === workIndex){
-            setCurrentWork(projectData);
-            break;
-          }
-        }
+      client.fetch(WORKS_QUERY).then(data=>{
+        const projectData = data.find(project => project.id === workIndex);
+
+        if(projectData)
+          setCurrentWork(projectData);
+        else
+          setNotFound(true);
       });
 
     })
@@ -94,8 +96,12 @@ const WorkPage = () => {
     setDataArrays(currentWork);
   }, [currentWork, skillsMap])
 
+  if(notFound)
+    return <NotFound/>;
+
+  // Blank while Sanity answers; the page fills in as soon as the project arrives.
   if(!currentWork)
-    return '404';
+    return <div className="project-page"/>;
 
   let {description, title, trailerLink, codeLink, projectLink, startingDate, finalDate, projectType, multiplayer, imgUrl, images, tags, projectContext} = currentWork;
 

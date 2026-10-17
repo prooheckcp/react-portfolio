@@ -6,6 +6,8 @@ import {getSkill} from '../../functions/GetSkill.ts';
 //@ts-ignore
 import {isInDevelopment} from '../../functions/workStatus.ts';
 import {AiFillStar} from 'react-icons/ai';
+//@ts-ignore
+import {shouldShowStars} from '../../functions/githubStars.ts';
 
 const StackIcons = ({items, group, prefix}) => {
     if(!items)
@@ -46,8 +48,8 @@ const WorkCard = ({stars, ...work}) => {
                     </span>
                 }
 
-                {/* Hidden at zero: a "0 stars" chip is noisier than no chip. */}
-                {stars > 0 &&
+                {/* Hidden below the threshold: a "2 stars" chip is noisier than no chip. */}
+                {shouldShowStars(stars) &&
                     <span className="work-card__stars" title={`${stars} stars on GitHub`}>
                         <AiFillStar /> {stars}
                     </span>

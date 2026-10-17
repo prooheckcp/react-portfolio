@@ -2,6 +2,8 @@ import React from 'react';
 import {GiConsoleController} from 'react-icons/gi';
 import {BsGithub} from 'react-icons/bs';
 import {AiFillStar} from 'react-icons/ai';
+//@ts-ignore
+import {shouldShowStars} from '../functions/githubStars.ts';
 
 const ButtonsSection = ({codeLink, projectLink, stars}) => {
   if(!codeLink && !projectLink)
@@ -12,7 +14,7 @@ const ButtonsSection = ({codeLink, projectLink, stars}) => {
       {codeLink &&
         <a href={codeLink} target="_blank" rel="noreferrer" className="project-link">
           <BsGithub /> View source
-          {stars > 0 &&
+          {shouldShowStars(stars) &&
             <span className="project-link__stars" title={`${stars} stars on GitHub`}>
               <AiFillStar /> {stars}
             </span>

@@ -20,6 +20,14 @@ const CACHE_TTL : number = 6 * 60 * 60 * 1000; // 6 hours
 type CacheEntry = {stars: number | null, ts: number};
 type Cache = Record<string, CacheEntry>;
 
+/* Below this a star count reads as "nobody uses it" rather than as social proof,
+   so the badge is hidden instead of shown. */
+const MIN_STARS_SHOWN : number = 5;
+
+export function shouldShowStars(stars? : number) : boolean {
+    return typeof stars === 'number' && stars >= MIN_STARS_SHOWN;
+}
+
 /* "https://github.com/prooheckcp/RoQuest" -> "prooheckcp/RoQuest".
    Anything that is not a repo root (gists, /tree/... deep links, non-GitHub
    hosts) returns null so the caller skips it. */
