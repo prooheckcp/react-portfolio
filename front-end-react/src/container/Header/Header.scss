@@ -114,8 +114,10 @@
 
         div{
             margin: 0 !important;
-            width: clamp(3rem, 2.4rem + 2.4vw, 4.5rem) !important;
-            height: clamp(3rem, 2.4rem + 2.4vw, 4.5rem) !important;
+            /* Bubbles hold text now, not logos: below ~6.5rem the label wraps
+               into an unreadable column. */
+            width: clamp(6.5rem, 5rem + 6vw, 9rem) !important;
+            height: clamp(6.5rem, 5rem + 6vw, 9rem) !important;
         }
     }
 
@@ -127,15 +129,14 @@
         background: var(--secondary-color);
         box-shadow: var(--shadow-md);
 
-        img{
-            width: 65%;
-            height: 65%;
-        }
+        /* Lets the stat text scale with its own bubble (cqi) rather than the
+           viewport, since the three bubbles are different sizes. */
+        container-type: inline-size;
     }
 
     div:nth-child(1){
-        width: clamp(6.25rem, -9.821rem + 21.43vw, 25rem);
-        height: clamp(6.25rem, -9.821rem + 21.43vw, 25rem);
+        width: clamp(10rem, -9.821rem + 21.43vw, 25rem);
+        height: clamp(10rem, -9.821rem + 21.43vw, 25rem);
     }
 
     div:nth-child(2){
@@ -146,8 +147,8 @@
 
     div:nth-child(3){
         margin: 1.75rem;
-        width: clamp(4.375rem, -2.589rem + 9.286vw, 12.5rem);
-        height: clamp(4.375rem, -2.589rem + 9.286vw, 12.5rem);
+        width: clamp(9rem, -2.589rem + 9.286vw, 12.5rem);
+        height: clamp(9rem, -2.589rem + 9.286vw, 12.5rem);
     }
 
     @media screen and (max-width: 1200px){
@@ -160,6 +161,62 @@
             margin: 1rem;
         }
     }
+}
+
+/* Hover feedback lives on the bubble itself - an accent ring - so nothing
+   inside it shifts or resizes under the cursor. */
+.app__header-circles .circle-cmp{
+    transition: box-shadow 0.2s ease;
+
+    &:hover,
+    &:focus-within{
+        box-shadow: var(--shadow-md), 0 0 0 2px var(--accent);
+    }
+}
+
+a.circle-cmp__stat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
+    width: 100%;
+    height: 100%;
+    padding: 12%;
+    border-radius: var(--radius-full);
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.circle-cmp__icon{
+    display: flex;
+    color: var(--text-muted);
+    font-size: clamp(1.6rem, 24cqi, 4.5rem);
+    margin-bottom: 0.1em;
+}
+
+.circle-cmp__value{
+    /* Digits keep one width while counting, so the number does not jitter. */
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: clamp(0.95rem, 20cqi, 4.5rem);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.circle-cmp__value--long{
+    font-size: clamp(0.8rem, 12cqi, 2.6rem);
+}
+
+.circle-cmp__label{
+    color: var(--text-muted);
+    font-size: clamp(0.62rem, 8.5cqi, 1.1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .app__header-img{
