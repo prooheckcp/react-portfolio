@@ -12,6 +12,8 @@
 
 .app__testimonialSize{
     min-height: auto !important;
+    /* Room between the brand logos and the wave that follows. */
+    padding-bottom: var(--space-8);
 }
 
 .app__testimonial-item{

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {motion} from 'framer-motion';
-import {FaGraduationCap, FaCertificate, FaTrophy} from 'react-icons/fa';
+import {FaGraduationCap, FaCertificate, FaTrophy, FaNewspaper, FaMedal} from 'react-icons/fa';
 import {FiExternalLink} from 'react-icons/fi';
 
 import {urlFor} from '../../client';
@@ -63,8 +63,21 @@ const SectionHeading = ({icon, title, accent}) => (
   </h2>
 );
 
-/* Awards and certificates share a shape: title, issuer, blurb, verify link. */
-const CredentialCard = ({item, index, yearOnly}) => (
+/* Only awards carry a result. Rendering nothing when it is unset keeps an
+   unlabelled award from silently reading as a win. */
+const ResultBadge = ({result}) => {
+  if(result === 'Won')
+    return <span className="credential-card__result credential-card__result--won"><FaTrophy /> Won</span>;
+
+  if(result === 'Nominated')
+    return <span className="credential-card__result"><FaMedal /> Nominated</span>;
+
+  return null;
+}
+
+/* Awards and certificates share a shape: title, issuer, blurb, verify link.
+   Press mentions reuse it with the outlet as issuer and the article as link. */
+const CredentialCard = ({item, index, yearOnly = false, linkLabel = "Verify credential"}) => (
   <motion.article
     className="credential-card"
     initial={{opacity: 0, y: 14}}
@@ -81,6 +94,8 @@ const CredentialCard = ({item, index, yearOnly}) => (
     <div className="credential-card__body">
       <h3 className="credential-card__title">{item.title}</h3>
 
+      <ResultBadge result={item.result} />
+
       <p className="credential-card__meta">
         {item.issuer}
         {item.issuer && formatAwarded(item.dateReceived, yearOnly) ? ' · ' : ''}
@@ -96,7 +111,7 @@ const CredentialCard = ({item, index, yearOnly}) => (
           target="_blank"
           rel="noreferrer"
         >
-          Verify credential <FiExternalLink />
+          {linkLabel} <FiExternalLink />
         </a>
       }
     </div>
@@ -107,15 +122,21 @@ const Credentials : React.FC = () => {
   const [university, setUniversity] = useState<Array<any>>([]);
   const [certificates, setCertificates] = useState<Array<any>>([]);
   const [awards, setAwards] = useState<Array<any>>([]);
+  const [press, setPress] = useState<Array<any>>([]);
 
   useEffect(() => {
     FetchSanityData("university", (data) => setUniversity([...data].sort(byDateDesc("startingDate"))));
     FetchSanityData("certificates", (data) => setCertificates([...data].sort(byDateDesc("dateReceived"))));
     FetchSanityData("awards", (data) => setAwards([...data].sort(byDateDesc("dateReceived"))));
+    FetchSanityData("press", (data) => setPress(
+      [...data]
+        .sort(byDateDesc("datePublished"))
+        .map((item) => ({...item, issuer: item.outlet, dateReceived: item.datePublished, credentialLink: item.articleLink}))
+    ));
   }, []);
 
   const hasNothing =
-    university.length === 0 && certificates.length === 0 && awards.length === 0;
+    university.length === 0 && certificates.length === 0 && awards.length === 0 && press.length === 0;
 
   return (
     <div className="credentials">
@@ -123,7 +144,7 @@ const Credentials : React.FC = () => {
         <header className="credentials__hero">
           <h1 className="credentials__title">My <span>Credentials</span></h1>
           <p className="credentials__lead">
-            Education, certifications, and awards — with links to verify each one.
+            Education, certifications, awards, and press — with links to verify each one.
           </p>
         </header>
 
@@ -186,6 +207,17 @@ const Credentials : React.FC = () => {
             <div className="credentials__grid">
               {awards.map((item, index) =>
                 <CredentialCard item={item} index={index} yearOnly key={`award-${item.title}-${index}`} />
+              )}
+            </div>
+          </section>
+        }
+
+        {press.length > 0 &&
+          <section className="credentials__section">
+            <SectionHeading icon={<FaNewspaper />} title="In the" accent="Press" />
+            <div className="credentials__grid">
+              {press.map((item, index) =>
+                <CredentialCard item={item} index={index} linkLabel="Read article" key={`press-${item.title}-${index}`} />
               )}
             </div>
           </section>

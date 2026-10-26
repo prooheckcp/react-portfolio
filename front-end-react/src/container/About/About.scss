@@ -28,6 +28,13 @@ h5{
     }
 }
 
+/* `app__about` is also on the inner wrappers, so pin the gap to the outer
+   section only - otherwise it stacks three times. Keeps the wave that follows
+   from sitting flush against the cards. */
+.app__container.app__about{
+    padding-bottom: var(--space-8);
+}
+
 .app__profiles{
     display: flex;
     justify-content: center;
